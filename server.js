@@ -6,6 +6,8 @@ const cors = require("cors");
 const port = process.env.PORT;
 const User = require('./models/userSchema')
 const bcrypt = require('bcryptjs')
+// const { login, protected} = require('./controllers/userController');
+
 
 
 
