@@ -4,6 +4,12 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 const cors = require("cors");
 const port = process.env.PORT;
+const User = require('./models/userSchema')
+const bcrypt = require('bcryptjs')
+// const { login, protected} = require('./controllers/userController');
+
+
+
 
 connectDB();
 
@@ -16,8 +22,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-/* app.use("/api/goals", require("./routes/goalRoutes"));
-app.use("/api/users", require("./routes/userRoutes")); */
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
+app.use('/api/users', require('./APIroutes/userRoutes'))
+
+// APIroutes/userRoutes
