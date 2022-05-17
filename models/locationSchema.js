@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 //register
-const LocationSchema = mongoose.Schema(
+const LocationSchema = new mongoose.Schema(
   {
     locationId: {
       type: String,
@@ -14,29 +14,29 @@ const LocationSchema = mongoose.Schema(
       type: String,
       requierd: [true, 'Please add an adress']
     },
-    // name: {
-    //   type: String,
-    //   required: [true, "Please add the name of the location"],
-    // },
+
+    //enum is if using geojason points, the only valus allowed is Point, geojson point
   //   location: {
   //     type: String,
   //     enum: ['Point']
   //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     index: '2dsphere'
-  //   },
-  //   formattedAdress: String,
-    
-  //   description: {
-  //     type: String,
-  //     required: [true, "Please add a short description"],
-  //   },
 
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now
-  // }
+  // inedx is 
+    // coordinates: {
+    //   type: [Number],
+    //   index: '2dsphere'
+    // },
+    formattedAdress: String,
+    
+    description: {
+      type: String,
+      required: [true, "Please add a short description"],
+    },
+
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 
 });
 

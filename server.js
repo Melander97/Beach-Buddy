@@ -30,11 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.use('/api/users', require('./APIroutes/userRoutes'))
-// app.use('/api/locations/getLocation', require('./APIroutes/locationRoutes'))
 
 //denna fungerar men är i fel format
 app.use('/api/locations/addLocation', require('./APIroutes/locationRoutes'))
 
-//  app.use('/api/locations', require('./APIroutes/locationRoutes'))
 
-// APIroutes/userRoutes
