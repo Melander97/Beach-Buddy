@@ -3,14 +3,11 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const Location = require("../models/locationSchema");
-const locationSchema = require("../models/locationSchema");
 
 // Get locations
 exports.getLocation = async (req, res, next) => {
   try {
-
     const locations = await Location.find();
-
     return res.status(200).json({
       success: true,
       count: locations.length,
