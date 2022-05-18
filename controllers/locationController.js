@@ -7,7 +7,7 @@ const Location = require("../models/locationSchema");
 // Get locations
 exports.getLocation = async (req, res, next) => {
   try {
-    const locations = await Location.find(req._id);
+    const locations = await Location.find();
     return res.status(200).json({
       success: true,
       count: locations.length,
