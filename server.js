@@ -36,3 +36,8 @@ app.use('/api/locations', require('./APIroutes/locationRoutes'))
 
 
 
+
+
+
+
+app.use('api/locations', require('./APIroutes/locationRoutes'))
