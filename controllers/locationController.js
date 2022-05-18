@@ -58,3 +58,9 @@ exports.deleteLocation = async (req, res) => {
 };
 
 // End of Delete location
+
+// Update location
+
+exports.updateLocation = async (req, res)
+
+// End of Update location
