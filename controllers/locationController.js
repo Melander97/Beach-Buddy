@@ -18,8 +18,8 @@ exports.getLocation = async (req, res, next) => {
     {
       res.status(500).json({ error: "Server error" });
     }
-  };
-}
+  }
+};
 //end of get locations
 
 // Add location
@@ -40,3 +40,21 @@ exports.addLocation = async (req, res, next) => {
   }
 };
 //end of add locations
+
+// Delete location
+
+exports.deleteLocation = async (req, res) => {
+  const location = await Location.findById(req.params.id);
+  console.log(req.params.id);
+
+  if (!location) {
+    res.status(400);
+    throw new Error("No location found");
+  }
+
+  await location.remove();
+
+  res.status(200).json({ id: req.params.id });
+};
+
+// End of Delete location

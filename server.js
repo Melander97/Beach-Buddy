@@ -33,6 +33,7 @@ app.use('/api/users', require('./APIroutes/userRoutes'))
 //Routes for locations,denna fungerar men skulle vilja slå ihop dessa routes till snyggare kod
 app.use('/api/locations/getLocation', require('./APIroutes/locationRoutes'))
 app.use('/api/locations/addLocation', require('./APIroutes/locationRoutes'))
+app.use('/api/locations/deleteLocation', require('./APIroutes/locationRoutes'))
 
 
 
