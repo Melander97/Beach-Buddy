@@ -37,3 +37,8 @@ app.use('/api/locations/addLocation', require('./APIroutes/locationRoutes'))
 
 
 
+
+
+
+
+app.use("api/locations/getLocationById", require('./APIroutes/locationRoutes'))

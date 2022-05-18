@@ -40,3 +40,42 @@ exports.addLocation = async (req, res, next) => {
   }
 };
 //end of add locations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Get location by id
+
+exports.getLocationById = async (req, res) => {
+  const location = await Location.findById(req.location_id);
+  
+  if(!location) {
+    return res.status(400).json({
+      status: false,
+      message: "could not find specified location",
+      data: undefined
+    })
+  }
+
+  
+}
+
+//Get location by id end
