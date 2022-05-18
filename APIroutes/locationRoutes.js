@@ -5,8 +5,8 @@ const {protect} = require('../middlewares/authMiddleware')
 const { addLocation, getLocation } = require("../controllers/locationController");
 
 
-router.route('/').get(getLocation)
-router.route('/').post(addLocation)
-
+router.get('/getlocation', getLocation)
+router.post('/addlocation', addLocation)
 
 module.exports = router;
+
