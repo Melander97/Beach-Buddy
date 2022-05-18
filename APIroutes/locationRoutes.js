@@ -9,7 +9,7 @@ router.get('/getlocation', getLocation)
 router.post('/addlocation', addLocation)
 
 
-router.route('/').get(getLocationById)
+router.get('/getLocationById', protect, getLocationById)
 
 module.exports = router;
 

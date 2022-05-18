@@ -65,15 +65,27 @@ exports.addLocation = async (req, res, next) => {
 //Get location by id
 
 exports.getLocationById = async (req, res) => {
-  const location = await Location.findById(req.location_id);
-  
-  if(!location) {
-    return res.status(400).json({
-      status: false,
-      message: "could not find specified location",
-      data: undefined
-    })
+  const location = await Location.findById(req.body.location_id);
+  console.log(req.location_id);
+  try {
+    if(location === null) {
+      return res.status(400).json({
+        status: false,
+        message: "could not find specified location",
+        data: undefined
+      })
+    } else {
+      return res.status(200).json({
+        status: true,
+        message: "Fetched location",
+        data: location
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({ message: `Server error ${error}`})
   }
+
+  
 
   
 }

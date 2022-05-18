@@ -40,4 +40,4 @@ app.use('/api/locations', require('./APIroutes/locationRoutes'))
 
 
 
-app.use("api/locations/getLocationById", require('./APIroutes/locationRoutes'))
+app.use('api/locations', require('./APIroutes/locationRoutes'))
