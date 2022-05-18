@@ -15,17 +15,11 @@ const LocationSchema = new mongoose.Schema(
       requierd: [true, 'Please add an adress']
     },
 
-    //enum is if using geojason points, the only valus allowed is Point, geojson point
-  //   location: {
-  //     type: String,
-  //     enum: ['Point']
-  //   },
+    coordinates: {
+      lat: '',
+      long: ''
+    },
 
-  // inedx is 
-    // coordinates: {
-    //   type: [Number],
-    //   index: '2dsphere'
-    // },
     formattedAdress: String,
     
     description: {
