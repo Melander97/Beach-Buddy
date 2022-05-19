@@ -80,13 +80,10 @@ const getUserById = asyncHandler(async (req, res) => {
 });
 
 // delete user
-
 const deleteUserById = asyncHandler(async (req, res) => {
      const result = await User.deleteOne({_id: req.params.id});
-     if(!result._id) {
-       res.send("User does not exist");
-     } else 
      res.send(result);
+  
 }); 
 
 
