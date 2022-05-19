@@ -8,7 +8,7 @@ const User = require("../models/userSchema");
 // Get locations
 exports.getLocation = async (req, res, next) => {
   try {
-    const locations = await Location.find(req._id);
+    const locations = await Location.find();
     return res.status(200).json({
       success: true,
       count: locations.length,
@@ -117,3 +117,53 @@ exports.updateLocation = async (req, res) => {
 };
 
 // End of Update location
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Get location by id
+
+exports.getLocationById = async (req, res) => {
+  const location = await Location.findById(req.body.location_id);
+  console.log(req.location_id);
+  try {
+    if(location === null) {
+      return res.status(400).json({
+        status: false,
+        message: "could not find specified location",
+        data: undefined
+      })
+    } else {
+      return res.status(200).json({
+        status: true,
+        message: "Fetched location",
+        data: location
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({ message: `Server error ${error}`})
+  }
+
+  
+
+  
+}
+
+//Get location by id end

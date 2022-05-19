@@ -33,3 +33,6 @@ app.use("/api/locations/getLocation", require("./APIroutes/locationRoutes"));
 app.use("/api/locations/addLocation", require("./APIroutes/locationRoutes"));
 app.use("/api/locations/deleteLocation", require("./APIroutes/locationRoutes"));
 app.use("/api/locations/updateLocation", require("./APIroutes/locationRoutes"));
+//Routes for locations
+app.use('/api/locations', require('./APIroutes/locationRoutes'))
+
