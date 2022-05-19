@@ -13,7 +13,7 @@ const {
 router.route('/').get(getLocation)
 router.route('/').post(addLocation)
 router.route("/:id").delete(deleteLocation);
-router.route("/:id").delete(updateLocation);
+router.route("/:id").put(updateLocation);
 
 
 module.exports = router;

@@ -12,7 +12,7 @@ const LocationSchema = new mongoose.Schema(
     },
     adress: {
       type: String,
-      requierd: [true, 'Please add an adress']
+      required: [true, 'Please add an adress']
     },
 
     coordinates: {
