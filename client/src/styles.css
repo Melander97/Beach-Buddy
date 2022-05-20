@@ -1,3 +1,4 @@
+/* MOVE RESETTERS TO INDEX.JS OR APP.JS */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +14,7 @@ html, body {
           box-sizing: border-box;
 }
 
-.topBar {
+/* .topBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,9 +27,9 @@ html, body {
   margin: auto;
   text-align: center;
   padding: 0.5em;
-}
+} */
 
-.logo {
+/* .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,7 +44,7 @@ html, body {
           align-items: center;
   -ms-flex-line-pack: center;
       align-content: center;
-}
+} */
 
 img {
   height: 100%;
@@ -73,7 +74,7 @@ iframe {
   padding: 0;
 }
 
-.searchbox {
+/* .searchbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,7 +94,7 @@ iframe {
 input {
   text-align: center;
   color: #22e3d3;
-}
+} */
 
 ::-webkit-input-placeholder, ::-webkit-input-placeholder {
   color: #22e3d3;
@@ -192,7 +193,7 @@ i {
   color: #121216;
 }
 
-.footer {
+/* .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,7 +213,7 @@ i {
 
 .footer--text {
   color: white;
-}
+} */
 
 /* overlay intro*/
 .overlay {
