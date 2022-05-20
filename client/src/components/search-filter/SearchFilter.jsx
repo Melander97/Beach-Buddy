@@ -1,38 +1,8 @@
 import React from 'react'
-import "../styles.css"
-import "../media.css"
+import './search-filter.scss';
 
-const Home = () => {
+const SearchFilter = () => {
   return (
-    <div className="pageWrapper">
-      
-      {/* 
-      <div class="overlay">
-        <img src="bb.png" alt="" />
-      </div>
-      */}
-     
-    
-    
-      <section class="topBar">
-          <img src={require("../assets/bb-logo.png")} alt="" class="logo" />
-      </section>
-  
-
-   
-      <div class="searchbox">
-            <input type="search" class="search--width search--bg bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name..." />
-                
-      </div>
-
-    <section class="map">
-        <div class="mapouter">
-        <img src={"https://www.reviewgeek.com/p/uploads/2020/04/fadc14dd.jpg?height=200p&trim=2,2,2,2"} alt=""  height={"100%"} width={"100%"} />
-        
-        </div>
-    </section>
-
-
     <section class="filter">
 
         <i class="fas fa-arrow-up"></i>
@@ -114,13 +84,7 @@ const Home = () => {
               </div>
             </div>
     </section>
- 
-     <section class="footer">
-         <p class="footer--text">© 2021 Copyright: BeachBuddy</p>
-    </section>
-
-    </div>
   )
 }
 
-export default Home
+export default SearchFilter
