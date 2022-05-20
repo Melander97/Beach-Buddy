@@ -8,33 +8,33 @@ const Home = () => {
     <div className="pageWrapper">
       
       {/* 
-      <div class="overlay">
+      <div className="overlay">
         <img src="bb.png" alt="" />
       </div>
       */}
      
     
     
-      {/* <section class="topBar">
-          <img src={require("../../assets/bb-logo.png")} alt="" class="logo" />
+      {/* <section className="topBar">
+          <img src={require("../../assets/bb-logo.png")} alt="" className="logo" />
       </section> */}
   
 
       {/* Handled by google maps implementation */}
-      <div class="searchbox">
-            <input type="search" class="search--width search--bg bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name..." />
+      <div className="searchbox">
+            <input type="search" className="search--width search--bg bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name..." />
                 
       </div>
       {/* Handled by google maps implementation */}
-    <section class="map">
-        <div class="mapouter">
+    <section className="map">
+        <div className="mapouter">
         <img src={"https://www.reviewgeek.com/p/uploads/2020/04/fadc14dd.jpg?height=200p&trim=2,2,2,2"} alt=""  height={"100%"} width={"100%"} />
         
         </div>
     </section>
 
     <SearchFilter />
-    {/* <section class="filter">
+    {/* <section className="filter">
 
         <i class="fas fa-arrow-up"></i>
 
@@ -116,8 +116,8 @@ const Home = () => {
             </div>
     </section> */}
  
-     {/* <section class="footer">
-         <p class="footer--text">© 2021 Copyright: BeachBuddy</p>
+     {/* <section className="footer">
+         <p className="footer--text">© 2021 Copyright: BeachBuddy</p>
     </section> */}
 
     </div>
