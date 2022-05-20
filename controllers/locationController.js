@@ -45,96 +45,80 @@ exports.addLocation = async (req, res, next) => {
 // Delete location
 
 exports.deleteLocation = async (req, res) => {
-  const location = await Location.findById(req.params.id);
+  const location = await Location.findById(req.body.location_id);
 
-  if (!location) {
-    res.status(400);
-    throw new Error("No location found");
+  try {
+    if (!location) {
+    return res.status(400).json({ message: "No location found" });
+    }
+
+    const user = await User.findById(req.user.id);
+
+    //Check for user
+    if (!user) {
+      return res.status(401).json({ message: "User not found" });
+    }
+
+    // Make sure the logged in user matches the user with the set location
+    if (location.user.toString() !== user.id) {
+      return res.status(401).json({ message: "User not authorized" });
+    }
+
+    await location.remove();
+
+    res.status(200).json({ id: req.params.id });
+
+  } catch (error) {
+    return res.status(500).json({ message: `Server error ${error}` });
   }
-
-  const user = await User.findById(req.user.id);
-
-  //Check for user
-  if (!user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
-  // Make sure the logged in user matcher the goal user
-  if (goal.user.toString() !== user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-
-  await location.remove();
-
-  res.status(200).json({ id: req.params.id });
 };
 
 // End of Delete location
 
 // Update location
-
 exports.updateLocation = async (req, res) => {
-  /* const id = req.params.id.toString();
-  console.log(id); */
   const location = await Location.findById(req.body.location_id);
-  // Used if sent by body
-  // const location = await Location.findById(req.body.location_id);
 
-  if (!location) {
-    return res.status(400).json({
-      status: false,
-      message: "No location found",
-      data: null,
-    });
-    // throw new Error("No location found");
-  }
+  try {
+    if (!location) {
+      return res.status(400).json({
+        status: false,
+        message: "No location found",
+        data: null,
+      });
+    /* } else {
+      // User id ska skickas från frontend och jämföras med location id
+      const user = await User.findById(req.user.id);
 
-  // User id ska skickas från frontend och jämföras med location id
-  /* const user = await User.findById(req.user.id);
+      //Check for user (ev mot JWT)
+      if (!user) {
+        res.status(401); 
+        return res.status(401).json({ message: "User not found" });
+      }
+      //Make sure the logged in user matches the user with the set location
+      if (location.user_id.toString() !== user.id) {
+        return res.status(401).json({ message: "User not authorized" });
+      } */
 
-  //Check for user (ev mot JWT)
-  if (!user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
+      const updatedLocation = await Location.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true,
+        }
+      );
 
-  if (location.user_id.toString() !== user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  } */
-
-  const updatedLocation = await Location.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
+      res.status(200).json({
+        status: true,
+        message: "Location updated successfully",
+        data: updatedLocation,
+      });
     }
-  );
-
-  res.status(200).json(updatedLocation);
+  } catch (error) {
+    return res.status(500).json({ message: `Server error ${error}` });
+  }
 };
-
 // End of Update location
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -144,26 +128,22 @@ exports.getLocationById = async (req, res) => {
   const location = await Location.findById(req.body.location_id);
   console.log(req.location_id);
   try {
-    if(location === null) {
+    if (location === null) {
       return res.status(400).json({
         status: false,
         message: "could not find specified location",
-        data: undefined
-      })
+        data: undefined,
+      });
     } else {
       return res.status(200).json({
         status: true,
         message: "Fetched location",
-        data: location
-      })
+        data: location,
+      });
     }
   } catch (error) {
-    return res.status(500).json({ message: `Server error ${error}`})
+    return res.status(500).json({ message: `Server error ${error}` });
   }
-
-  
-
-  
-}
+};
 
 //Get location by id end
