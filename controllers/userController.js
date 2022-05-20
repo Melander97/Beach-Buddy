@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
+const { response } = require("express");
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -78,15 +79,25 @@ const getUserById = asyncHandler(async (req, res) => {
   });
 });
 
+// delete user
+const deleteUserById = asyncHandler(async (req, res) => {
+     const result = await User.deleteOne({_id: req.params.id});
+     res.send(result);
+  
+}); 
+
+
 // Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
+
 };
 
 module.exports = {
   registerUser,
   loginUser,
   getUserById,
+  deleteUserById
 };
