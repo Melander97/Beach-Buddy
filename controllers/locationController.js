@@ -70,7 +70,8 @@ exports.deleteLocation = async (req, res) => {
     }
 
     // Make sure the logged in user matches the user with the set location
-    if (location.user_id.toString() !== user.body.user_id) {
+    console.log(`location user${location.userId} user if ${user._id}`);
+    if (location.userId.toString() !== user._id.toString()) {
       return res.status(401).json({
         success: false,
         message: "User not authorized",
@@ -100,6 +101,9 @@ exports.deleteLocation = async (req, res) => {
 exports.updateLocation = async (req, res) => {
   const location = await Location.findById(req.body.location_id);
 
+  const user = await User.findById(req.body.user_id);
+  console.log(req.body.user_id);
+
   try {
     if (!location) {
       return res.status(400).json({
@@ -107,40 +111,37 @@ exports.updateLocation = async (req, res) => {
         message: "No location found",
         data: null,
       });
-    } else {
-      // User id ska skickas som ett objekt i bodyn och jämföras med location id
-      const user = await User.findById(req.body.user_id);
-      console.log(req.body.user_id);
+    }
 
-      //Check for user (ev mot JWT)
-      if (!user) {
-        res.status(401);
-        return res.status(401).json({
-          success: false,
-          message: "User not found",
-          data: null,
-        });
-      }
-      //Make sure the logged in user matches the user with the set location
-      if (location.user_id.toString() !== req.body.user_id) {
-        return res.status(401).json({
-          sucess: false,
-          message: "User not authorized",
-          data: null,
-        });
-      }
-
-      const updatedLocation = await Location.findByIdAndUpdate(
-        req.params.id,
-        req.body
-      );
-
-      res.status(200).json({
-        success: true,
-        message: "Location updated successfully",
-        data: updatedLocation,
+    //Check for user (ev mot JWT)
+    if (!user) {
+      res.status(401);
+      return res.status(401).json({
+        success: false,
+        message: "User not found",
+        data: null,
       });
     }
+    //Make sure the logged in user matches the user with the set location
+    console.log(`location user ${location.userId} user if ${user._id}`);
+    if (location.userId.toString() !== user._id.toString()) {
+      return res.status(401).json({
+        success: false,
+        message: "User not authorized!",
+        data: null,
+      });
+    }
+
+    const updatedLocation = await Location.findByIdAndUpdate(
+      req.body.location_id
+    );
+    console.log(`data ${updatedLocation}`);
+
+    res.status(200).json({
+      success: true,
+      message: "Location updated successfully",
+      data: updatedLocation,
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,

@@ -10,6 +10,12 @@ const LocationSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    userId: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     adress: {
       type: String,
       required: [true, 'Please add an adress']
