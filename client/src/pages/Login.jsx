@@ -2,15 +2,11 @@ import React from 'react'
 import "../styles.css"
 import "../media.css"
 
-const Home = () => {
+const Login = () => {
   return (
-    <div className="pageWrapper">
-          
-      <section class="topBar">
-          <img src={require("../assets/bb-logo.png")} alt="" class="logo" />
-      </section>
-  
-      <div class="grid place-items-center h-screen w-full shadow-lg" style={"background-image: url{'https://images.pexels.com/photos/219998/pexels-photo-219998.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'} ;"}>
+    <div className="pageWrapper"> 
+		{/* style={"background-image: url{'https://images.pexels.com/photos/219998/pexels-photo-219998.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'} ;"} */}
+      <div class="grid place-items-center h-screen w-full shadow-lg">
 	<div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
 		<form class="space-y-6 w-80" action="#">
 			<h3 class="text-xl font-medium text-gray-900 dark:text-white text-center">Sign in</h3>
@@ -43,12 +39,8 @@ const Home = () => {
 </div>
 
 
-     <section class="footer">
-         <p class="footer--text">© 2021 Copyright: BeachBuddy</p>
-    </section>
-
     </div>
   )
 }
 
-export default Home
+export default Login;
