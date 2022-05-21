@@ -2,7 +2,7 @@ import React from 'react'
 import "../styles.css"
 import "../media.css"
 
-const Home = () => {
+const Login = () => {
   return (
     <div className="pageWrapper">
           
@@ -43,12 +43,8 @@ const Home = () => {
 </div>
 
 
-     <section className="footer">
-         <p className="footer--text">© 2021 Copyright: BeachBuddy</p>
-    </section>
-
     </div>
   )
 }
 
-export default Home
+export default Login;
