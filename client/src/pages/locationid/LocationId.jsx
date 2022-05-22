@@ -1,5 +1,6 @@
 import React from 'react'
-import ""
+import "../../styles.css"
+import "../../media.css"
 
 
 const app = () => {
@@ -33,4 +34,4 @@ const app = () => {
   )
 }
 
-export default Login;
+export default LocationId;

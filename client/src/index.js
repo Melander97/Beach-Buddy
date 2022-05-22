@@ -9,6 +9,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import UserProfile from './pages/UserProfile';
 import AddLocation from './pages/AddLocation';
+import LocationId from './pages/locationid/LocationId';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path="register" element={ <Register />}/>
           <Route path="profile" element={ <UserProfile />}/>
           <Route path="add-location" element={ <AddLocation />}/>
+          <Route path="locationid" element={ <LocationId />}/>
         </Route>
       </Routes>
     </BrowserRouter>
