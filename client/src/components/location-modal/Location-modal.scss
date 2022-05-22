@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Nunito:wght@600&family=Poppins:wght@300;400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Montserrat;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fddcc356;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  width: 60%;
+  height: 700px;
+  background: url('https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&h=650&w=940') no-repeat (center / cover);
+  border-radius: 8px;
+}
+
+.right {
+  width: 40%;
+  min-height: 400px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  border-radius: 8px;
+  color: black;
+  margin-left: -500px;
+  margin-top: 250px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: lighter;
+  }
+
+  p {
+    margin: 10px 0;
+    font-weight: 500;
+    line-height: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: rgb(122, 122, 122);
+    color: black;
+    padding: 20px 30px;
+    display: inline-block;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.fa-star {
+  margin-top: 20px;
+}
+
+.checked {
+  color: orange;
+}
+
+@media only screen and (max-width: 928px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0 20px;
+  }
+
+  .left {
+    width: 90%;
+    height: 400px;
+  }
+
+  .right {
+    width: 80%;
+    margin: 0;
+    margin-top: -100px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0 20px;
+  }
+
+  .left {
+    width: 100%;
+    height: 400px;
+  }
+
+  .right {
+    width: 90%;
+    margin: 0;
+    margin-top: -100px;
+  }
+}
