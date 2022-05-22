@@ -1,6 +1,6 @@
 import React from 'react'
-import "../styles.css"
-import "../media.css"
+import "../../styles.css"
+import "../../media.css"
 
 const Register = () => {
   return (
