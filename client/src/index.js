@@ -9,6 +9,7 @@ import Login from './pages/login/Login';
 import Register from './pages/Register';
 import UserProfile from './pages/UserProfile';
 import AddLocation from './pages/AddLocation';
+import { UserContext } from './components/context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,11 @@ root.render(
       <Routes>
         <Route to="/" element={<App />}>
           <Route index element={ <Home/>}/>
+          {/* <UserContext.Provider value= "hello from context"> */}
+
           <Route path="login" element={ <Login />}/>
+          {/* </UserContext.Provider> */}
+
           <Route path="register" element={ <Register />}/>
           <Route path="profile" element={ <UserProfile />}/>
           <Route path="add-location" element={ <AddLocation />}/>
