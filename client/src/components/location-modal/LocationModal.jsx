@@ -9,7 +9,7 @@ const LocationModal = () => {
 
 	{/* Component here */}
 
-    <section>
+    <section className="modal-wrapper">
         <div class="container animate__animated animate__fadeInUp">
             <div class="left"></div>
             <div class="right">

@@ -50,16 +50,16 @@ img {
   height: 100%;
 }
 
-.map {
+/* .map {
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
-.mapouter {
+/* .mapouter {
   width: 100%;
   height: 80vh;
-}
+} */
 
 .gmap_canvas {
   overflow: hidden;
