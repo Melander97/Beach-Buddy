@@ -3,6 +3,12 @@ import "../../styles.css"
 import "../../media.css"
 
 const Register = () => {
+
+
+
+
+
+  
   return (
     <div className="pageWrapper">
           
