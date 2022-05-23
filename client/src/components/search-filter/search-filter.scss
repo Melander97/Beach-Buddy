@@ -1,0 +1,55 @@
+ // IMPORT VARIABLES //
+
+@import '../../variables';
+
+ // COMPONENT SCSS //
+
+.searchbox {
+    width: 100%;
+    position: absolute;
+    top: 9em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+
+        input {
+        text-align: center;
+        color: $Primary;
+        }
+  }
+
+  .filter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $Primary;
+    margin: auto;
+    text-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .filter--margin {
+    margin-top: 2em;
+  }
+
+  .arrow {
+
+  }
+
+  // MEDIA QUERIES //
+  
