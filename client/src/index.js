@@ -3,30 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import UserProfile from './pages/UserProfile';
-import AddLocation from './pages/AddLocation';
-import LocationId from './pages/locationid/LocationId';
+import { BrowserRouter } from 'react-router-dom';
+import UserProvider from './components/context/UserContext'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+<React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={ <Home/>}/>
-          <Route path="login" element={ <Login />}/>
-          <Route path="register" element={ <Register />}/>
-          <Route path="profile" element={ <UserProfile />}/>
-          <Route path="add-location" element={ <AddLocation />}/>
-          <Route path="locationid" element={ <LocationId />}/>
-        </Route>
-      </Routes>
+      <UserProvider>
+        <App/>
+      </UserProvider>
     </BrowserRouter>
-    
   </React.StrictMode>
 );
 
