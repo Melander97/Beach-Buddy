@@ -3,19 +3,28 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { ScriptLoaded, GoogleMap, useLoadScript, Marker, Autocomplete, InfoWindow, MarkerClusterer} from '@react-google-maps/api';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import { getAllBeaches, swimLocation$ } from '../../services/bad_havs_API';
 
 const libraries = ['places']
 const GoogleMaps = () => {
     const [map, setMap] = useState();
     const [geoLocation, setGeoLocation] = useState();
+    const [beaches, setBeaches] = useState([]);
     //Search states
-    const [city, setCity] = useState();
+    const [city, setCity] = useState('');
+    //Is set but never read?
     const [coords, setCoords] = useState({lat: null, lng:null});
     
     const center = useMemo(() => (geoLocation), [geoLocation]);
     
     useEffect(() => {
         getLocation();
+
+        getAllBeaches();
+        swimLocation$.subscribe(data => {
+            let currentArr = beaches;
+            setBeaches([data, ...currentArr]);
+        })
     }, [])
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
@@ -24,18 +33,18 @@ const GoogleMaps = () => {
       });
 
     async function getLocation() {
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(location => {
-            const lat = location.coords.latitude;
-            const long = location.coords.longitude;
-            
-                setGeoLocation({
-                lat: lat,
-                lng: long
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(location => {
+                const lat = location.coords.latitude;
+                const long = location.coords.longitude;
+                
+                    setGeoLocation({
+                    lat: lat,
+                    lng: long
+                })
             })
-        })
+        }
     }
-}
 
     const handleSelect = async value => {
         const result = await geocodeByAddress(value);
