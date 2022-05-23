@@ -4,12 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import UserProfile from './pages/UserProfile';
-import AddLocation from './pages/AddLocation';
-import LocationId from './pages/locationid/LocationId';
+import UserProvider from './components/context/UserContext'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -7,21 +7,15 @@ import { UserProvider, useUser } from './components/context/UserContext';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import Register from './pages/Register';
+import Register from './pages/register/Register';
 import UserProfile from './pages/UserProfile';
 import AddLocation from './pages/AddLocation';
 import React, {useEffect, useState} from 'react';
 import Protected from './components/protected/protected'
+import LocationId from './pages/locationid/LocationId'
 
 
 function App() {
-
-  // const [loggedInUser, setloggedInUser] = useState();
-
-  // useEffect(()=>{
-  //   setloggedInUser(user)
-  // },[]);
-
 
   return (
     <div className="App">

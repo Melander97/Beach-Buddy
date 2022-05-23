@@ -7,16 +7,15 @@ export const UserContext = createContext();
         return useContext(UserContext);
     }
 
-export const UserProvider = ({children})  => {
+    const UserProvider = ({children})  => {
   
     const [user, setUser] = useState (
 
         {
             id:'',
             email: '',
-            name: 'jose',
+            name: '',
             isLoggedIn: false,
-
         }
     );
 
@@ -26,3 +25,5 @@ export const UserProvider = ({children})  => {
         </UserContext.Provider>
     );
 };
+
+export default UserProvider;
