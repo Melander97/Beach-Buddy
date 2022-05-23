@@ -11,6 +11,7 @@ const Location = require("./models/locationSchema");
 
 const bcrypt = require("bcryptjs");
 const locations = require("./APIroutes/locationRoutes");
+const cookieParser = require('cookie-parser');
 
 connectDB();
 
@@ -21,8 +22,8 @@ const test = (URI) => {
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({ credentials: true }));
+app.use(cookieParser());
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 // Routes for users
