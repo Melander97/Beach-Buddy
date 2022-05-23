@@ -8,7 +8,7 @@ import GoogleMaps from '../../components/google-maps/GoogleMaps'
 const Home = () => {
   return (
     <div className="pageWrapper">
-
+      
       {/* Handled by google maps implementation */}
       {/* <div className="searchbox">
             <input type="search" className="search--width search--bg bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name..." />
