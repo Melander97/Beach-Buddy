@@ -149,9 +149,9 @@ const logoutUser = async(req, res) => {
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: "User could not be deleted",
+      message: "Unable to log out",
       data: null,
-    })
+    });
   }
 };
 
