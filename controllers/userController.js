@@ -142,7 +142,7 @@ const deleteUserById = async (req, res) => {
 // @route GET /api/users/logout
 const logoutUser = async(req, res) => {
   try {
-      res.clearCookie("jwt");
+      res.clearCookie('jwt');
       res.status(200).json({ 
        success: true,
        message: "Logged out" });
@@ -160,5 +160,5 @@ module.exports = {
   loginUser,
   getUserById,
   deleteUserById,
-  logoutUser
+  logoutUser,
 };

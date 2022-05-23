@@ -7,13 +7,13 @@ const {
   loginUser,
   getUserById,
   deleteUserById,
-  logoutUser
+  logoutUser,
 
 } = require("../controllers/userController");
 const {protect} = require('../middlewares/authMiddleware')
 
 router.post('/', registerUser);
-router.post('/login', loginUser);
+router.post('/login',loginUser);
 router.get("/:id", protect, getUserById);
 router.delete("/delete/:id", protect, deleteUserById);
 router.get('/logout', protect, logoutUser);

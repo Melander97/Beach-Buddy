@@ -10,7 +10,7 @@ const protect = asyncHandler(async (req, res, next) => {
   if (!token)
     return res.status(401).json({
       success: false,
-      message: "Access denied...No token provided...",
+      message: "Please log in or register",
     });
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
