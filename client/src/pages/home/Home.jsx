@@ -1,6 +1,7 @@
 import React from 'react'
 import "../../styles.css"
 import "../../media.css"
+import './home.scss';
 import GoogleMaps from '../../components/google-maps/GoogleMaps'
 // import SearchFilter from '../../components/search-filter/SearchFilter'
 
@@ -15,11 +16,11 @@ const Home = () => {
       </div>
       {/* Handled by google maps implementation */}
     <section className="map">
-        <div className="mapouter">
+        {/* <div className="mapouter"> */}
           <GoogleMaps/>
         {/* <img src={"https://www.reviewgeek.com/p/uploads/2020/04/fadc14dd.jpg?height=200p&trim=2,2,2,2"} alt=""  height={"100%"} width={"100%"} /> */}
         
-        </div>
+        {/* </div> */}
     </section>
 
     {/* <SearchFilter /> */}
