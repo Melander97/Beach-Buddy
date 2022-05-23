@@ -16,7 +16,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route to="/" element={<App />}>
+        <Route path="/" element={<App />}>
           <Route index element={ <Home/>}/>
           <Route path="login" element={ <Login />}/>
           <Route path="register" element={ <Register />}/>
