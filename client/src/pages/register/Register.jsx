@@ -23,9 +23,13 @@ const Register = () => {
     try {
       return authService.registerFunction(userData);
     } catch (error) {
+      const message =
+        (error.response.success &&
+          error.response.message &&
+          error.response.data) ||
+        error.toString;
+      return message;
     }
-
-    
   };
 
   return (
