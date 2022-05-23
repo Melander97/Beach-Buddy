@@ -9,8 +9,8 @@ const {
   getLocationById,
 } = require("../controllers/locationController");
 
-router.route("/").get(getLocation);
-router.route("/").post(addLocation);
+router.get("/getLocation", protect, getLocation);
+router.post("/addLocation", protect, addLocation);
 router.post("/delete", protect, deleteLocation);
 router.put("/update", protect, updateLocation);
 
