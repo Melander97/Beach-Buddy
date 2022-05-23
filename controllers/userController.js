@@ -3,101 +3,162 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
-const { response } = require("express");
 
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+
+
+// Generate JWT token
+const maxAge = 3 * 24 * 60 * 60; // expires in 30 days
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: maxAge,
+  });
+};
+ 
+// register user
+// @route POST api/users
+const registerUser = async (req, res) => {
+   const {name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("Please add all fields");
+  return res.status(400).json({
+      success: false,
+      message: "Please fill all fields",
+      data: null
+    })
   }
 
   // check if user exist
   const userExists = await User.findOne({ email });
-
   if (userExists) {
-    res.status(400);
-    throw new Error("User already exists");
+   return res.status(400).json({
+      success: false,
+      message: "User already exists",
+      data: null
+    });
   }
-
-  // Hash Password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
 
   //Create user
-  const user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-  });
-
-  if (user) {
-    res.status(201).json({
-      _id: user.id,
-      name: user.name,
-      email: user.email,
-      token: generateToken(user._id),
-    });
-  } else {
-    res.status(400);
-    throw new Error("Invalid user data");
+  try {
+    const user = await User.create({ name, email, password });
+    const token = generateToken(user._id);
+    res.cookie('jwt', token,{ httpOnly: true, maxAge: maxAge * 1000 });
+    return res.status(201).json({ 
+      success: true,
+      message: "User created",
+      data: {
+        name: user.name,
+        email: user.email,
+        id: user._id
+      }
+     });
   }
-});
+  catch(err) {
+    res.status(400)
+    .json({ 
+      success: false, 
+      message: "Password must be 6 characters long and a valid email is required",
+    });
+  }
+};
+ 
 
 //Login
-const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+//@route POST api/users/login
+const loginUser = async (req, res) => {
+ const { email, password } = req.body;
 
-  //Check for user email
+  //Check whether user exists with given email
   const user = await User.findOne({ email });
+  if (!user) return res.status(400).json({
+    success: false,
+    message: "The given email is not registered"
+  });
 
-  if (user && (await bcrypt.compare(password, user.password))) {
-    res.json({
-      _id: user.id,
+  //Check if password entered is correct
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) return res.status(400).json({
+    success: false,
+    message: "Invalid password",
+  });
+
+   //generate the jwt token on successful login
+  const token = generateToken(user._id);
+  res.cookie("jwt", token, { httpOnly: true });
+  res.status(200).json({
+    success: true,
+    message: "Successfully logged in",
+    data: {
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
-    });
-  } else {
-    res.status(400);
-    throw new Error("Invalid credentails");
-  }
-});
+      id: user._id,
+      token: token
+    }
+  });
+};
 
 // User profile
 // @desc     Get user data
 // @route    GET api/users/:id
 // @access   Private
-const getUserById = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
+const getUserById = async (req, res) => {
+  try {
+    const { _id, name, email } = await User.findById(req.user.id);
+    res.status(200).json({
+    success: true,
+    data: {
+      id: _id,
+      name,
+      email,
+    }
   });
-});
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Could not get user id",
+      data: null,
+    });
+    
+  }
+};
 
 // delete user
-const deleteUserById = asyncHandler(async (req, res) => {
-     const result = await User.deleteOne({_id: req.params.id});
-     res.send(result);
-  
-}); 
+// @route DELETE /api/users/delete/:id
+// @access   Private
+const deleteUserById = async (req, res) => {
+     try {
+       const result = await User.deleteOne({_id: req.params.id});
+      res.status(200).json({
+       data: result
+      });
+     } catch (error) {
+       res.status(400).json({
+         message: "Could not delete user"
+       });
+     }
+}; 
 
 
-// Generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-
+//logout user
+// @route GET /api/users/logout
+const logoutUser = async(req, res) => {
+  try {
+      res.clearCookie("jwt");
+      res.status(200).json({ 
+       success: true,
+       message: "Logged out" });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "User could not be deleted",
+      data: null,
+    })
+  }
 };
 
 module.exports = {
   registerUser,
   loginUser,
   getUserById,
-  deleteUserById
+  deleteUserById,
+  logoutUser
 };
