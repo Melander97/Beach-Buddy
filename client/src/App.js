@@ -26,33 +26,27 @@ function App() {
 
   return (
     <div className="App">
-    <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          <Route to="/">
-            <Route index element={<Home />}/>
-
-              <Route path="login" element={ <Login />}/>
-              <Route path="register" element={ <Register />}/>
-
-              {/* <Route path="profile" element={<UserProfile/>}/> */}
-
-              <Route path="profile" element={<Protected><UserProfile /></Protected>}/>
-              
-              <Route path="add-location" element={ <AddLocation />}/>
-            </Route>
+      <Navbar />
+    <Routes>
+        {/* <Route to="/"> */}
+          <Route path="/" element={ <Home/>}/>
+          <Route path="/login" element={ <Login />}/>
+          <Route path="/register" element={ <Register />}/>
+          <Route path="/location" element={ <LocationId />}/>
+          <Route path="/profile" element={
+          <ProtectedRoute redirectTo="/login">
+            <UserProfile/>
+            </ProtectedRoute>}
+          />
+          {/* <Route path="profile" element={ <UserProfile />}/> */}
+          <Route path="add-location" element={ <AddLocation />}/>
+        {/* </Route> */}
       </Routes>
-      <Outlet />
+    <Outlet/>
+        {/* If viewport is phone do not render footer */}
 
-    </BrowserRouter>
-
-    {/* <Navbar /> */}
-    {/* <UserProvider> */}
-    {/* <Outlet /> */}
-    {/* </UserProvider> */}
-
-    {/* If viewport is phone do not render footer */}
     <Footer/>
+
     </div>
   );
 } 

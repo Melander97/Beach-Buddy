@@ -7,20 +7,12 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App/>
-    {/* <BrowserRouter>
-      <Routes>
-
-        <Route to="/" element={<App />}>
-          <Route index element={ <Home/>}/>
-
-      
-
-        </Route>
-      </Routes>
-    </BrowserRouter> */}
-    
+<React.StrictMode>
+    <BrowserRouter>
+      <UserProvider>
+        <App/>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
