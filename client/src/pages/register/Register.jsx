@@ -11,7 +11,6 @@ const Register = () => {
 
   const Register = async (e) => {
     e.preventDefault();
-    console.log(e);
 
     const userData = {
       name: name,
@@ -21,7 +20,13 @@ const Register = () => {
     };
 
     try {
-      return authService.registerFunction(userData);
+      return authService.registerFunction(userData, message);
+      const message =
+        (error.response.success &&
+          error.response.message &&
+          error.response.data) ||
+        error.toString;
+      return message;
     } catch (error) {
       const message =
         (error.response.success &&
