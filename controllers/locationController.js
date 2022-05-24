@@ -15,10 +15,10 @@ exports.getLocation = async (req, res, next) => {
       data: locations,
     });
   } catch (err) {
-    console.error(err);
-    {
-      res.status(500).json({ error: "Server error" });
-    }
+    return res.status(500).json({
+      success: false,
+      message: "Server error: " + err,
+    });
   }
 };
 //end of get locations
@@ -27,7 +27,6 @@ exports.getLocation = async (req, res, next) => {
 exports.addLocation = async (req, res, next) => {
   try {
     const location = await Location.create(req.body);
-
     return res.status(201).json({
       success: true,
       data: location,
@@ -35,9 +34,14 @@ exports.addLocation = async (req, res, next) => {
   } catch (err) {
     console.error(err);
     if (err.code === 11000) {
-      return res.status(400).json({ error: "This location already exists" });
+      return res.status(400).json({ 
+        success: false,
+        error: "This location already exists" });
     }
-    res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ 
+      success: false,
+      error: "Server error" 
+    });
   }
 };
 //end of add locations
