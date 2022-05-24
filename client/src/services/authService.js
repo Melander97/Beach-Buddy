@@ -22,7 +22,9 @@ const registerFunction = async (userData) => {
 const loginFunction = async (loginData) => {
 
   try {
+    // calls the api
 		const res = await axios.post(API_URL_LOGIN, loginData);
+    //If true, write response to observable user$
 		if(res.data.success){
       user$.next(res.data)
       console.log(user$);

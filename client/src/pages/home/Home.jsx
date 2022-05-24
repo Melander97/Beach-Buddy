@@ -6,8 +6,9 @@ import { useUser } from '../../components/context/UserContext'
 
 const Home = () => {
 
-  const {user} = useUser();
-  console.log(user);
+  //Uncomment these to be able to read from context
+  const {user2} = useUser();
+  console.log(user2);
   return (
     <div className="pageWrapper">
       
