@@ -26,15 +26,14 @@ const loginFunction = async (loginData) => {
 		const res = await axios.post(API_URL_LOGIN, loginData);
     //If true, write response to observable user$
 		if(res.data.success){
-      user$.next(res.data)
-      console.log(user$);
+      user$.next(res.data);
 			// user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
 
 		}
 
 	} catch (error) {
 		if (error.response) {
-		console.log(error.response.data)	
+      return error.response.data;	
 	  }
  	 }
 }

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { Navigate, Link } from "react-router-dom";
-import axios from "axios";
 import { useUser, useUserUpdate } from '../context/UserContext'
-import authService, { user$ } from "../../services/authService";
+import authService from "../../services/authService";
 
 
 const LoginForm = () => {
@@ -11,6 +10,8 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [disable, setDisable] = useState(true);
+  const [isClicked, setIsClicked] = useState(false)
+  const [data, setData] = useState({});
 
 
   useEffect(() => {
@@ -29,9 +30,22 @@ const LoginForm = () => {
       email: email,
       password: password,
     };
-    // console.log(loginData);
    let res = await authService.loginFunction(loginData);
-   user$.subscribe((data) => {
+    setData(res);
+    // console.log(data);
+    /* if(data.name) {
+      // console.log(user.user);
+      setIsClicked(true)
+    } */
+/*     setTimeout(() => {
+      
+      if(data.success) {
+        // console.log(user.user);
+        setIsClicked(true)
+      }
+      console.log(data);
+    }, 200); */
+   /* user$.subscribe((data) => {
     if(data) {
         const updatingUser = {
             name: data.data.name,
@@ -42,29 +56,9 @@ const LoginForm = () => {
         localStorage.setItem('user', JSON.stringify(updatingUser))
         // setUser(updatingUser)
     }
-})
+}) */
    
   
-/* 	try {
-		const res = await axios.post(API_URL, loginData);
-		console.log(res);
-		console.log(res.data.success)
-		if(res.data.success){
-
-			user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
-      
-      return (
-        <Navigate to="/profile" />
-      )
-			// console.log(user.user);
-
-		}
-
-	} catch (error) {
-		if (error.response) {
-		console.log(error.response.data)	
-	  }
- 	 } */
 	}
 
   return (
@@ -74,6 +68,9 @@ const LoginForm = () => {
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
             Sign in
           </h3>
+          {data && 
+          <p>{data.message}</p>
+          }
           <div>
             <label
               htmlFor="email"
@@ -151,9 +148,9 @@ const LoginForm = () => {
             </Link>
           </div>
         </form>
-		{/* {user.user.success && 
-		 <Navigate to="/profile"/>
-		} */}
+        {isClicked && 
+        <Navigate to="/profile"/>
+        }
       </div>
     </div>
   );

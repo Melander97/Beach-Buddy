@@ -22,33 +22,51 @@ export const UserUpdateContext = createContext();
     // const [user2, setUser2] = useState ();
     useEffect(() =>{
         // setUser(localStorage.getItem('user'))
+        console.log(user$._value);
+        console.log(user$);
+        // if(user$._value !== undefined) {
+            // console.log('observable not empty');
 
-        user$.subscribe(data => {
-             if(data) {
-                //See console upon loggin in
-                console.log(data.data);
-                //Set user2 to = data.data from response, see comment on line 50
-                setUser(data.data);
-             }
-        })
+            //Only populate user-state on load
+            if(localStorage.getItem('user') === null && user$._value === undefined) {
+                console.log('hej');
+                user$.subscribe(data => {
+                     if(data) {
+                        //See console upon loggin in
+                        // console.log(data.data);
+                        //Set user2 to = data.data from response, see comment on line 50
+                        setUser(data.data);
+                     }
+                })
+            }
+        // }
+        const data = localStorage.getItem('user');
+        let parsedData = JSON.parse(data);
+        if(data !== null) setUser(parsedData);
+
+        
     },[])
-    const user2 = useMemo(() => user, [user]);
+    // const user2 = useMemo(() => user, [user]);
     
     useEffect(() =>{
-        console.log("user from context",user2)
-    },[user2])
+        if(user !== undefined) {
 
-     const updateUser = (id, email, name, isLoggedIn) => {
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        console.log(user);
+    },[user])
+
+    /*  const updateUser = (id, email, name, isLoggedIn) => {
     setUser({   
     id: id,
     email: email,
     name: name,
     isLoggedIn: isLoggedIn
-    })};
+    })}; */
 
     return(
         //Pass user2 into value to be able to read it in other components. See comment in Home.jsx line 9.
-        <UserContext.Provider value={{user2, updateUser}}>
+        <UserContext.Provider value={{user}}>
             {/* <UserUpdateContext.Provider value={updateUser}> */}
             {children}
             {/* </UserUpdateContext.Provider> */}
