@@ -2,8 +2,12 @@ import React from 'react'
 import "../../styles.css"
 import "../../media.css"
 import SearchFilter from '../../components/search-filter/SearchFilter'
+import { useUser } from '../../components/context/UserContext'
 
 const Home = () => {
+
+  const {user} = useUser();
+  console.log(user);
   return (
     <div className="pageWrapper">
       

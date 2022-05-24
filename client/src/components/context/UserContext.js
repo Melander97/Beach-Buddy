@@ -1,5 +1,7 @@
 // import {createContext} from 'react'
-import React, {useState, createContext, useContext, useEffect} from 'react';
+import React, {useState, createContext, useContext, useEffect, useMemo} from 'react';
+// import { Navigate } from 'react-router-dom';
+// import { user$ } from '../../services/authService';
 
 export const UserContext = createContext();
 
@@ -16,18 +18,10 @@ export const UserUpdateContext = createContext();
 
     const UserProvider = ({children})  => {
   
-    const [user, setUser] = useState (
-        {
-            id:'',
-            email: '',
-            name: 'jose',
-            isLoggedIn: false,
-        }
-    );
-
+    const [user, setUser] = useState ();
     useEffect(() =>{
-        console.log("user from context",user)
-    },[user])
+        setUser(localStorage.getItem('user'));
+    },[])
 
      const updateUser = (id, email, name, isLoggedIn) => {
     setUser({   

@@ -3,9 +3,8 @@ import "./login.scss";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useUser, useUserUpdate } from '../context/UserContext'
+import authService, { user$ } from "../../services/authService";
 
-
-const API_URL = "http://localhost:4000/api/users/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -30,15 +29,34 @@ const LoginForm = () => {
       email: email,
       password: password,
     };
+    // console.log(loginData);
+   let res = await authService.loginFunction(loginData);
+   user$.subscribe((data) => {
+    if(data) {
+        const updatingUser = {
+            name: data.data.name,
+            id: data.data.id,
+            email: data.data.email,
+            isLoggedIn: true
+        }
+        localStorage.setItem('user', JSON.stringify(updatingUser))
+        // setUser(updatingUser)
+    }
+})
+   
   
-	try {
+/* 	try {
 		const res = await axios.post(API_URL, loginData);
 		console.log(res);
 		console.log(res.data.success)
 		if(res.data.success){
 
 			user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
-			console.log(user.user);
+      
+      return (
+        <Navigate to="/profile" />
+      )
+			// console.log(user.user);
 
 		}
 
@@ -46,7 +64,7 @@ const LoginForm = () => {
 		if (error.response) {
 		console.log(error.response.data)	
 	  }
- 	 }
+ 	 } */
 	}
 
   return (
@@ -133,9 +151,9 @@ const LoginForm = () => {
             </Link>
           </div>
         </form>
-		{user.user.success && 
+		{/* {user.user.success && 
 		 <Navigate to="/profile"/>
-		}
+		} */}
       </div>
     </div>
   );
