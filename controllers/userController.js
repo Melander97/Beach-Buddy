@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
 
 // Generate JWT token
-const maxAge = 3 * 24 * 60 * 60; // expires in 30 days
+const maxAge = 3 * 24 * 60 * 60; // expires in 3 days
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: maxAge,
@@ -79,18 +79,25 @@ const loginUser = async (req, res) => {
     });
 
   //generate the jwt token on successful login
-  const token = generateToken(user._id);
-  res.cookie("jwt", token, { httpOnly: true });
-  res.status(200).json({
-    success: true,
-    message: "Successfully logged in",
-    data: {
-      name: user.name,
-      email: user.email,
-      id: user._id,
-      token: token,
+    try {
+       const token = generateToken(user._id);
+       res.cookie("jwt", token, { httpOnly: true });
+       res.status(200).json({
+       success: true,
+       message: "Successfully logged in",
+       data: {
+        name: user.name,
+        email: user.email,
+        id: user._id,
+        token: token,
     },
   });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error,
+      });
+    }
 };
 
 // User profile
