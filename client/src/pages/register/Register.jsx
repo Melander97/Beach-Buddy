@@ -8,6 +8,8 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [data, setData] = useState({});
 
   const Register = async (e) => {
     e.preventDefault();
@@ -19,22 +21,8 @@ const Register = () => {
       confPassword: confPassword,
     };
 
-    try {
-      return authService.registerFunction(userData, message);
-      const message =
-        (error.response.success &&
-          error.response.message &&
-          error.response.data) ||
-        error.toString;
-      return message;
-    } catch (error) {
-      const message =
-        (error.response.success &&
-          error.response.message &&
-          error.response.data) ||
-        error.toString;
-      return message;
-    }
+    let test = await authService.registerFunction(userData);
+    setData(test);
   };
 
   return (
@@ -46,6 +34,7 @@ const Register = () => {
             <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
               Create an Account
             </h3>
+            {data && <p className="text-red-400">{data.message}</p>}
 
             <div>
               <label

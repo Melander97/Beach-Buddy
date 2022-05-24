@@ -3,12 +3,13 @@ import axios from "axios";
 const API_URL = "http://localhost:4000/api/users";
 
 const registerFunction = async (userData) => {
-  console.log(userData);
+
   try {
-    await axios.post(API_URL, userData);
+    const result = await axios.post(API_URL, userData);
+    return result.data;
   } catch (error) {
-    if (error.response.data) {
-      return error.response.data;
+    if (error.response) {
+    return error.response.data;
     }
   }
 };
