@@ -1,70 +1,157 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  BEACH-BUDDY 
 
-## Available Scripts
+Beach-buddy is a website to search and share your favourite beaches with everyone around.
 
-In the project directory, you can run:
+You are also able to save your favourite spots so you wont forget where to find them.
 
-### `npm start`
+#  Stack used for the app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The product is developed using NODE.JS for the backend and JS, REACT, HTML and SASS, TAILWIND for the frontend and Mongo DB. 
+Havs- och vattenmyndighetens API has been used to get location of EU approved beaches and it`s data around Sweden.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#  Reason for the app and code
 
-### `npm test`
+We wanted to create a product where you as a user easily can find beach locations near where you are at the moment but also if you plan to go for maybe a family vacation across the country and have no idea where to take a swim. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As we also wish to create a safe app for our users we choose to use the API from Havs- och vattenmyndighetens as they have included all the EU approved beaches and we will also demonstrate that for our user in the app. So what does it mean that a beach is EU approved? It simply means that several samples of the water has been testead for different types of bacteria that could be harmful for humans. And as long as a beach location and its water meets these conditions they will be EU apporoved.
 
-### `npm run build`
+We as people have a lot of things in our heads these days so it is easy to forget things and places, so we also wanted to create a function so that our registered users also could save their favoruite beach spots in their profile page. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To create a feel of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Get started
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To use this application you will need to have Node.js, NPM, Git installd and we recomend VS code but any text editor will work.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To start, clone the repo from Github to your local machine:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ #### Open your terminal and then type:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+```bash
+$ git clone {the url to the GitHub repo} 
+```
+This clones the repo.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ #### cd into the new folder and type:
 
-### Code Splitting
+```bash
+ $ npm install. This installs the required dependencies.
+```
+#### To run the React project:
+```bash
+$ npm start in the client folder.
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### In the root folder type:
 
-### Analyzing the Bundle Size
+```bash
+$ npm start to start the server. 
+Also type:
+$ npm install here to install any requierd depencendies
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Locally the server runs on http://localhost:4000/ with the installation above.
 
-### Making a Progressive Web App
+A database will have to be created in Mongo DB.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## API Reference
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Authentication & Authorization
 
-### Deployment
+For a user to be able to create a list and save beaches and to also see other users beaches they will have to register and then log in.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For non-registred users, only the data from Havs- bad myndigehtens API will be availabale.
 
-### `npm run build` fails to minify
+When a user logs in they'll be provided with a token which will be needed to see user profil and the shared map. Also to be able to sucessfully create, read, and delete lists. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A token has to be provided in order to do these tasks.
+
+#### Location routes
+
+
+| Method | URI     | Description                |
+| :-------- | :------- | :------------------------- |
+| `POST` | `api/locations/addLocation` |  protect, addLocation |
+| `GET` | `api/locations/getLocation` | protect, getLocation|
+| `POST` | `api/locations/delete` | protect, deleteLocation |
+| `PUT` | `api/locations/update` | protect, updateLocation |
+| `GET` | `api/locations/getLocationById` | protect, getLocationById |
+
+
+
+#### User routes
+
+
+| Method | URI     | Description                |
+| :-------- | :------- | :------------------------- |
+| `POST` | `api/` |  registerUser |
+| `GET` | `api/login` | loginUser|
+| `POST` | `api/:id` | protect, getUserById |
+| `PUT` | `api/delete/:id` | protect, deleteUserById |
+| `GET` | `api/logout` | protect, logoutUser |
+
+
+
+
+## Documentation
+
+[Documentation](https://linktodocumentation)
+
+https://www.figma.com/file/fGIQVq3HrhiiiwmtkICQgx/BeachBuddy?node-id=0%3A1
+
+https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
+
+
+## License
+
+[NO ONE CAN USE THIS IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY`
+
+`PORT = 4000`
+
+`USERNAME = ''`
+
+`PASSWORD = ''`
+
+`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY`
+
+`PORT = 4000`
+
+`USERNAME = ''`
+
+`PASSWORD = ''`
+
+`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY`
+
+`PORT = 4000`
+
+`USERNAME = ''`
+
+`PASSWORD = ''`
+
+`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
