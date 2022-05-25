@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { Navigate, Link } from "react-router-dom";
-import { useUser, useUserUpdate } from '../context/UserContext'
 import authService from "../../services/authService";
 
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const [disable, setDisable] = useState(true);
   const [isClicked, setIsClicked] = useState(false)
   const [data, setData] = useState({});
@@ -20,8 +18,11 @@ const LoginForm = () => {
     }
   }, [email, password]);
 
-  const userUpdate = useUserUpdate();
-  const user = useUser();
+  useEffect(() => {
+    if(data.success) {
+      setIsClicked(true);
+    }
+  }, [data])
 
   const submit = async (e) => {
     e.preventDefault();
@@ -31,34 +32,8 @@ const LoginForm = () => {
       password: password,
     };
    let res = await authService.loginFunction(loginData);
-    setData(res);
-    // console.log(data);
-    /* if(data.name) {
-      // console.log(user.user);
-      setIsClicked(true)
-    } */
-/*     setTimeout(() => {
-      
-      if(data.success) {
-        // console.log(user.user);
-        setIsClicked(true)
-      }
-      console.log(data);
-    }, 200); */
-   /* user$.subscribe((data) => {
-    if(data) {
-        const updatingUser = {
-            name: data.data.name,
-            id: data.data.id,
-            email: data.data.email,
-            isLoggedIn: true
-        }
-        localStorage.setItem('user', JSON.stringify(updatingUser))
-        // setUser(updatingUser)
-    }
-}) */
-   
-  
+    setData(res)
+
 	}
 
   return (
@@ -69,7 +44,7 @@ const LoginForm = () => {
             Sign in
           </h3>
           {data && 
-          <p>{data.message}</p>
+          <p style={data.success ? {color: 'green'} :{color: 'red'}}>{data.message}</p>
           }
           <div>
             <label

@@ -30,6 +30,7 @@ const loginFunction = async (loginData) => {
 			// user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
 
 		}
+    return res.data;
 
 	} catch (error) {
 		if (error.response) {
