@@ -11,13 +11,13 @@ const Protected = ({ children, redirectTo }) => {
   // console.log(user);
   // const user = JSON.parse(localStorage.getItem('user'));
   // console.log(user);
-  // setTimeout(() => {
+  setTimeout(() => {
 
         if (user.isLoggedIn) {
           
           return children;
         } 
-  // }, 200);
+  }, 200);
   if (user === undefined) {
     
     return <Navigate to={redirectTo} />;
