@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { Navigate, Link } from "react-router-dom";
-import axios from "axios";
-import { useUser, useUserUpdate } from '../context/UserContext'
+import authService from "../../services/authService";
 
-
-const API_URL = "http://localhost:4000/api/users/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const [disable, setDisable] = useState(true);
+  const [isClicked, setIsClicked] = useState(false)
+  const [data, setData] = useState({});
 
 
   useEffect(() => {
@@ -20,8 +18,11 @@ const LoginForm = () => {
     }
   }, [email, password]);
 
-  const userUpdate = useUserUpdate();
-  const user = useUser();
+  useEffect(() => {
+    if(data.success) {
+      setIsClicked(true);
+    }
+  }, [data])
 
   const submit = async (e) => {
     e.preventDefault();
@@ -30,23 +31,9 @@ const LoginForm = () => {
       email: email,
       password: password,
     };
-  
-	try {
-		const res = await axios.post(API_URL, loginData);
-		console.log(res);
-		console.log(res.data.success)
-		if(res.data.success){
+   let res = await authService.loginFunction(loginData);
+    setData(res)
 
-			user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
-			console.log(user.user);
-
-		}
-
-	} catch (error) {
-		if (error.response) {
-		console.log(error.response.data)	
-	  }
- 	 }
 	}
 
   return (
@@ -56,6 +43,9 @@ const LoginForm = () => {
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
             Sign in
           </h3>
+          {data && 
+          <p style={data.success ? {color: 'green'} :{color: 'red'}}>{data.message}</p>
+          }
           <div>
             <label
               htmlFor="email"
@@ -133,9 +123,9 @@ const LoginForm = () => {
             </Link>
           </div>
         </form>
-		{user.user.success && 
-		 <Navigate to="/profile"/>
-		}
+        {isClicked && 
+        <Navigate to="/profile"/>
+        }
       </div>
     </div>
   );

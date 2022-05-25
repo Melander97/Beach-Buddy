@@ -6,6 +6,10 @@ import GoogleMaps from '../../components/google-maps/GoogleMaps'
 // import SearchFilter from '../../components/search-filter/SearchFilter'
 
 const Home = () => {
+
+  //Uncomment these to be able to read from context
+  // const {user} = useUser();
+  // console.log(user);
   return (
     <div className="pageWrapper">
       
