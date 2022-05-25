@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
+const { cookie } = require("express/lib/response");
 
 // Generate JWT token
 const maxAge = 3 * 24 * 60 * 60; // expires in 3 days
@@ -100,6 +101,7 @@ const loginUser = async (req, res) => {
     }
 };
 
+
 // User profile
 // @desc     Get user data
 // @route    GET api/users/:id
@@ -124,6 +126,8 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+
 // delete user
 // @route DELETE /api/users/delete/:id
 // @access   Private
@@ -144,8 +148,8 @@ const deleteUserById = async (req, res) => {
 // @route GET /api/users/logout
 const logoutUser = async (req, res) => {
   try {
-    res.clearCookie("jwt");
-    res.status(200).json({
+     res.clearCookie('jwt');
+     res.status(202).json({
       success: true,
       message: "Logged out",
     });
