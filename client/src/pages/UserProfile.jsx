@@ -9,7 +9,7 @@ const UserProfile = () => {
   return (
     <div>
       User profile
-      {user.isLoggedIn ? <h1>{user.name}</h1> : <Navigate to="/login"/>}
+      {user.isLoggedIn ? <h1>{user.name}</h1> : ''}
       
     </div>
   )

@@ -20,20 +20,31 @@ const UserProvider = ({children})  => {
     const [user, setUser] = useState ();
     // const [user2, setUser2] = useState ();
     useEffect(() =>{
-
+        
             //Only populate user-state on load
-            if(localStorage.getItem('user') === null && user$._value === undefined) {
+            if((user === undefined || user.isLoggedIn === false)&& user$._value === undefined) {
                 console.log('hej');
                 user$.subscribe(data => {
                      if(data) {
-                        setUser(data.data);
+                        setUser({
+                            name: data.data.name,
+                            id: data.data.id,
+                            email: data.data.email,
+                            isLoggedIn: true,
+                        });
                      }
                 })
             }
 
-        const data = localStorage.getItem('user');
-        let parsedData = JSON.parse(data);
-        if(data !== null) setUser(parsedData);
+            const data = localStorage.getItem('user');
+            let parsedData = JSON.parse(data);
+            if(data !== null){ 
+                setUser(parsedData)
+            
+            } else {
+                setUser({isLoggedIn: false})
+            }
+        
     },[])
     
     useEffect(() =>{
