@@ -58,20 +58,7 @@ section {
     font-weight: 500;
     line-height: 25px;
   }
-
-  a {
-    text-decoration: none;
-    text-transform: uppercase;
-    background-color: rgb(122, 122, 122);
-    color: black;
-    padding: 20px 30px;
-    display: inline-block;
-    letter-spacing: 2px;
-
-    &:hover {
-      color: white;
-    }
-  }
+  
 }
 
 .fa-star {

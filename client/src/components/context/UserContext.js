@@ -23,7 +23,7 @@ const UserProvider = ({children})  => {
         
             //Only populate user-state on load
             if((user === undefined || user.isLoggedIn === false)&& user$._value === undefined) {
-                console.log('hej');
+                // console.log('hej');
                 user$.subscribe(data => {
                      if(data) {
                         setUser({
@@ -52,7 +52,7 @@ const UserProvider = ({children})  => {
 
             localStorage.setItem('user', JSON.stringify(user));
         }
-        console.log(user);
+        // console.log(user);
     },[user])
 
     return(

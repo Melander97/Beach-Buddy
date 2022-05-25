@@ -59,17 +59,15 @@ html {
     line-height: 25px;
   }
 
-  a {
-    text-decoration: none;
-    text-transform: uppercase;
-    background-color: rgb(122, 122, 122);
-    color: black;
-    padding: 20px 30px;
-    display: inline-block;
-    letter-spacing: 2px;
+  .link-wrapper{
 
-    &:hover {
-      color: white;
+    .website {
+      text-decoration: none;
+      
+  
+      &:hover {
+        color: rgb(247,124,9);
+      }
     }
   }
 }

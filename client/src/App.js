@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={ <Home/>}/>
           <Route path="/login" element={ <Login />}/>
           <Route path="/register" element={ <Register />}/>
-          <Route path="/location" element={ <LocationId />}/>
+          <Route path="/location/:id" element={ <LocationId />}/>
           <Route path="/profile" element={
           <Protected redirectTo="/login">
             <UserProfile />
