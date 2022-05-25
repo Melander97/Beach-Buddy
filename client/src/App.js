@@ -26,7 +26,7 @@ function App() {
           <Route path="/location" element={ <LocationId />}/>
           <Route path="/profile" element={
           <Protected redirectTo="/login">
-            <UserProfile/>
+            <UserProfile />
           </Protected>}/>
             
           <Route path="add-location" element={  
