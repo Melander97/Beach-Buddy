@@ -5,6 +5,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
 const Location = require("../models/locationSchema");
 const { cookie } = require("express/lib/response");
+const { db } = require("../models/userSchema");
 
 // Generate JWT token
 const maxAge = 3 * 24 * 60 * 60; // expires in 3 days
@@ -159,10 +160,44 @@ const logoutUser = async (req, res) => {
   }
 };
 
+
+const updateUser = async (req, res ) => {
+
+  try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const options = { new: true };
+
+        if(updatedData['password']) {
+           const salt = await bcrypt.genSalt();
+            updatedData['password'] = await bcrypt.hash(req.body.password, salt);
+        }
+        const result = await User.findByIdAndUpdate(
+            id, updatedData, options
+        );
+          
+        return res.status(200).json({
+          success: true,
+          message: "Sucessfully updated ",
+          data: {
+            name: result.name,
+            email: result.email,
+            password: result.password,
+          }
+        })
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+
+}
+
+
 module.exports = {
   registerUser,
   loginUser,
   getUserById,
   deleteUserById,
   logoutUser,
+  updateUser
 };
