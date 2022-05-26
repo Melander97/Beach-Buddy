@@ -12,7 +12,6 @@ const LocationModal = ({ beach }) => {
             <div class="right">
 
               {beach &&
-              
                <div class="contentent">
                    <h1>{beach.locationName}</h1>
                         {/* <span class="fa fa-star checked"></span>
@@ -27,7 +26,6 @@ const LocationModal = ({ beach }) => {
                    <p><b>info:</b> {beach.euMotive}</p>
                    <p><b>Kontakt:</b> {beach.contactMail}</p>
                    <p className='link-wrapper'><b>Hemsida:</b> <a href={`${beach.contactUrl}`} target="blank_" className='website'>{beach.contactUrl}</a></p>
-                  
                </div> 
               }
             </div>
