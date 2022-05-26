@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 //register
 const LocationSchema = new mongoose.Schema(
   {
-    locationId: {
+    /* locationId: {
       type: String,
       required: [true, "Please add the name of the location"],
       unique: true,
       trim: true,
-    },
+    }, */
     userId: {
       type: String,
       required: true,

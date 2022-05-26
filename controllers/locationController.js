@@ -135,10 +135,13 @@ exports.updateLocation = async (req, res) => {
         data: null,
       });
     }
-
-    const updatedLocation = await Location.findByIdAndUpdate(
-      req.body.location_id
+    /* const updatedLocation = await Location.updateOne({_id: location._id.toString()}, req.body);
+    JSON.stringify(updatedLocation); */
+    let updatedLocation = await Location.findByIdAndUpdate(
+      req.body.location_id,
+      req.body,
     );
+    updatedLocation =  await Location.findById(req.body.location_id);
     console.log(`data ${updatedLocation}`);
 
     res.status(200).json({
