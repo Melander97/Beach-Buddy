@@ -19,10 +19,7 @@ router.post('/login',loginUser);
 router.get('/logout', protect, logoutUser);
 router.get("/:id", protect, getUserById);
 router.delete("/delete/:id", protect, deleteUserById);
-<<<<<<< HEAD
-=======
 router.patch('/update/:id', protect, updateUser);
 
->>>>>>> development
 
 module.exports = router;
