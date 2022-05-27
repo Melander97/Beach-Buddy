@@ -1,9 +1,7 @@
 import React from 'react'
-import "../../styles.css"
-import "../../media.css"
 import './home.scss';
-import GoogleMaps from '../../components/google-maps/GoogleMaps'
-// import SearchFilter from '../../components/search-filter/SearchFilter'
+import GoogleMaps from '../../components/google-maps/GoogleMaps';
+import Menu from '../../components/menu/Menu'
 
 const Home = () => {
 
@@ -11,8 +9,8 @@ const Home = () => {
   // const {user} = useUser();
   // console.log(user);
   return (
-    <div className="pageWrapper">
-      
+    <>
+
       {/* Handled by google maps implementation */}
       {/* <div className="searchbox">
             <input type="search" className="search--width search--bg bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name..." />
@@ -26,10 +24,10 @@ const Home = () => {
         
         {/* </div> */}
     </section>
-
-    {/* <SearchFilter /> */}
     
-    </div>
+    <Menu />
+    </>
+
   )
 }
 

@@ -26,24 +26,36 @@ exports.getLocation = async (req, res, next) => {
 // Add location
 exports.addLocation = async (req, res, next) => {
   try {
-    const location = await Location.create(req.body);
-    return res.status(201).json({
-      success: true,
-      data: location,
+    const location = await new Location({
+      userId: req.body.userId,
+      adress: req.body.adress,
+      description: req.body.description,
+    });
+    console.log(location);
+    location.save().then((location) => {
+      User.updateOne(
+        { _id: req.user.id },
+        { $push: { locations: location._id } },
+        () => {
+          res.json(location);
+        }
+      );
     });
   } catch (err) {
     console.error(err);
     if (err.code === 11000) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        error: "This location already exists" });
+        error: "This location already exists",
+      });
     }
-    return res.status(500).json({ 
+    return res.status(500).json({
       success: false,
-      error: "Server error" 
+      error: "Server error",
     });
   }
 };
+
 //end of add locations
 
 // Delete location

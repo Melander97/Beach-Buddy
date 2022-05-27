@@ -1,16 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Nunito:wght@600&family=Poppins:wght@300;400&display=swap');
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-html {
-  font-family: Montserrat;
-}
-
-section {
+.modalWrapper {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -31,7 +21,7 @@ section {
 .left {
   width: 60%;
   height: 700px;
-  background: url(./images/beachtest.jpeg) no-repeat (center / cover);
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073") no-repeat (center / cover);
   border-radius: 8px;
 }
 

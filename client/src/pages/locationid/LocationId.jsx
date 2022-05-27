@@ -4,6 +4,8 @@ import "../../media.css"
 import { locationDetails$, getBeachInfo } from '../../services/bad_havs_API';
 import LocationModal from '../../components/location-modal/LocationModal'
 import { useParams } from 'react-router-dom';
+import './locationid.scss';
+
 
 
 const LocationId = () => {
