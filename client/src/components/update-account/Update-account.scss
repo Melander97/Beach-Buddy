@@ -1,24 +1,5 @@
-$Font: Montserrat, sans-serif;
-$Primary: #22e3d3;
-$Account--bg: #d1f0c6;
-$Account--body: #95c683;
-$OceanBlue: #d1f0c6;
-$myFontSize: 18px;
-$myWidth: 680px;
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,400i,700");
-*, *::after, *::before{
-  margin: 0;
-  padding: 0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family: "Poppins", sans-serif;
-  background-color: $Account--body;
-}
-
-
+@import '../../variables.scss';
 
 /* Tab content - closed */
 .tab-content {
@@ -30,7 +11,15 @@ body{
     align-items: center;
     text-align: center;
     border: 0;
+
+    .profile__input {
+        width: 90% !important;
+        margin: auto !important;
+        background-color: rgb(204, 204, 204) !important;
+        border: 1px solid #8a8a8a;
+        margin-top: 1em !important;
     }
+}
 
     /* :checked - resize to full height */
     .tab input:checked ~ .tab-content {
@@ -90,24 +79,6 @@ body{
     
     color: #f8fafc; /*.text-grey-lightest*/
     }
-
-
-.profile {
-    margin-top: 2em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile__input {
-    width: 90% !important;
-    margin: auto !important;
-    background-color: rgb(204, 204, 204) !important;
-    border: 1px solid #8a8a8a;
-    margin-top: 1em !important;
-}
 
 .tab input:checked + label {
     

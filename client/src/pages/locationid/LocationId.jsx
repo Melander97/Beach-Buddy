@@ -1,6 +1,4 @@
 import React from 'react'
-import "../../styles.css"
-import "../../media.css"
 import LocationModal from '../../components/location-modal/LocationModal'
 
 

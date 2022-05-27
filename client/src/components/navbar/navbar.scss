@@ -20,7 +20,7 @@
     
         .logo {
             display: inline-block;
-            width: 15vw;
+            height: 2.5rem;
             &:hover {
                 cursor: pointer;
             }
@@ -83,6 +83,7 @@
 
     .dropdown {
         position: absolute;
+        text-align: center;
         left: 0;
         top: -100vh;
         display: flex;
