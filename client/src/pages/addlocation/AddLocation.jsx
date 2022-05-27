@@ -1,16 +1,8 @@
-import React from 'react'
-import AddLocationModal from '../../components/addlocation-modal/AddLocationModal'
+import React from "react";
+import AddLocationModal from "../../components/addlocation-modal/AddLocationModal";
 
 const AddLocation = () => {
-  return (
-<div className="pageWrapper">
+  return <AddLocationModal />;
+};
 
-	{/* Component here */}
-
-  <AddLocationModal />
-
-</div>
-  )
-}
-
-export default AddLocation
+export default AddLocation;
