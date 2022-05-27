@@ -16,7 +16,7 @@ const UpdateAccount = () => {
           <input type="text"className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleText0" placeholder="Användarnamn"/>
           <input type="text"className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleText0" placeholder="E-mail"/>
           <input type="text"className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleText0" placeholder="Lösenord"/>
-          <button className="button-31" role="button"> Uppdatera</button>
+          <button className="button-31"> Uppdatera</button>
         </div>
   </div>
 
