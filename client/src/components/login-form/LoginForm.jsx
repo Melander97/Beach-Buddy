@@ -85,22 +85,10 @@ const LoginForm = () => {
           <div className="flex items-start">
             <div className="flex items-start">
               <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  aria-describedby="remember"
-                  type="checkbox"
-                  className="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 accent-yellow-500"
-                  required=""
-                />
               </div>
 
               <div className="text-sm ml-3">
-                <label
-                  htmlFor="remember"
-                  className="font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Remember me
-                </label>
+                
               </div>
             </div>
           </div>
@@ -112,7 +100,7 @@ const LoginForm = () => {
           >
             Login to your account
           </button>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-300 ">
             Not registered?{" "}
             <Link
               to="/register"
