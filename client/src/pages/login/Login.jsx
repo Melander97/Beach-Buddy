@@ -3,11 +3,10 @@ import LoginForm from '../../components/login-form/LoginForm'
 
 const Login = () => {
   return (
-<div className="pageWrapper">
 
   <LoginForm />
 
-</div>
+
   )
 }
 

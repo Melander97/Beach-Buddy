@@ -5,9 +5,7 @@ import './User-menu.scss';
 
 const UserMenu = () => {
   return (
-
-
-
+   
     <section className="footer__menu">
       <a href="/profile"> <i className="icon--space fa-solid fa-user fa-2xl" aria-hidden="true"></i>  </a>
       <a href="/locations"> <i className="icon--space fa fa-map-marker fa-2xl" aria-hidden="true"></i> </a>
