@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import "../../styles.css"
-import "../../media.css"
 import { locationDetails$, getBeachInfo } from '../../services/bad_havs_API';
 import LocationModal from '../../components/location-modal/LocationModal'
 import { useParams } from 'react-router-dom';
