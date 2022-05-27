@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
+const Location = require("../models/locationSchema");
 const { cookie } = require("express/lib/response");
 const { db } = require("../models/userSchema");
 
@@ -81,27 +82,26 @@ const loginUser = async (req, res) => {
     });
 
   //generate the jwt token on successful login
-    try {
-       const token = generateToken(user._id);
-       res.cookie("jwt", token, { httpOnly: true });
-       res.status(200).json({
-       success: true,
-       message: "Successfully logged in",
-       data: {
+  try {
+    const token = generateToken(user._id);
+    res.cookie("jwt", token, { httpOnly: true });
+    res.status(200).json({
+      success: true,
+      message: "Successfully logged in",
+      data: {
         name: user.name,
         email: user.email,
         id: user._id,
         token: token,
-    },
-  });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: error,
-      });
-    }
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error,
+    });
+  }
 };
-
 
 // User profile
 // @desc     Get user data
@@ -109,15 +109,14 @@ const loginUser = async (req, res) => {
 // @access   Private
 const getUserById = async (req, res) => {
   try {
-    const { _id, name, email } = await User.findById(req.user.id);
-    res.status(200).json({
-      success: true,
-      data: {
-        id: _id,
-        name,
-        email,
-      },
-    });
+    // console.log(user);
+    const user = User.find({ _id: req.params.id })
+      .populate("locations")
+      .then((location) => {
+        // console.log(location);
+        return res.status(200).json({ location: location });
+      })
+      .catch((error) => console.log(error));
   } catch (error) {
     res.status(400).json({
       success: false,
@@ -126,8 +125,6 @@ const getUserById = async (req, res) => {
     });
   }
 };
-
-
 
 // delete user
 // @route DELETE /api/users/delete/:id
@@ -149,8 +146,8 @@ const deleteUserById = async (req, res) => {
 // @route GET /api/users/logout
 const logoutUser = async (req, res) => {
   try {
-     res.clearCookie('jwt');
-     res.status(202).json({
+    res.clearCookie("jwt");
+    res.status(202).json({
       success: true,
       message: "Logged out",
     });
