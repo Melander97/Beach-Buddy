@@ -5,8 +5,6 @@ import './Location-modal.scss';
 
 const LocationModal = ({ beach }) => {
   return (
-
-
     <section className="modalWrapper">
         <div class="container animate__animated animate__fadeInUp">
             <div class="left"></div>
