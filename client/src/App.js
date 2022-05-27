@@ -10,8 +10,8 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import UserProfile from './pages/UserProfile';
-import AddLocation from './pages/AddLocation';
-// import React, {useEffect, useState} from 'react';
+import AddLocation from './pages/addlocation/AddLocation';
+import React, {useEffect, useState} from 'react';
 import LocationId from './pages/locationid/LocationId'
 
 
@@ -24,6 +24,7 @@ function App() {
           <Route path="/login" element={ <Login />}/>
           <Route path="/register" element={ <Register />}/>
           <Route path="/location" element={ <LocationId />}/>
+          <Route path="/addlocation" element={ <AddLocation />}/>
           <Route path="/profile" element={
           <Protected redirectTo="/login">
             <UserProfile />
