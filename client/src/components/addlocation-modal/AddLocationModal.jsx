@@ -9,7 +9,7 @@ const AddLocationModal = () => {
   const [directions, setDirection] = useState("");
 
   return (
-    
+
     <div className="addLocation-component w-full h-screen flex items-center justify-center my-3">
       {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
       <form className="bg-[#EDC891] w-80 h-auto rounded-lg pt-8 pb-8 px-6 flex flex-col items-center shadow-xl mb-4 md:flex md:flex-wrap md:justify-between">
@@ -70,7 +70,7 @@ const AddLocationModal = () => {
           />
         </div>
 
-              <button className="hover:bg-red-dark w-40 h-12 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">Add Location</button>
+              <button className="hover:bg-red-dark w-40 h-12 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">Lägg till plats</button>
 
       </form>
       {/* </div> */}
