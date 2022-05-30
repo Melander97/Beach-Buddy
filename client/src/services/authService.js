@@ -5,6 +5,10 @@ const API_URL = "http://localhost:4000/api/users";
 const API_URL_LOGIN = "http://localhost:4000/api/users/login";
 
 export const user$ = new BehaviorSubject();
+const config = {
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true,
+};
 
 const registerFunction = async (userData) => {
   try {
@@ -20,7 +24,7 @@ const registerFunction = async (userData) => {
 const loginFunction = async (loginData) => {
   try {
     // calls the api
-    const res = await axios.post(API_URL_LOGIN, loginData);
+    const res = await axios.post(API_URL_LOGIN, loginData, config);
     //If true, write response to observable user$
     if (res.data.success) {
       user$.next(res.data);

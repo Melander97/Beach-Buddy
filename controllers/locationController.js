@@ -28,8 +28,10 @@ exports.addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
       userId: req.body.userId,
+      title: req.body.title,
       adress: req.body.adress,
       description: req.body.description,
+      coordinates: req.body.coordinates,
     });
     console.log(location);
     location.save().then((location) => {
@@ -151,9 +153,9 @@ exports.updateLocation = async (req, res) => {
     JSON.stringify(updatedLocation); */
     let updatedLocation = await Location.findByIdAndUpdate(
       req.body.location_id,
-      req.body,
+      req.body
     );
-    updatedLocation =  await Location.findById(req.body.location_id);
+    updatedLocation = await Location.findById(req.body.location_id);
     console.log(`data ${updatedLocation}`);
 
     res.status(200).json({
@@ -196,6 +198,3 @@ exports.getLocationById = async (req, res) => {
 };
 
 //Get location by id end
-
-
-

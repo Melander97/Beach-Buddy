@@ -11,6 +11,8 @@ import {
 } from "@react-google-maps/api";
 import MyLocation from "../../components/my-location/MyLocation";
 import { coords$, getLocation } from "../../services/bad_havs_API";
+import locationService from "../../services/userLocationService";
+import { userLocations$ } from "../../services/userLocationService";
 
 // const libraries = ["places"];
 const MyLocations = () => {
@@ -22,6 +24,7 @@ const MyLocations = () => {
   const center = useMemo(() => myLocation, [myLocation]);
 
   useEffect(() => {
+    locationService.getAllLocations();
     getLocation();
 
     if (!myLocation) {
@@ -30,6 +33,9 @@ const MyLocations = () => {
         setMyLocation(coords);
       });
     }
+    userLocations$.subscribe((res) => {
+      console.log(res);
+    });
   }, []);
 
   const { isLoaded, loadError } = useLoadScript({
