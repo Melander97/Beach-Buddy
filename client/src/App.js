@@ -6,7 +6,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import AddLocation from './pages/addlocation/AddLocation';
-import React from 'react';
+import UpdateLocation from "./pages/updatelocation/UpdateLocation";
 import LocationId from './pages/locationid/LocationId'
 import Profile from "./pages/profile/Profile";
 import Menu from "./components/menu/Menu";
@@ -37,6 +37,10 @@ function App() {
           <Route path="add-location" element={  
           <Protected redirectTo="/login">
             <AddLocation /> 
+          </Protected>}/>
+          <Route path="update-location" element={  
+          <Protected redirectTo="/login">
+            <UpdateLocation /> 
           </Protected>}/>
           
       </Routes>
