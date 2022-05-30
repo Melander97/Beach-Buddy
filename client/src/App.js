@@ -1,23 +1,22 @@
 import Navbar from "./components/navbar/Navbar";
-import { Outlet } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import Protected from './components/protected/protected'
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import AddLocation from './pages/addlocation/AddLocation';
-import React from 'react';
-import LocationId from './pages/locationid/LocationId'
+import { Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Protected from "./components/protected/protected";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import AddLocation from "./pages/addlocation/AddLocation";
+import React from "react";
+import LocationId from "./pages/locationid/LocationId";
 import Profile from "./pages/profile/Profile";
 import Menu from "./components/menu/Menu";
+import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
-import { useUser } from './components/context/UserContext';
-
+import { useUser } from "./components/context/UserContext";
 
 function App() {
-
   // const { user } = useUser();
-  let user = localStorage.getItem('user');
+  let user = localStorage.getItem("user");
   return (
     <div className="App">
       <div className="pageWrapper">
@@ -43,12 +42,11 @@ function App() {
       {/* {user !== undefined && 
         <UserMenu/>
       } */}
-      {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
-      <Menu />
+        {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
+        <Menu />
       </div>
-
     </div>
   );
-} 
+}
 
 export default App;
