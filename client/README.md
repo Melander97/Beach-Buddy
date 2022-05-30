@@ -1,13 +1,20 @@
 
 #  BEACH-BUDDY 
 
-Beach-buddy is a website to search and share your favourite beaches with everyone around.
+Beach-buddy is a website to search and share your favourite beaches.
 
-You are also able to save your favourite spots so you wont forget where to find them.
+You are also able to save your favourite beach so you wont forget where to find them. 
 
-#  Stack used for the app
+#  Tech used 
 
-The product is developed using NODE.JS for the backend and JS, REACT, HTML and SASS, TAILWIND for the frontend and Mongo DB. 
+The product is developed using NODE.JS for the backend and 
+- JS
+- REACT
+- HTML 
+- SASS
+- TAILWIND 
+- Mongo DB
+
 Havs- och vattenmyndighetens API has been used to get location of EU approved beaches and it`s data around Sweden.
 
 #  Reason for the app and code
@@ -18,12 +25,9 @@ As we also wish to create a safe app for our users we choose to use the API from
 
 We as people have a lot of things in our heads these days so it is easy to forget things and places, so we also wanted to create a function so that our registered users also could save their favoruite beach spots in their profile page. 
 
-To create a feel of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches. 
+To create a sense of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches. 
 
 ## Installation
-
-## Get started
-
 
 To use this application you will need to have Node.js, NPM, Git installd and we recomend VS code but any text editor will work.
 
@@ -58,6 +62,8 @@ $ npm install here to install any requierd depencendies
 
 Locally the server runs on http://localhost:4000/ with the installation above.
 
+Create a account for Mongo DB and set up a new connection with your URI
+Connect with your URI
 A database will have to be created in Mongo DB.
 
 
@@ -65,7 +71,7 @@ A database will have to be created in Mongo DB.
 
 Authentication & Authorization
 
-For a user to be able to create a list and save beaches and to also see other users beaches they will have to register and then log in.
+For a user to be able to create a list and save beaches and also to see other users beaches they will have to register and then log in.
 
 For non-registred users, only the data from Havs- bad myndigehtens API will be availabale.
 
@@ -102,7 +108,7 @@ A token has to be provided in order to do these tasks.
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+<!-- [Documentation](https://linktodocumentation) -->
 
 https://www.figma.com/file/fGIQVq3HrhiiiwmtkICQgx/BeachBuddy?node-id=0%3A1
 
@@ -126,32 +132,6 @@ To run this project, you will need to add the following environment variables to
 
 `PASSWORD = ''`
 
-`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
-## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
-
-`PORT = 4000`
-
-`USERNAME = ''`
-
-`PASSWORD = ''`
-
-`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`PORT = 4000`
-
-`USERNAME = ''`
-
-`PASSWORD = ''`
-
-`MONGO_URI = mongodb+srv://<username>:<password>@clusterbeachbuddy.cgdvz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
