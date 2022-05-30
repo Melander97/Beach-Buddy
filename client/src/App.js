@@ -10,6 +10,7 @@ import React from "react";
 import LocationId from "./pages/locationid/LocationId";
 import Profile from "./pages/profile/Profile";
 import Menu from "./components/menu/Menu";
+import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
 
@@ -40,6 +41,15 @@ function App() {
             element={
               <Protected redirectTo="/login">
                 <AddLocation />
+              </Protected>
+            }
+          />
+
+           <Route
+            path="locations"
+            element={
+              <Protected redirectTo="/login">
+                <MyLocations />
               </Protected>
             }
           />
