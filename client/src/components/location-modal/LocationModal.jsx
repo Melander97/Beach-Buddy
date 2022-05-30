@@ -21,16 +21,13 @@ const LocationModal = () => {
               <b>Toalett:</b> Nej
             </p>
             <p>
-              <b>Kiosk</b> Ja
+              <b>Kiosk:</b> Ja
             </p>
             <p>
               <b>Övrigt:</b> Parkera bilen framför bommen och följ grusvägen ca
               2km, så kommer du till en liten stuga på vänstersida och därefter
               ligger platsen.
             </p>
-            <a href="#" className="btn">
-              Bild
-            </a>
           </div>
         </div>
       </div>
