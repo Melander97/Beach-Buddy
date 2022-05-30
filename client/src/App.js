@@ -20,26 +20,40 @@ function App() {
   return (
     <div className="App">
       <div className="pageWrapper">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/location/:id" element={<LocationId />} />
+          <Route
+            path="/profile"
+            element={
+              <Protected redirectTo="/login">
+                <Profile />
+              </Protected>
+            }
+          />
 
-      <Navbar />
-      <Routes>
-          <Route path="/" element={ <Home/>}/>
-          <Route path="/login" element={ <Login />}/>
-          <Route path="/register" element={ <Register />}/>
-          <Route path="/location/:id" element={ <LocationId />}/>
-          <Route path="/profile" element={
-          <Protected redirectTo="/login">
-            <Profile />
-          </Protected>}/>
-            
-          <Route path="add-location" element={  
-          <Protected redirectTo="/login">
-            <AddLocation /> 
-          </Protected>}/>
-          
-      </Routes>
-      <Outlet/>
-      {/* {user !== undefined && 
+          <Route
+            path="add-location"
+            element={
+              <Protected redirectTo="/login">
+                <AddLocation />
+              </Protected>
+            }
+          />
+          <Route
+            path="locations"
+            element={
+              <Protected redirectTo="/login">
+                <MyLocations />
+              </Protected>
+            }
+          />
+        </Routes>
+        <Outlet />
+        {/* {user !== undefined && 
         <UserMenu/>
       } */}
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
