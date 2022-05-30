@@ -1,0 +1,16 @@
+.map-component {
+  position: relative;
+  height: 85%;
+  width: 100vw;
+
+  .inner {
+    height: 300px;
+    width: 100%;
+    background-color: #fff;
+  }
+}
+
+.map-container {
+  width: 100vw;
+  height: 85vh;
+}
