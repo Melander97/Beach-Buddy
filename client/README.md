@@ -62,9 +62,7 @@ $ npm install here to install any requierd depencendies
 
 Locally the server runs on http://localhost:4000/ with the installation above.
 
-Create a account for Mongo DB and set up a new connection with your URI
-Connect with your URI
-A database will have to be created in Mongo DB.
+Create a account for Mongo DB and set up a new connection with your URI, make sure to change this in the config folder and in the db.js file, on line 6 you can change the URI to your own and make sure that you add two variables in the .env file to USERNAME and PASSWORD. Under the header "Environment Variables" you can simply copy the text and paste it in the .env file. The fill in your own USERNAME and PASSWORD. In your URI link you have to include your variables like this "${process.env.USERNAME}" and "${process.env.PASSWORD}". We run our backend on PORT 4000 but if you use that port for another project you can simply use a port that you have free, just make sure to include this in the .env file.
 
 
 ## API Reference
@@ -79,7 +77,7 @@ When a user logs in they'll be provided with a token which will be needed to see
 
 A token has to be provided in order to do these tasks.
 
-#### Location routes
+## Location routes:
 
 
 | Method | URI     | Description                |
@@ -92,7 +90,7 @@ A token has to be provided in order to do these tasks.
 
 
 
-#### User routes
+## User routes
 
 
 | Method | URI     | Description                |
@@ -126,7 +124,7 @@ To run this project, you will need to add the following environment variables to
 
 `API_KEY`
 
-`PORT = 4000`
+`PORT = ''`
 
 `USERNAME = ''`
 
