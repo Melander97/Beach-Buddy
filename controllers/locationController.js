@@ -196,3 +196,6 @@ exports.getLocationById = async (req, res) => {
 };
 
 //Get location by id end
+
+
+
