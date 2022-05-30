@@ -3,7 +3,19 @@
     background-image:url("https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg");
     height: 90%;
 
+    @media screen and (min-width: 768px) {
+        height: 90vh;
+      }
+      @media screen and (max-width: 768px) {
+        height: 85vh;
+      }
+      .addLocation {
+        @media screen and (max-width: 768px) {
+          width: 90%;
+          position: relative;
+          top: -10px;
+        }
+      }
 }
 
 
-    
