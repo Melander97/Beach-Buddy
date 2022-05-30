@@ -13,12 +13,12 @@ const AddLocationModal = () => {
       <form className=" addLocation bg-[#EDC891] w-80 h-auto rounded-lg pt-8 pb-8 px-6 flex flex-col items-center shadow-xl mb-4 md:flex md:flex-wrap md:justify-between">
         <div>
 
-        <label
+        <h3
             htmlFor="title"
             className="text-lg font-bold text-gray-900 block mb-2 dark:text-black-300 py-1 text-center"
           >
-            Lägg till en ny strand
-          </label>
+            Lägg till en ny plats
+          </h3>
 
           <label
             htmlFor="title"
@@ -32,8 +32,8 @@ const AddLocationModal = () => {
             id="title"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-gray-100 transition mb-4 "
-            // placeholder="Namn"
+            className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-gray-100 transition mb-4 p-2"
+            placeholder="Namn"
             required=""
           />
         </div>
@@ -53,8 +53,8 @@ const AddLocationModal = () => {
             id="adress"
             onChange={(e) => setAdress(e.target.value)}
             value={adress}
-            className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4"
-            // placeholder="Plats"
+            className="w-full h-10 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-4  p-2"
+            placeholder="T.ex. Klippan vid vattnet"
             required=""
           />
         </div>
@@ -72,13 +72,14 @@ const AddLocationModal = () => {
             id="direction"
             onChange={(e) => setDirection(e.target.value)}
             value={directions}
-            className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4"
-            // placeholder="Vägbeskrivning"
+            className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4 p-2"
+            placeholder="Ta höger..."
             required=""
           />
         </div>
-
-              <button className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">Lägg till plats</button>
+              <button 
+              type="submit"
+              className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4 p-2">Lägg till plats</button>
 
       </form>
       {/* </div> */}

@@ -12,6 +12,7 @@
       }
       .addLocation {
         @media screen and (max-width: 768px) {
+          max-width: 90vh;
           position: relative;
           top: -10px;
         }
