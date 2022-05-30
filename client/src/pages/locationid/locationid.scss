@@ -1,7 +1,5 @@
-
-
-.modalWrapper {
-  min-height: 100vh;
+/* .modalWrapper {
+  // min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -21,7 +19,8 @@
 .left {
   width: 60%;
   height: 700px;
-  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073") no-repeat (center / cover);
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073")
+    no-repeat (center / cover);
   border-radius: 8px;
 }
 
@@ -48,7 +47,6 @@
     font-weight: 500;
     line-height: 25px;
   }
-  
 }
 
 .fa-star {
@@ -96,3 +94,4 @@
     margin-top: -100px;
   }
 }
+ */

@@ -57,8 +57,8 @@ function App() {
         <UserMenu/>
       } */}
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
-        <Menu />
       </div>
+      <Menu />
     </div>
   );
 }

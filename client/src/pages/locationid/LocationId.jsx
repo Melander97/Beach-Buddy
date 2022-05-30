@@ -20,10 +20,9 @@ const LocationId = () => {
 
   console.log(beach);
   return (
-    <div className="pageWrapper">
-      {/* Component here */}
+
       <LocationModal beach={beach} />
-    </div>
+
   );
 };
 
