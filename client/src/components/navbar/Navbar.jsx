@@ -1,40 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { user$ } from '../../services/authService';
+import { useUser } from  '../context/UserContext'
+import {contextUser$} from '../context/UserContext'
 
 import './navbar.scss';
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  // const [hideRegister, sethideRegister] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const user = useUser();
 
   useEffect(() => {
-     
-      const data = localStorage.getItem("user");
-      //here user has time to get undefined 
-      console.log("user", user)
-      let parsedData = JSON.parse(data);
-      // if (data && data.includes("true")) 
-      if((user === undefined || user.isLoggedIn === false)&& user$._value === undefined) 
-      {
-        // setIsLoggedIn(true);
-        // console.log("JAA DET FUNKAR?");
-      }
+    contextUser$.subscribe((data) =>{
+      console.log(data)
+      setIsLoggedIn(data)
 
-      if(user !== undefined){
+    })
 
-        localStorage.setItem('user', JSON.stringify(user));
-
-      }
-
-    return () => {
-      setIsLoggedIn(true);
-      console.log("logged in");
-
-    };
   }, []);
+
+  useEffect(() =>{
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   const handleToggle = () => {
     setIsNavOpen((previsNavOpen) => !previsNavOpen);
@@ -63,43 +50,46 @@ const Navbar = () => {
             Home
           </NavLink>
 
-          {isLoggedIn && (
-            <>
-              <NavLink
-                to="register"
-                className="link-wrapper__link"
-                onClick={handleToggle}
-              >
-                Become a member
-              </NavLink>
+          {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? 
 
-              <NavLink
+            <>
+            <NavLink
+              to="register"
+              className="link-wrapper__link"
+              onClick={handleToggle}
+            >
+              Become a member
+            </NavLink>
+          
+        
+          <NavLink
                 to="login"
                 className="link-wrapper__link"
                 onClick={handleToggle}
               >
                 Login
+
               </NavLink>
-            </>
-          )}
-
-          <NavLink
-            to="profile"
-            className="link-wrapper__link"
-            onClick={handleToggle}
-          >
-            Profile
-          </NavLink>
-
-          {isLoggedIn && (
-            <NavLink
+              </>
+              :
+              <>
+              <NavLink
+              to="profile"
+              className="link-wrapper__link"
+              onClick={handleToggle}
+            >
+              Profile
+            </NavLink> 
+           
+              <NavLink
               to="logout"
               className="link-wrapper__link"
               onClick={handleToggle}
             >
               Logout
             </NavLink>
-          )}
+            </>
+        }
         </div>
       </div>
     </nav>
