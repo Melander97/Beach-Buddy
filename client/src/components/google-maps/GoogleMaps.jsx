@@ -149,7 +149,10 @@ const GoogleMaps = () => {
           center={center}
           zoom={8}
           mapContainerClassName="map-container"
-          onLoad={(map) => setMap(map)}
+          onLoad={(map) => {
+            setMap(map);
+            console.log("map loaded");
+          }}
           options={{
             zoomControl: false,
             streetViewControl: false,
@@ -172,6 +175,9 @@ const GoogleMaps = () => {
                   <Marker
                     visible={true}
                     key={index}
+                    onLoad={() => {
+                      console.log("marker loaded");
+                    }}
                     // icon={require("../../assets/images/swim-blue.png")}
                     icon={
                       index % 2 === 0

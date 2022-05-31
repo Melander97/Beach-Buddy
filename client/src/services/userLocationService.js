@@ -12,6 +12,7 @@ const getAllLocations = async () => {
   const res = await axios.get(userLocationURL, config);
 
   if (res.data.success) {
+    // console.log(res.data);
     userLocations$.next(res.data.data);
   }
 };
