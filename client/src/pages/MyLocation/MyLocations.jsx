@@ -78,7 +78,7 @@ const MyLocations = () => {
             fullscreenControl: false,
           }}
         >
-          {userMap &&
+          {/* {userMap &&
             userLocations.map((location, index) => (
               <Marker
                 visible={true}
@@ -99,9 +99,9 @@ const MyLocations = () => {
                   lng: location.coordinates[1],
                 }}
               ></Marker>
-            ))}
+            ))} */}
 
-          {/* <MarkerClusterer
+          <MarkerClusterer
             // imagePath={
             //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
             // }
@@ -112,41 +112,38 @@ const MyLocations = () => {
               console.log(e);
             }}
           >
-            {
-              (clusterer) =>
-                userLocations?.map((location, index) => (
-                  <Marker
-                    visible={true}
-                    key={index}
-                    onLoad={() => {
-                      console.log("marker rendered");
-                    }}
-                    // icon={require("../../assets/images/google-maps/swim-blue.png")}
-                    icon={
-                      index % 2 === 0
-                        ? require("../../assets/images/google-maps/swim-orange.png")
-                        : require("../../assets/images/google-maps/swim-blue.png")
-                    }
-                    clusterer={clusterer}
-                    // position={{
-                    //   lat: 59.3340481,
-                    //   lng: 18.0359596,
-                    // }}
-                    position={{
-                      lat: location.coordinates[0],
-                      lng: location.coordinates[1],
-                    }}
-                    onClick={(mark, e) => {
-                      //   markerClickHandle(marker);
-                      //   setActiveMarker(mark);
-                      //   setSelected(marker);
-                    }}
-                  ></Marker>
-                ))
-
-
+            {(clusterer) =>
+              userLocations?.map((location, index) => (
+                <Marker
+                  // visible={true}
+                  key={index}
+                  onLoad={() => {
+                    console.log("marker rendered");
+                  }}
+                  // icon={require("../../assets/images/google-maps/swim-blue.png")}
+                  icon={
+                    index % 2 === 0
+                      ? require("../../assets/images/google-maps/swim-orange.png")
+                      : require("../../assets/images/google-maps/swim-blue.png")
+                  }
+                  clusterer={clusterer}
+                  // position={{
+                  //   lat: 59.3340481,
+                  //   lng: 18.0359596,
+                  // }}
+                  position={{
+                    lat: location.coordinates[0],
+                    lng: location.coordinates[1],
+                  }}
+                  onClick={(mark, e) => {
+                    //   markerClickHandle(marker);
+                    //   setActiveMarker(mark);
+                    //   setSelected(marker);
+                  }}
+                ></Marker>
+              ))
             }
-          </MarkerClusterer> */}
+          </MarkerClusterer>
         </GoogleMap>
       </div>
     );

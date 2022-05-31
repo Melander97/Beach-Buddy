@@ -19,7 +19,7 @@ const UpdateLocation = ({ location }) => {
           for="tab-single-two"
         >
           <i className="icon--size icon--space2 fas fa-swimmer"></i>{" "}
-          {location.title}
+          {location && location.title}
         </label>
         <div className="tab-content overflow-hidden border-l-2 leading-normal">
           <button className="button-31"> Se plats</button>
