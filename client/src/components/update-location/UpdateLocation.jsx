@@ -1,7 +1,7 @@
 import React from "react";
 
 const UpdateLocation = ({ location }) => {
-  console.log(location._id);
+  // console.log(location._id);
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">

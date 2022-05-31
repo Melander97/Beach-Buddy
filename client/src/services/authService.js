@@ -43,7 +43,7 @@ const loginFunction = async (loginData) => {
 
 const getUser = async (userId) => {
   const res = await axios.get(`${getUserById}${userId}`, config);
-  // console.log(res);
+  console.log(res);
   userLocations$.next(res);
 };
 
