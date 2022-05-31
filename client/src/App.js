@@ -1,6 +1,6 @@
 import Navbar from "./components/navbar/Navbar";
 import { Outlet } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Switch} from 'react-router-dom';
 import Protected from './components/protected/protected'
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -23,10 +23,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
           <Route path="/addlocation" element={<AddLocation />} />
+
+
           <Route
             path="/profile"
             element={
