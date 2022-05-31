@@ -1,95 +1,47 @@
 
 @import '../../assets/scss/variables.scss';
 
-/* Tab content - closed */
-.tab-content {
-    background-color: $Account--bg;
-    max-height: 0;
-    -webkit-transition: max-height .35s;
-    -o-transition: max-height .35s;
-    transition: max-height .35s;
-    align-items: center;
-    text-align: center;
-    border: 0;
+.accordion {
+	width: 100%;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	background-color: rgb(37, 185, 62);
+	.accordion-header {
+		background-color: rgb(37, 185, 62);	
+	}
 
-    .profile__input {
-        width: 90% !important;
-        margin: auto !important;
-        background-color: rgb(204, 204, 204) !important;
-        border: 1px solid #8a8a8a;
-        margin-top: 1em !important;
-    }
-}
+	.accordion-item .accordion-button {
+		background-color: rgb(80, 170, 95);
+		color: black;
+        width: 100%;
 
-    /* :checked - resize to full height */
-    .tab input:checked ~ .tab-content {
-    max-height: 100vh;
-    background-color: $Account--bg;
-    padding-bottom: 1em;
-    align-items: center;
-    text-align: center;
-    }
+        .accordion-item:first-of-type {
+         width: 100%;
+        }
 
+		.accordion-button:not(.collapsed) {
+			color: black !important;
+			background-color: #fff;
+			-webkit-box-shadow: inset 0 -1px 0 #e5e7eb;
+			box-shadow: inset 0 -1px 0 #e5e7eb;
+		}
+	}
 
-    /* Label formatting when open */
-    .tab input:checked + label{
+	.accordion-body {
+		background-color: rgb(183, 218, 182);
+		text-align: center;
 
-        background-color: $Account--bg;
-    }
+        .profile__input {
+            width: 90% !important;
+            margin: auto !important;
+            background-color: rgb(238, 238, 238) !important;
+            border: 1px solid #8a8a8a !important;
+            margin-top: 1em !important;
+            text-align: center;
+        }
 
-
-    /* Icon */
-    .tab label::after {
-    float:right;
-    right: 0;
-    top: 0;
-    display: block;
-    width: 1.5em;
-    height: 1.5em;
-    line-height: 1.5;
-    font-size: 1.25rem;
-    text-align: center;
-    -webkit-transition: all .35s;
-    -o-transition: all .35s;
-    transition: all .35s;
-    }
-    /* Icon formatting - closed */
-    .tab input[type=checkbox] + label::after {
-    content: "+";
-    font-weight:bold; /*.font-bold*/
-    border-width: 1px; /*.border*/
-    border-radius: 9999px; /*.rounded-full */
-    
-    }
-    .tab input[type=radio] + label::after {
-    content: "\25BE";
-    font-weight:bold; /*.font-bold*/
-    border-width: 1px; /*.border*/
-    border-radius: 9999px; /*.rounded-full */
-    
-    }
-    /* Icon formatting - open */
-    .tab input[type=checkbox]:checked + label::after {
-    transform: rotate(315deg);
-    
-    color: #f8fafc; /*.text-grey-lightest*/
-    }
-    .tab input[type=radio]:checked + label::after {
-    transform: rotateX(180deg);
-    
-    color: #f8fafc; /*.text-grey-lightest*/
-    }
-
-.tab input:checked + label {
-    
-    background-color: $Account--body;
-    color: #000000;
-}
-
-
-
-/* PROFILE BUTTON */
-
+        /* PROFILE BUTTON */
 .button-31 {
   display: flex;
   margin: auto;
@@ -118,45 +70,8 @@
 .button-31:focus {
   opacity: .75;
 }
-
-.account__icons {
-    display: block;
-    align-items: center;
-    color: red;
+	}
 }
-
-
-.footer__menu {
-    display: flex;
-    width: 100%;
-    height: 10vh;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: $Account--bg;
-    margin: auto;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    z-index: 0;
-}
-
-.icon--size {
-    font-size: 1.6em;
-    
-}
-
-.icon--space {
-    margin: 8.4vw;
-    
-}
-
-.icon--space2 {
-    margin-right: 1vw;
-    
-}
-
 
 
 
