@@ -14,6 +14,7 @@ import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
 
+
 function App() {
   // const { user } = useUser();
   let user = localStorage.getItem("user");
@@ -48,6 +49,14 @@ function App() {
             element={
               <Protected redirectTo="/login">
                 <MyLocations />
+              </Protected>
+            }
+          />
+          <Route
+            path="update-location"
+            element={
+              <Protected redirectTo="/login">
+                <UpdateLocation />
               </Protected>
             }
           />

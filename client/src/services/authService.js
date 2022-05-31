@@ -3,8 +3,16 @@ import { BehaviorSubject } from "rxjs";
 
 const API_URL = "http://localhost:4000/api/users";
 const API_URL_LOGIN = "http://localhost:4000/api/users/login";
+<<<<<<< HEAD
 
 export const user$ = new BehaviorSubject();
+=======
+const getUserById = "http://localhost:4000/api/users/";
+
+export const user$ = new BehaviorSubject();
+export const userLocations$ = new BehaviorSubject();
+
+>>>>>>> development
 const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
@@ -38,8 +46,15 @@ const loginFunction = async (loginData) => {
   }
 };
 
+const getUser = async (userId) => {
+  const res = await axios.get(`${getUserById}${userId}`, config);
+  // console.log(res);
+  userLocations$.next(res);
+};
+
 const authService = {
   registerFunction,
   loginFunction,
+  getUser,
 };
 export default authService;
