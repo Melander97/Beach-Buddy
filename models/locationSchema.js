@@ -9,6 +9,10 @@ const LocationSchema = new mongoose.Schema({
       ref: 'User', */
     required: true,
   },
+  title: {
+    type: String,
+    required: [true, "Please add a title"]
+  },
   adress: {
     type: String,
     required: [true, "Please add an adress"],
