@@ -11,7 +11,7 @@ const LocationSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: [true, "Please add a title"],
+    required: [true, "Please add a title"]
   },
   adress: {
     type: String,

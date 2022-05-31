@@ -28,9 +28,9 @@ exports.addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
       userId: req.body.userId,
-      title: req.body.title,
       adress: req.body.adress,
       description: req.body.description,
+      title: req.body.title,
       coordinates: req.body.coordinates,
     });
     console.log(location);
