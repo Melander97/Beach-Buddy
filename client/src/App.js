@@ -24,6 +24,7 @@ function App() {
       <div className="pageWrapper">
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/location/:id" element={<LocationId />} />

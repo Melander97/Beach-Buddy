@@ -1,9 +1,11 @@
 // import {createContext} from 'react'
-import React, {useState, createContext, useContext, useEffect} from 'react';
+import React, {useState, createContext, useContext, useEffect,} from 'react';
+import { BehaviorSubject } from "rxjs";
 
 import { user$ } from '../../services/authService';
 
 export const UserContext = createContext();
+
 
 // export const UserUpdateContext = createContext();
 
@@ -14,10 +16,14 @@ export const UserContext = createContext();
     /* export const useUserUpdate = () => {
         return useContext(UserUpdateContext);
     } */
+    export const contextUser$ = new BehaviorSubject();
+
 
 const UserProvider = ({children})  => {
   
     const [user, setUser] = useState ();
+    
+
     // const [user2, setUser2] = useState ();
     useEffect(() =>{
         
@@ -27,11 +33,19 @@ const UserProvider = ({children})  => {
                 user$.subscribe(data => {
                      if(data) {
                         setUser({
+
                             name: data.data.name,
                             id: data.data.id,
                             email: data.data.email,
                             isLoggedIn: true,
                         });
+                        contextUser$.next({
+
+                            name: data.data.name,
+                            id: data.data.id,
+                            email: data.data.email,
+                            isLoggedIn: true,
+                        })
                      }
                 })
             }
@@ -40,10 +54,16 @@ const UserProvider = ({children})  => {
             let parsedData = JSON.parse(data);
             if(data !== null){ 
                 setUser(parsedData)
-            
+                contextUser$.next(parsedData)
+                console.log(contextUser$)
+
             } else {
                 setUser({isLoggedIn: false})
+                contextUser$.next({isLoggedIn: false})
+                console.log(contextUser$)
+
             }
+            
         
     },[])
     
