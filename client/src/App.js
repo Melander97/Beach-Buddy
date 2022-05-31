@@ -13,7 +13,7 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
-import UpdateLocationModal from "./components/updatelocation-modal/UpdateLocationModal";
+
 
 function App() {
   // const { user } = useUser();
@@ -27,7 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
-          <Route path="/addlocation" element={<AddLocation />} />
+
           <Route
             path="/profile"
             element={
@@ -58,7 +58,7 @@ function App() {
             path="update-location"
             element={
               <Protected redirectTo="/login">
-                <UpdateLocationModal />
+                <UpdateLocation />
               </Protected>
             }
           />
