@@ -54,5 +54,6 @@ const authService = {
   registerFunction,
   loginFunction,
   getUser,
+  
 };
 export default authService;

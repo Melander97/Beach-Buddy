@@ -63,11 +63,12 @@ exports.addLocation = async (req, res, next) => {
 // Delete location
 
 exports.deleteLocation = async (req, res) => {
-  const location = await Location.findById(req.body.location_id);
-  console.log(req.body.location_id);
-
+  const location = await Location.findById(req.params.id);
+  // console.log(req.params.id);
+  console.log("location", location);
   const user = await User.findById(req.body.user_id);
-  console.log(req.body.user_id);
+  console.log("user", user);
+  // console.log(req.body.user_id);
 
   try {
     if (!location) {
@@ -88,7 +89,7 @@ exports.deleteLocation = async (req, res) => {
     }
 
     // Make sure the logged in user matches the user with the set location
-    console.log(`location user${location.userId} user if ${user._id}`);
+    /* console.log(`location user${location.userId} user if ${user._id}`); */
     if (location.userId.toString() !== user._id.toString()) {
       return res.status(401).json({
         success: false,
@@ -97,7 +98,8 @@ exports.deleteLocation = async (req, res) => {
       });
     }
 
-    await location.remove();
+    // await location.remove();
+    await Location.deleteOne({ _id: location });
 
     res.status(200).json({
       success: true,

@@ -28,6 +28,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
 
+
           <Route
             path="/profile"
             element={
