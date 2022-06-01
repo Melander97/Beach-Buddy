@@ -1,10 +1,16 @@
 import React from 'react'
-import LoginForm from '../../components/login-form/LoginForm'
+import "../../styles.css"
+import "../../media.css"
+import Login from '../../components/login-form/LoginForm'
 
-const Login = () => {
+const app = () => {
   return (
+<div className="pageWrapper">
 
-  <LoginForm />
+	{/* Component here */}
+
+</div>
   )
 }
+
 export default Login;

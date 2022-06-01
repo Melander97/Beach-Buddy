@@ -2,38 +2,42 @@
 const mongoose = require("mongoose");
 
 //register
-const LocationSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    /* type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', */
-    required: true,
-  },
-  title: {
-    type: String,
-    required: [true, "Please add a title"]
-  },
-  adress: {
-    type: String,
-    required: [true, "Please add an adress"],
-  },
+const LocationSchema = new mongoose.Schema(
+  {
+    locationId: {
+      type: String,
+      required: [true, "Please add the name of the location"],
+      unique: true,
+      trim: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    adress: {
+      type: String,
+      required: [true, 'Please add an adress']
+    },
 
-  coordinates: {
-    type: Array,
-    required: true,
-  },
+    coordinates: {
+      lat: '',
+      long: ''
+    },
 
-  formattedAdress: String,
-
-  description: {
-    type: String,
-    required: [true, "Please add a short description"],
-  },
+    formattedAdress: String,
+    
+    description: {
+      type: String,
+      required: [true, "Please add a short description"],
+    },
 
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
+
 });
 
 module.exports = mongoose.model("Location", LocationSchema);

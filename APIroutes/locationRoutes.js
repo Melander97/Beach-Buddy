@@ -11,8 +11,8 @@ const {
 
 router.get("/getLocation", protect, getLocation);
 router.post("/addLocation", protect, addLocation);
-router.patch("/updateLocation", protect, updateLocation);
 router.post("/delete", protect, deleteLocation);
+router.put("/update", protect, updateLocation);
 
 router.get("/getLocationById", protect, getLocationById);
 

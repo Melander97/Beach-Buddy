@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../variables';
 .nav {
     position: sticky;
     top: 0;
@@ -20,7 +20,7 @@
     
         .logo {
             display: inline-block;
-            height: 2.5rem;
+            width: 15vw;
             &:hover {
                 cursor: pointer;
             }
@@ -83,7 +83,6 @@
 
     .dropdown {
         position: absolute;
-        text-align: center;
         left: 0;
         top: -100vh;
         display: flex;

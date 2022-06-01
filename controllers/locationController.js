@@ -15,10 +15,10 @@ exports.getLocation = async (req, res, next) => {
       data: locations,
     });
   } catch (err) {
-    return res.status(500).json({
-      success: false,
-      message: "Server error: " + err,
-    });
+    console.error(err);
+    {
+      res.status(500).json({ error: "Server error" });
+    }
   }
 };
 //end of get locations
@@ -26,38 +26,20 @@ exports.getLocation = async (req, res, next) => {
 // Add location
 exports.addLocation = async (req, res, next) => {
   try {
-    const location = await new Location({
-      userId: req.body.userId,
-      adress: req.body.adress,
-      description: req.body.description,
-      title: req.body.title,
-      coordinates: req.body.coordinates,
-    });
-    console.log(location);
-    location.save().then((location) => {
-      User.updateOne(
-        { _id: req.user.id },
-        { $push: { locations: location._id } },
-        () => {
-          res.json(location);
-        }
-      );
+    const location = await Location.create(req.body);
+
+    return res.status(201).json({
+      success: true,
+      data: location,
     });
   } catch (err) {
     console.error(err);
     if (err.code === 11000) {
-      return res.status(400).json({
-        success: false,
-        error: "This location already exists",
-      });
+      return res.status(400).json({ error: "This location already exists" });
     }
-    return res.status(500).json({
-      success: false,
-      error: "Server error",
-    });
+    res.status(500).json({ error: "Server error" });
   }
 };
-
 //end of add locations
 
 // Delete location
@@ -149,13 +131,10 @@ exports.updateLocation = async (req, res) => {
         data: null,
       });
     }
-    /* const updatedLocation = await Location.updateOne({_id: location._id.toString()}, req.body);
-    JSON.stringify(updatedLocation); */
-    let updatedLocation = await Location.findByIdAndUpdate(
-      req.body.location_id,
-      req.body
+
+    const updatedLocation = await Location.findByIdAndUpdate(
+      req.body.location_id
     );
-    updatedLocation = await Location.findById(req.body.location_id);
     console.log(`data ${updatedLocation}`);
 
     res.status(200).json({
