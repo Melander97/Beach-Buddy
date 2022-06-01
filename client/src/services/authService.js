@@ -47,6 +47,9 @@ const getUser = async (userId) => {
   userLocations$.next(res);
 };
 
+
+
+
 const authService = {
   registerFunction,
   loginFunction,
