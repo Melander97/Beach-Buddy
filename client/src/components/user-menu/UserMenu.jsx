@@ -17,9 +17,9 @@ const UserMenu = () => {
 
 
       <Link to="/add-location"> <i className="icon--space fa-solid fa-circle-plus fa-2xl" aria-hidden="true"></i> </Link>
+    
+      {/* <button > Log Out </button> */}
 
-      <a href="/sign-out"> <i className="icon--space fa-solid fa-right-from-bracket fa-2xl" target="home" aria-hidden="true"></i></a>
-      <Button>Log out</Button>
      </section>
 
   )
