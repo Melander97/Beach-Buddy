@@ -14,6 +14,6 @@ router.post("/addLocation", protect, addLocation);
 router.patch("/updateLocation", protect, updateLocation);
 router.post("/delete", protect, deleteLocation);
 
-router.get("/getLocationById", protect, getLocationById);
+router.get("/getLocation/:id", protect, getLocationById);
 
 module.exports = router;

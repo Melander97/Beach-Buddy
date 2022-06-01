@@ -18,18 +18,17 @@ import { map } from "rxjs";
 const libraries = ["places"];
 const MyLocations = () => {
   //Storing map
-  //map.current to user ref
   const [userMap, setUserMap] = useState(null);
-  // const map = useRef(null);
+  //Users current geo location
   const [myLocation, setMyLocation] = useState();
+  //Array with all userLocations from backend
   const [userLocations, setUserLocations] = useState([]);
-
-  //check if there are locations collected
-  // const [isLocation, setIsLocation] = useState(false);
 
   //Changed when user clicks marker and makes MyLocation component visible
   const [selected, setSelected] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState();
 
+  //Used to center the map
   const center = useMemo(() => myLocation, [myLocation]);
   // const userMap = useMemo(() => map, [map]);
 
@@ -53,12 +52,19 @@ const MyLocations = () => {
     // googleMapsApiKey: "AIzaSyC01RQkQ0NYA_8B8eRbDLf8WfLOlubH-GA",
     libraries: libraries,
   });
+
+  const markerClickHandle = (location) => {
+    console.log(location);
+    setSelectedLocation(location);
+  };
+
+  const viewClickHandler = () => {};
   const renderUserMap = () => {
     return (
       <div class="map-component">
         {/* w-full h-5/6 flex items-center justify-center my-3 */}
         {/* {myLocation && <p>{myLocation.lat}</p>} */}
-        <MyLocation />
+        <MyLocation selectedLocation={selectedLocation} />
 
         <GoogleMap
           center={center}
@@ -136,7 +142,7 @@ const MyLocations = () => {
                     lng: location.coordinates[1],
                   }}
                   onClick={(mark, e) => {
-                    console.log(mark);
+                    markerClickHandle(location);
                     //   markerClickHandle(marker);
                     //   setActiveMarker(mark);
                     //   setSelected(marker);
