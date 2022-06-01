@@ -8,22 +8,20 @@ const LocationId = () => {
   const [beach, setBeach] = useState();
 
   let { id } = useParams();
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
-    //anropa getBeach med nötkod
-    // console.log(id);
-    getBeachInfo(id);
+    if (id.startsWith("SE")) {
+      getBeachInfo(id);
+    } else {
+      console.log("something else");
+    }
     locationDetails$.subscribe((data) => {
       setBeach(data);
     });
   }, []);
 
   console.log(beach);
-  return (
-
-      <LocationModal beach={beach} />
-
-  );
+  return <LocationModal beach={beach} />;
 };
 
 export default LocationId;

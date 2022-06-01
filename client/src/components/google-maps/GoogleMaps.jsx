@@ -148,7 +148,7 @@ const GoogleMaps = () => {
         <GoogleMap
           center={center}
           zoom={8}
-          mapContainerClassName="map-container"
+          mapContainerClassName="home-map-container"
           onLoad={(map) => {
             setMap(map);
             console.log("map loaded");

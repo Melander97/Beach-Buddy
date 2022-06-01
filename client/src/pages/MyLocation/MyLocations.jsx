@@ -136,6 +136,7 @@ const MyLocations = () => {
                     lng: location.coordinates[1],
                   }}
                   onClick={(mark, e) => {
+                    console.log(mark);
                     //   markerClickHandle(marker);
                     //   setActiveMarker(mark);
                     //   setSelected(marker);
