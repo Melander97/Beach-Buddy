@@ -1,6 +1,7 @@
 // Routes for users
 
 const express = require("express");
+const { route } = require("express/lib/application");
 const router = express.Router();
 const {
   registerUser,
@@ -8,14 +9,17 @@ const {
   getUserById,
   deleteUserById,
   logoutUser,
+  updateUser
 
 } = require("../controllers/userController");
 const {protect} = require('../middlewares/authMiddleware')
 
 router.post('/', registerUser);
 router.post('/login',loginUser);
+router.get('/logout', protect, logoutUser);
 router.get("/:id", protect, getUserById);
 router.delete("/delete/:id", protect, deleteUserById);
-router.get('/logout', protect, logoutUser);
+router.patch('/update/:id', protect, updateUser);
+
 
 module.exports = router;

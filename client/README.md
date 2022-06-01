@@ -1,70 +1,135 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  BEACH-BUDDY 
 
-## Available Scripts
+Beach-buddy is a website to search and share your favourite beaches.
 
-In the project directory, you can run:
+You are also able to save your favourite beach so you wont forget where to find them. 
 
-### `npm start`
+#  Tech used 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The product is developed using NODE.JS for the backend and 
+- JS
+- REACT
+- HTML 
+- SASS
+- TAILWIND 
+- Mongo DB
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Havs- och vattenmyndighetens API has been used to get location of EU approved beaches and it`s data around Sweden.
 
-### `npm test`
+#  Reason for the app and code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We wanted to create a product where you as a user easily can find beach locations near where you are at the moment but also if you plan to go for maybe a family vacation across the country and have no idea where to take a swim. 
 
-### `npm run build`
+As we also wish to create a safe app for our users we choose to use the API from Havs- och vattenmyndighetens as they have included all the EU approved beaches and we will also demonstrate that for our user in the app. So what does it mean that a beach is EU approved? It simply means that several samples of the water has been testead for different types of bacteria that could be harmful for humans. And as long as a beach location and its water meets these conditions they will be EU apporoved.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We as people have a lot of things in our heads these days so it is easy to forget things and places, so we also wanted to create a function so that our registered users also could save their favoruite beach spots in their profile page. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To create a sense of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+To use this application you will need to have Node.js, NPM, Git installd and we recomend VS code but any text editor will work.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To start, clone the repo from Github to your local machine:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ #### Open your terminal and then type:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+$ git clone {the url to the GitHub repo} 
+```
+This clones the repo.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ #### cd into the new folder and type:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+ $ npm install. This installs the required dependencies.
+```
+#### To run the React project:
+```bash
+$ npm start in the client folder.
+```
 
-### Code Splitting
+#### In the root folder type:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+$ npm start to start the server. 
+Also type:
+$ npm install here to install any requierd depencendies
+```
 
-### Analyzing the Bundle Size
+Locally the server runs on http://localhost:4000/ with the installation above.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Create a account for Mongo DB and set up a new connection with your URI, make sure to change this in the config folder and in the db.js file, on line 6 you can change the URI to your own and make sure that you add two variables in the .env file to USERNAME and PASSWORD. Under the header "Environment Variables" you can simply copy the text and paste it in the .env file. The fill in your own USERNAME and PASSWORD. In your URI link you have to include your variables like this "${process.env.USERNAME}" and "${process.env.PASSWORD}". We run our backend on PORT 4000 but if you use that port for another project you can simply use a port that you have free, just make sure to include this in the .env file.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## API Reference
 
-### Advanced Configuration
+Authentication & Authorization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+For a user to be able to create a list and save beaches and also to see other users beaches they will have to register and then log in.
 
-### Deployment
+For non-registred users, only the data from Havs- bad myndigehtens API will be availabale.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+When a user logs in they'll be provided with a token which will be needed to see user profil and the shared map. Also to be able to sucessfully create, read, and delete lists. 
 
-### `npm run build` fails to minify
+A token has to be provided in order to do these tasks.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Location routes:
+
+
+| Method | URI     | Description                |
+| :-------- | :------- | :------------------------- |
+| `POST` | `api/locations/addLocation` |  protect, addLocation |
+| `GET` | `api/locations/getLocation` | protect, getLocation|
+| `POST` | `api/locations/delete` | protect, deleteLocation |
+| `PUT` | `api/locations/update` | protect, updateLocation |
+| `GET` | `api/locations/getLocationById` | protect, getLocationById |
+
+
+
+## User routes
+
+
+| Method | URI     | Description                |
+| :-------- | :------- | :------------------------- |
+| `POST` | `api/` |  registerUser |
+| `GET` | `api/login` | loginUser|
+| `POST` | `api/:id` | protect, getUserById |
+| `PUT` | `api/delete/:id` | protect, deleteUserById |
+| `GET` | `api/logout` | protect, logoutUser |
+
+
+
+
+## Documentation
+
+<!-- [Documentation](https://linktodocumentation) -->
+
+https://www.figma.com/file/fGIQVq3HrhiiiwmtkICQgx/BeachBuddy?node-id=0%3A1
+
+https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
+
+
+## License
+
+[NO ONE CAN USE THIS IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY`
+
+`PORT = ''`
+
+`USERNAME = ''`
+
+`PASSWORD = ''`
+
+
+
+

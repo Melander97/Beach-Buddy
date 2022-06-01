@@ -1,0 +1,19 @@
+
+.updateLocation-component {
+  background-image: url("https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg");
+
+  @media screen and (min-width: 768px) {
+    height: 90vh;
+  }
+  @media screen and (max-width: 768px) {
+    height: 85vh;
+  }
+
+  .updateForm {
+    @media screen and (max-width: 768px) {
+      max-width: 90%;
+      position: relative;
+      top: -10px;
+    }
+  }
+}

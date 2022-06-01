@@ -1,0 +1,43 @@
+@import "variables";
+
+/* MOVE RESETTERS TO INDEX.JS OR APP.JS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html {
+  /*   min-height: 100%; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $Secondary;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  body {
+    height: 100%;
+
+    #root {
+      height: 100%;
+
+      .App {
+        position: relative;
+        height: 100%;
+        overflow-x: hidden;
+
+        .pageWrapper {
+          // height: 100%;
+        }
+      }
+    }
+  }
+}
+
+i {
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */
