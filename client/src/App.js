@@ -44,6 +44,14 @@ function App() {
               </Protected>
             }
           />
+          <Route
+            path="update-location"
+            element={
+              <Protected redirectTo="/login">
+                <UpdateLocation />
+              </Protected>
+            }
+          />
 
            <Route
             path="locations"
