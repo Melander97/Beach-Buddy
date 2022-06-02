@@ -9,17 +9,15 @@ const {
   getUserById,
   deleteUserById,
   logoutUser,
-  updateUser
-
+  updateUser,
 } = require("../controllers/userController");
-const {protect} = require('../middlewares/authMiddleware')
+const { protect } = require("../middlewares/authMiddleware");
 
-router.post('/', registerUser);
-router.post('/login',loginUser);
-router.get('/logout', protect, logoutUser);
-router.get("/:id", protect, getUserById);
+router.post("/", registerUser);
+router.post("/login", loginUser);
+router.get("/logout", protect, logoutUser);
 router.delete("/delete/:id", protect, deleteUserById);
-router.patch('/update/:id', protect, updateUser);
-
+router.patch("/update/:id", protect, updateUser);
+router.get("/:id", protect, getUserById);
 
 module.exports = router;
