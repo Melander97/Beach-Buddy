@@ -6,24 +6,29 @@ import {
   useLoadScript,
   Marker,
   MarkerClusterer,
+  InfoWindow,
 } from "@react-google-maps/api";
 import MyLocation from "../../components/my-location/MyLocation";
 import { coords$, getLocation } from "../../services/bad_havs_API";
 import locationService from "../../services/userLocationService";
 import { userLocations$ } from "../../services/userLocationService";
+import { Link } from "react-router-dom";
 
 const libraries = ["places"];
 const MyLocations = () => {
   const user = useUser();
   //Storing map
   const [userMap, setUserMap] = useState(null);
+  const [marker, setMarker] = useState([]);
+  //Sets state to clicked pinpoint marker. Is it needed?
+  const [activeMarker, setActiveMarker] = useState();
   //Users current geo location
   const [myLocation, setMyLocation] = useState();
   //Array with all userLocations from backend
   const [userLocations, setUserLocations] = useState([]);
 
   //Changed when user clicks marker and makes MyLocation component visible
-  // const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState();
 
   //Used to center the map
@@ -52,6 +57,12 @@ const MyLocations = () => {
   };
 
   // const viewClickHandler = () => {};
+  //Creates pinpoint on map
+  const setLocation = (e) => {
+    const currentMarker = [];
+    setMarker([e.latLng.toJSON(), ...currentMarker]);
+    // console.log(e.latLng.toJSON());
+  };
   const renderUserMap = () => {
     return (
       <div class="map-component">
@@ -71,6 +82,9 @@ const MyLocations = () => {
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+          }}
+          onClick={(e) => {
+            setLocation(e);
           }}
         >
           <MarkerClusterer
@@ -108,6 +122,47 @@ const MyLocations = () => {
               ))
             }
           </MarkerClusterer>
+
+          {marker.map((marker, index) => (
+            <Marker
+              key={index}
+              position={marker}
+              // eslint-disable-next-line no-undef
+              animation={google.maps.Animation.DROP}
+              onClick={(mark) => {
+                // console.log(marker);
+                setSelected(marker);
+                setActiveMarker(mark);
+                console.log(mark);
+              }}
+            ></Marker>
+          ))}
+
+          {selected ? (
+            <InfoWindow
+              // eslint-disable-next-line no-undef
+              options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
+              position={activeMarker.latLng.toJSON()}
+              onClick={(e) => {
+                console.log(marker);
+              }}
+              onCloseClick={() => {
+                setSelected(null);
+                console.log(marker);
+              }}
+            >
+              <>
+                <h1 className="info-window-header">Spara din egna favorit!</h1>
+                <Link
+                  className="info-window-link"
+                  to="/add-location"
+                  state={{ from: marker }}
+                >
+                  Lägg till plats
+                </Link>
+              </>
+            </InfoWindow>
+          ) : null}
         </GoogleMap>
       </div>
     );
