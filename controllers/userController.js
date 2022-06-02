@@ -84,7 +84,8 @@ const loginUser = async (req, res) => {
   //generate the jwt token on successful login
   try {
     const token = generateToken(user._id);
-    res.cookie("jwt", token, { httpOnly: true });
+    // res.cookie("jwt", token, { httpOnly: true });
+    res.cookie("jwt", token, { httpOnly: true, sameSite: 'none', secure: true });
     res.status(200).json({
       success: true,
       message: "Successfully logged in",
@@ -114,7 +115,7 @@ const getUserById = async (req, res) => {
       .populate("locations")
       .then((location) => {
         // console.log(location);
-        return res.status(200).json({ location: location });
+        return res.status(200).json({ user: location });
       })
       .catch((error) => console.log(error));
   } catch (error) {
@@ -160,40 +161,34 @@ const logoutUser = async (req, res) => {
   }
 };
 
-
-const updateUser = async (req, res ) => {
-
+const updateUser = async (req, res) => {
   try {
-        const id = req.params.id;
-        const updatedData = req.body;
-        const options = { new: true };
+    const id = req.params.id;
+    const updatedData = req.body;
+    const options = { new: true };
 
-        if(updatedData['password']) {
-           const salt = await bcrypt.genSalt();
-            updatedData['password'] = await bcrypt.hash(req.body.password, salt);
-        }
-        const result = await User.findByIdAndUpdate(
-            id, updatedData, options
-        );
-          
-        return res.status(200).json({
-          success: true,
-          message: "Sucessfully updated ",
-          data: {
-            name: result.name,
-            email: result.email,
-            password: result.password,
-          }
-        })
+    if (updatedData["password"]) {
+      const salt = await bcrypt.genSalt();
+      updatedData["password"] = await bcrypt.hash(req.body.password, salt);
     }
-    catch (error) {
-        res.status(400).json({ 
-        success: false,
-        message: "Account not updated " + error.message })
-    }
+    const result = await User.findByIdAndUpdate(id, updatedData, options);
 
-}
-
+    return res.status(200).json({
+      success: true,
+      message: "Sucessfully updated ",
+      data: {
+        name: result.name,
+        email: result.email,
+        password: result.password,
+      },
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Account not updated " + error.message,
+    });
+  }
+};
 
 module.exports = {
   registerUser,
@@ -201,5 +196,5 @@ module.exports = {
   getUserById,
   deleteUserById,
   logoutUser,
-  updateUser
+  updateUser,
 };

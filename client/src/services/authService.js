@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BehaviorSubject } from "rxjs";
 
-const API_URL = "http://localhost:4000/api/users";
+/* const API_URL = "http://localhost:4000/api/users";
 const API_URL_LOGIN = "http://localhost:4000/api/users/login";
 const getUserById = "http://localhost:4000/api/users/";
 /* const API_URL = "https://beach-buddy.herokuapp.com/api/users";
@@ -9,11 +9,14 @@ const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
 const getUserById = "https://beach-buddy.herokuapp.com/api/users/"; */
 
 export const user$ = new BehaviorSubject();
+export const userLocations$ = new BehaviorSubject();
 
 const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 };
+
+
 
 const registerFunction = async (userData) => {
   try {
@@ -69,10 +72,16 @@ const updateAccountFunction = async (updatedUserInfo) => {
 
 // Skaapa en funktion som skickar uppdaterad data till databasen, samt returnerar den för att den ska finnas tillgänglig för FE
 //
+const getUser = async (userId) => {
+  const res = await axios.get(`${getUserById}${userId}`, config);
+  // console.log(res);
+  userLocations$.next(res);
+};
 
 const authService = {
   registerFunction,
   loginFunction,
   updateAccountFunction,
+  getUser,
 };
 export default authService;

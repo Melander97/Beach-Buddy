@@ -25,7 +25,7 @@ const Home = () => {
         </div>
     </section>
     
-    <Menu />
+    {/* <Menu /> */}
     </>
 
   )
