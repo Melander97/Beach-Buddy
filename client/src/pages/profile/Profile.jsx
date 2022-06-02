@@ -16,8 +16,9 @@ const Profile = () => {
   useEffect(() => {
     const res = authService.getUser(user.user.id);
     userLocations$.subscribe((data) => {
-      // console.log(data.data.location[0].locations);
-      setUserLocation(data.data.location[0].locations);
+      if (data) {
+        setUserLocation(data.data.user[0].locations);
+      }
     });
   }, []);
 
