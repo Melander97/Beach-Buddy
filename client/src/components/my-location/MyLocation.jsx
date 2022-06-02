@@ -26,7 +26,7 @@ const MyLocations = () => {
             <button className="button-31">Se plats</button>
 
             <div>
-            <button className="bg-red-400 text-white px-2 py-1" onClick={() => userLocationService.deleteLocation("62976bf7232e4307cb92420")}> Radera plats</button>
+            <button className="bg-red-400 text-white px-2 py-1" onClick={() => userLocationService.deleteLocation("62976bf7232e4307cb92420")}>Radera plats</button>
             </div>
           </div>
         </div>
