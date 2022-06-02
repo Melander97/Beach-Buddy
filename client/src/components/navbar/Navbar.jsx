@@ -35,11 +35,13 @@ const Navbar = () => {
     <nav className="nav">
       <div className="navbar">
         <i className="fas fa-location fa-2xl"></i>
-        <img
-          src={require("../../assets/bb-logo.png")}
-          alt=""
-          className="logo"
-        />
+        <NavLink to="/home">
+          <img
+            src={require("../../assets/bb-logo.png")}
+            alt=""
+            className="logo"
+          />
+        </NavLink>
 
         <div className="hamburger" onClick={handleToggle}>
           <span
