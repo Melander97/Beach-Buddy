@@ -39,7 +39,11 @@ exports.addLocation = async (req, res, next) => {
         { _id: req.user.id },
         { $push: { locations: location._id } },
         () => {
-          res.json(location);
+          res.json({
+            success: true,
+            message: "location added",
+            data: location,
+          });
         }
       );
     });

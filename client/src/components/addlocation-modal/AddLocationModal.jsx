@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
 import locationService from "../../services/userLocationService";
 import "./AddLocation-modal.scss";
@@ -7,9 +7,9 @@ const AddLocationModal = ({ coords }) => {
   const [title, setTitle] = useState("");
   const [adress, setAdress] = useState("");
   const [description, setDescription] = useState("");
-  // const [coords, setCoords] = useState(coords);
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const user = useUser();
-  console.log(coords[0]);
 
   const locationData = {
     userId: user.user.id,
@@ -21,8 +21,16 @@ const AddLocationModal = ({ coords }) => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    console.log(locationData);
-    locationService.addLocation(locationData);
+    let res = locationService.addLocation(locationData);
+    res.then((data) => {
+      if (data.success) {
+        setIsSuccess(true);
+        setMessage("Plats tillagd!");
+      } else {
+        setIsSuccess(false);
+        setMessage("Något gick fel, försök igen.");
+      }
+    });
   };
 
   return (
@@ -36,7 +44,9 @@ const AddLocationModal = ({ coords }) => {
           >
             Lägg till en ny plats
           </h3>
-
+          {message && (
+            <p style={{ color: isSuccess ? " green" : " red" }}>{message}</p>
+          )}
           <label
             htmlFor="title"
             className="text-sm font-medium text-gray-900 block mb-2 dark:text-black-300 py-1"

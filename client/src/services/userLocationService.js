@@ -26,18 +26,17 @@ const getLocationById = async (locationId) => {
   console.log(locationId);
   const res = await axios.get(`${base_URL}getLocation/${locationId}`, config);
   viewLocation$.next(res.data.data);
-  // return res;
 };
 
 const addLocation = async (locationData) => {
-  // console.log(locationData);
-  const res = await axios.post(
-    `${heroku_url}addLocation`,
-    locationData,
-    config
-  );
-  console.log(res);
+  const res = await axios
+    .post(`${base_URL}addLocation`, locationData, config)
+    .then((data) => {
+      return data.data;
+    });
+  return res;
 };
+
 const locationService = {
   getAllLocations,
   getLocationById,

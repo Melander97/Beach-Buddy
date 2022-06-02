@@ -56,12 +56,10 @@ const MyLocations = () => {
     setSelectedLocation(location);
   };
 
-  // const viewClickHandler = () => {};
   //Creates pinpoint on map
   const setLocation = (e) => {
     const currentMarker = [];
     setMarker([e.latLng.toJSON(), ...currentMarker]);
-    // console.log(e.latLng.toJSON());
   };
   const renderUserMap = () => {
     return (
@@ -94,9 +92,7 @@ const MyLocations = () => {
             /* onLoad={() => {
               console.log("cluster rendered");
             }} */
-            onClick={(e) => {
-              // console.log(e);
-            }}
+
           >
             {(clusterer) =>
               userLocations?.map((location, index) => (
@@ -130,10 +126,8 @@ const MyLocations = () => {
               // eslint-disable-next-line no-undef
               animation={google.maps.Animation.DROP}
               onClick={(mark) => {
-                // console.log(marker);
                 setSelected(marker);
                 setActiveMarker(mark);
-                console.log(mark);
               }}
             ></Marker>
           ))}
@@ -144,11 +138,9 @@ const MyLocations = () => {
               options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
               position={activeMarker.latLng.toJSON()}
               onClick={(e) => {
-                console.log(marker);
               }}
               onCloseClick={() => {
                 setSelected(null);
-                console.log(marker);
               }}
             >
               <>
