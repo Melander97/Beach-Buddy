@@ -65,7 +65,7 @@ exports.addLocation = async (req, res, next) => {
 exports.deleteLocation = async (req, res) => {
   const location = await Location.findById(req.params.id);
   // console.log(req.params.id);
-  console.log("location", location);
+  // console.log("location", location);
   const user = await User.findById(req.body.user_id);
   console.log("user", user);
   // console.log(req.body.user_id);

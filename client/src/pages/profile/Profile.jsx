@@ -17,7 +17,7 @@ const Profile = () => {
     const res = authService.getUser(user.user.id);
     userLocations$.subscribe((data) => {
       // console.log(data.data.location[0].locations);
-      setUserLocation(data.data.location[0].locations);
+      setUserLocation(data.data.user[0].locations);
     });
   }, []);
 
