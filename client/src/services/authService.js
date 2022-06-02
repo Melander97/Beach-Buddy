@@ -2,11 +2,11 @@ import axios from "axios";
 import { BehaviorSubject } from "rxjs";
 
 /* const API_URL = "http://localhost:4000/api/users";
-const API_URL_LOGIN = "http://localhost:4000/api/users/login";
 const getUserById = "http://localhost:4000/api/users/"; */
 const API_URL = "https://beach-buddy.herokuapp.com/api/users";
-const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
-const getUserById = "https://beach-buddy.herokuapp.com/api/users/";
+const API_URL_LOGIN = "http://localhost:4000/api/users/login";
+// const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
+const getUserById = "http://localhost:4000/api/users/";
 
 export const user$ = new BehaviorSubject();
 export const userLocations$ = new BehaviorSubject();
@@ -14,7 +14,6 @@ export const userLocations$ = new BehaviorSubject();
 const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
-  // credentials: "include",
 };
 
 const registerFunction = async (userData) => {
@@ -31,7 +30,9 @@ const registerFunction = async (userData) => {
 const loginFunction = async (loginData) => {
   try {
     // calls the api
-    const res = await axios.post(API_URL_LOGIN, loginData, config);
+    const res = await axios.post(API_URL_LOGIN, loginData, {
+      withCredentials: true,
+    });
     //If true, write response to observable user$
     if (res.data.success) {
       user$.next(res.data);
@@ -46,9 +47,8 @@ const loginFunction = async (loginData) => {
 };
 
 const getUser = async (userId) => {
-  console.log(config);
   const res = await axios.get(`${getUserById}${userId}`, config);
-  console.log(res);
+  // console.log(res);
   userLocations$.next(res);
 };
 

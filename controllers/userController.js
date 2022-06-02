@@ -85,6 +85,7 @@ const loginUser = async (req, res) => {
   try {
     const token = generateToken(user._id);
     res.cookie("jwt", token, { httpOnly: true });
+    // res.cookie("jwt", token, { httpOnly: true, sameSite: 'none', secure: true });
     res.status(200).json({
       success: true,
       message: "Successfully logged in",
