@@ -7,8 +7,8 @@ const AddLocation = () => {
   const location = useLocation();
   const { from } = location.state;
   // const { marker = "defaultValue" } = location.state || {};
-  console.log(from);
-  return <AddLocationModal />;
+  // console.log(from);
+  return <AddLocationModal coords={from} />;
 };
 
 export default AddLocation;
