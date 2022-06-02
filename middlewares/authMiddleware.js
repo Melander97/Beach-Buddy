@@ -7,9 +7,9 @@ const User = require("../models/userSchema");
 const protect = asyncHandler(async (req, res, next) => {
   // Read the token from the cookie
 
+  const token = req.cookies.jwt;
+  console.log(token);
   try {
-    const token = req.cookies.jwt;
-    console.log(token);
     if (!token)
       return res.status(401).json({
         success: false,
