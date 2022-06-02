@@ -1,13 +1,13 @@
 import Navbar from "./components/navbar/Navbar";
-import { Outlet } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import Protected from './components/protected/protected'
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import AddLocation from './pages/addlocation/AddLocation';
-import UpdateLocation from "./pages/updatelocation/UpdateLocation";
-import LocationId from './pages/locationid/LocationId'
+import { Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Protected from "./components/protected/protected";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import AddLocation from "./pages/addlocation/AddLocation";
+import UpdateLocation from "./pages/updateLocation/UpdateLocation";
+import LocationId from "./pages/locationid/LocationId";
 import Profile from "./pages/profile/Profile";
 import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
@@ -53,7 +53,7 @@ function App() {
             }
           />
 
-           <Route
+          <Route
             path="locations"
             element={
               <Protected redirectTo="/login">
