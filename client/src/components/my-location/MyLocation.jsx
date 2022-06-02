@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./My-location.scss";
 
-const MyLocations = ({ selectedLocation }) => {
+const MyLocations = ({ selectedLocation, user }) => {
   return (
     <>
       <div class="info-window w-full md:w-1/3 mx-auto">
@@ -21,7 +21,12 @@ const MyLocations = ({ selectedLocation }) => {
                 Se Plats
               </Link>
               {/* onCLick delete goes here */}
-              <button className="btn mx-1 items-center">Remove</button>
+              <button
+                className="btn mx-1 items-center"
+                disabled={selectedLocation.userId !== user.user.id}
+              >
+                Remove
+              </button>
             </div>
           </div>
         )}

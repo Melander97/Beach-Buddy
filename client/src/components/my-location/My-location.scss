@@ -26,6 +26,11 @@
   padding: 0.5rem 2rem;
   border-radius: 4px;
   word-wrap: normal;
+
+  &:disabled {
+    background-color: #a0af9a;
+    cursor: not-allowed;
+  }
 }
 
 /* display: flex;

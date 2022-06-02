@@ -176,8 +176,8 @@ exports.updateLocation = async (req, res) => {
 //Get location by id
 
 exports.getLocationById = async (req, res) => {
-  const location = await Location.findById(req.body.location_id);
-  console.log(req.location_id);
+  console.log(req.params.id);
+  const location = await Location.findById(req.params.id);
   try {
     if (location === null) {
       return res.status(400).json({

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { locationDetails$, getBeachInfo } from "../../services/bad_havs_API";
-import locationService from "../../services/userLocationService";
+import locationService, {
+  viewLocation$,
+} from "../../services/userLocationService";
 import LocationModal from "../../components/location-modal/LocationModal";
 import { useParams } from "react-router-dom";
 import "./locationid.scss";
@@ -13,12 +15,15 @@ const LocationId = () => {
   useEffect(() => {
     if (id.startsWith("SE")) {
       getBeachInfo(id);
+      locationDetails$.subscribe((data) => {
+        setBeach(data);
+      });
     } else {
-      locationService.getLocationById();
+      locationService.getLocationById(id);
+      viewLocation$.subscribe((data) => {
+        setBeach(data);
+      });
     }
-    locationDetails$.subscribe((data) => {
-      setBeach(data);
-    });
   }, []);
 
   console.log(beach);

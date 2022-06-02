@@ -6,6 +6,7 @@ const base_URL = "http://localhost:4000/api/locations/";
 // const base_URL = "https://beach-buddy.herokuapp.com/api/locations/";
 
 export const userLocations$ = new BehaviorSubject();
+export const viewLocation$ = new BehaviorSubject();
 const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
@@ -20,8 +21,10 @@ const getAllLocations = async () => {
 };
 
 const getLocationById = async (locationId) => {
-  const res = await axios.get(`${base_URL}getLocationById`, config);
-  console.log(res);
+  console.log(locationId);
+  const res = await axios.get(`${base_URL}getLocation/${locationId}`, config);
+  viewLocation$.next(res.data.data);
+  // return res;
 };
 
 const locationService = {

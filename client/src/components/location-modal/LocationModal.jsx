@@ -9,12 +9,12 @@ const LocationModal = ({ beach }) => {
         <div className="right">
           {beach && (
             <div class="contentent">
-              <h1>{beach.locationName}</h1>
+              <h1>{beach.locationName || beach.title}</h1>
               <p>
-                <b>Plats:</b> {beach.locationName}
+                <b>Plats:</b> {beach.locationName || beach.adress}
               </p>
               <p>
-                <b>Badinformation:</b> {beach.bathInfo}
+                <b>Badinformation:</b> {beach.bathInfo || beach.description}
               </p>
               <p>
                 <b>info:</b> {beach.euMotive}

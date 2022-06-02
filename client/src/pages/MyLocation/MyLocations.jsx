@@ -1,22 +1,20 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "./my-locations.scss";
+import { useUser } from "../../components/context/UserContext";
 import {
-  ScriptLoaded,
   GoogleMap,
   useLoadScript,
   Marker,
-  Autocomplete,
-  InfoWindow,
   MarkerClusterer,
 } from "@react-google-maps/api";
 import MyLocation from "../../components/my-location/MyLocation";
 import { coords$, getLocation } from "../../services/bad_havs_API";
 import locationService from "../../services/userLocationService";
 import { userLocations$ } from "../../services/userLocationService";
-import { map } from "rxjs";
 
 const libraries = ["places"];
 const MyLocations = () => {
+  const user = useUser();
   //Storing map
   const [userMap, setUserMap] = useState(null);
   //Users current geo location
@@ -25,7 +23,7 @@ const MyLocations = () => {
   const [userLocations, setUserLocations] = useState([]);
 
   //Changed when user clicks marker and makes MyLocation component visible
-  const [selected, setSelected] = useState(false);
+  // const [selected, setSelected] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState();
 
   //Used to center the map
@@ -36,35 +34,28 @@ const MyLocations = () => {
     locationService.getAllLocations();
     getLocation();
     userLocations$.subscribe((res) => {
-      // let currentArr = userLocations;
       setUserLocations(res);
-      console.log("userLocation is set");
     });
 
     coords$.subscribe((coords) => {
       setMyLocation(coords);
-      console.log("myLocation is set");
     });
   }, []);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
-    // googleMapsApiKey: "AIzaSyC01RQkQ0NYA_8B8eRbDLf8WfLOlubH-GA",
     libraries: libraries,
   });
 
   const markerClickHandle = (location) => {
-    console.log(location);
     setSelectedLocation(location);
   };
 
-  const viewClickHandler = () => {};
+  // const viewClickHandler = () => {};
   const renderUserMap = () => {
     return (
       <div class="map-component">
-        {/* w-full h-5/6 flex items-center justify-center my-3 */}
-        {/* {myLocation && <p>{myLocation.lat}</p>} */}
-        <MyLocation selectedLocation={selectedLocation} />
+        <MyLocation selectedLocation={selectedLocation} user={user} />
 
         <GoogleMap
           center={center}
@@ -73,9 +64,7 @@ const MyLocations = () => {
           onLoad={(map) => {
             if (userMap === null) {
               setUserMap(map);
-              console.log("map is set in render");
             }
-            console.log("map rendered");
           }}
           options={{
             zoomControl: false,
@@ -84,68 +73,36 @@ const MyLocations = () => {
             fullscreenControl: false,
           }}
         >
-          {/* {userMap &&
-            userLocations.map((location, index) => (
-              <Marker
-                visible={true}
-                key={index}
-                // icon={require("../../assets/images/google-maps/swim-blue.png")}
-                icon={
-                  index % 2 === 0
-                    ? require("../../assets/images/google-maps/swim-orange.png")
-                    : require("../../assets/images/google-maps/swim-blue.png")
-                }
-                // clusterer={clusterer}
-                // position={{
-                //   lat: 59.3340481,
-                //   lng: 18.0359596,
-                // }}
-                position={{
-                  lat: location.coordinates[0],
-                  lng: location.coordinates[1],
-                }}
-              ></Marker>
-            ))} */}
-
           <MarkerClusterer
             // imagePath={
             //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
             // }
-            onLoad={() => {
+            /* onLoad={() => {
               console.log("cluster rendered");
-            }}
+            }} */
             onClick={(e) => {
-              console.log(e);
+              // console.log(e);
             }}
           >
             {(clusterer) =>
               userLocations?.map((location, index) => (
                 <Marker
-                  // visible={true}
+                  visible={true}
                   key={index}
-                  onLoad={() => {
-                    console.log("marker rendered");
-                  }}
-                  // icon={require("../../assets/images/google-maps/swim-blue.png")}
+                  /* onLoad={() => {
+                  }} */
                   icon={
-                    index % 2 === 0
+                    user.user.id === location.userId
                       ? require("../../assets/images/google-maps/swim-orange.png")
                       : require("../../assets/images/google-maps/swim-blue.png")
                   }
                   clusterer={clusterer}
-                  // position={{
-                  //   lat: 59.3340481,
-                  //   lng: 18.0359596,
-                  // }}
                   position={{
                     lat: location.coordinates[0],
                     lng: location.coordinates[1],
                   }}
                   onClick={(mark, e) => {
                     markerClickHandle(location);
-                    //   markerClickHandle(marker);
-                    //   setActiveMarker(mark);
-                    //   setSelected(marker);
                   }}
                 ></Marker>
               ))
