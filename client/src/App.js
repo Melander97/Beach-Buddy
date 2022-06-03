@@ -13,7 +13,7 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
-
+import Notfound from "./pages/not-found/NotFound";
 
 function App() {
   // const { user } = useUser();
@@ -24,11 +24,9 @@ function App() {
       <div className="pageWrapper">
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
-
 
           <Route
             path="/profile"
@@ -72,7 +70,14 @@ function App() {
               </Protected>
             }
           />
+          {/* this route need to be at the bottom och page */}
+          <Route path="*" element={<Notfound />} />
         </Routes>
+
+        {/*  <Route path="*">
+          <Notfound />
+        </Route> */}
+
         <Outlet />
         {/* {user !== undefined && 
         <UserMenu/>
@@ -80,8 +85,7 @@ function App() {
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
       </div>
       {/* <Menu /> */}
-      <UserMenu/>
-
+      <UserMenu />
     </div>
   );
 }
