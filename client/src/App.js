@@ -27,8 +27,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/locationId" element={<LocationId />} />
-
+          <Route path="/location/:id" element={<LocationId />} />
           <Route
             path="/profile"
             element={
@@ -39,16 +38,15 @@ function App() {
           />
 
           <Route
-            path="add-location"
+            path="/add-location"
             element={
               <Protected redirectTo="/login">
                 <AddLocation />
               </Protected>
             }
           />
-
           <Route
-            path="locations"
+            path="/locations"
             element={
               <Protected redirectTo="/login">
                 <MyLocations />

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useUser } from  '../context/UserContext'
-import {contextUser$} from '../context/UserContext'
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+import { contextUser$ } from "../context/UserContext";
 
-import './navbar.scss';
+import "./navbar.scss";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -11,15 +11,13 @@ const Navbar = () => {
   const user = useUser();
 
   useEffect(() => {
-    contextUser$.subscribe((data) =>{
-      console.log(data)
-      setIsLoggedIn(data)
-
-    })
-
+    contextUser$.subscribe((data) => {
+      console.log(data);
+      setIsLoggedIn(data);
+    });
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     console.log(isLoggedIn);
   }, [isLoggedIn]);
 
@@ -27,15 +25,23 @@ const Navbar = () => {
     setIsNavOpen((previsNavOpen) => !previsNavOpen);
   };
 
+  const logoutToggle = () => {
+    setIsNavOpen((previsNavOpen) => !previsNavOpen);
+    window.localStorage.removeItem("user");
+    window.location.reload();
+  };
+
   return (
     <nav className="nav">
       <div className="navbar">
         <i className="fas fa-location fa-2xl"></i>
-        <img
-          src={require("../../assets/bb-logo.png")}
-          alt=""
-          className="logo"
-        />
+        <NavLink to="/home">
+          <img
+            src={require("../../assets/bb-logo.png")}
+            alt=""
+            className="logo"
+          />
+        </NavLink>
 
         <div className="hamburger" onClick={handleToggle}>
           <span
@@ -50,46 +56,44 @@ const Navbar = () => {
             Home
           </NavLink>
 
-          {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? 
-
+          {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
             <>
-            <NavLink
-              to="register"
-              className="link-wrapper__link"
-              onClick={handleToggle}
-            >
-              Become a member
-            </NavLink>
-          
-        
-          <NavLink
+              <NavLink
+                to="register"
+                className="link-wrapper__link"
+                onClick={handleToggle}
+              >
+                Become a member
+              </NavLink>
+
+              <NavLink
                 to="login"
                 className="link-wrapper__link"
                 onClick={handleToggle}
               >
                 Login
-
               </NavLink>
-              </>
-              :
-              <>
-              <NavLink
-              to="profile"
-              className="link-wrapper__link"
-              onClick={handleToggle}
-            >
-              Profile
-            </NavLink> 
-           
-              <NavLink
-              to="logout"
-              className="link-wrapper__link"
-              onClick={handleToggle}
-            >
-              Logout
-            </NavLink>
             </>
-        }
+          ) : (
+            <>
+              <NavLink
+                to="profile"
+                className="link-wrapper__link"
+                onClick={handleToggle}
+              >
+                Profile
+              </NavLink>
+
+              {/* log out */}
+              <NavLink
+                to="login"
+                className="link-wrapper__link"
+                onClick={logoutToggle}
+              >
+                Logout
+              </NavLink>
+            </>
+          )}
         </div>
       </div>
     </nav>

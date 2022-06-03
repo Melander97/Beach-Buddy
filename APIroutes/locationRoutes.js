@@ -12,8 +12,8 @@ const {
 router.get("/getLocation", protect, getLocation);
 router.post("/addLocation", protect, addLocation);
 router.patch("/updateLocation", protect, updateLocation);
-router.post("/delete", protect, deleteLocation);
+router.delete("/delete/:id", deleteLocation);
 
-router.get("/getLocationById", protect, getLocationById);
+router.get("/getLocation/:id", protect, getLocationById);
 
 module.exports = router;
