@@ -39,8 +39,10 @@ const Profile = () => {
           <UpdateAccount />
 
           {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} />
+            <UpdateLocation key={index} location={location} 
+            locationsArray={userLocations} setUserLocation={setUserLocation}/>
           ))}
+
         </div>
       </div>
     </div>

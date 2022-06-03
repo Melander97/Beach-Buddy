@@ -5,16 +5,7 @@ import userLocationService from "../../services/userLocationService"
 
 const MyLocations = () => {
 
-//  const deleteLocation = () => {
-//   e.preventDefault();
 
-
-  // const locationData = {
-  //   id: id,
-  
-  // }
-
-    // let deleteLocation = await userLocationService.deleteLocation(locationData);
   return (
     <div class="Map-component w-full h-5/6 flex items-center justify-center my-3">
       <div class="w-full md:w-1/3 mx-auto">
@@ -26,7 +17,7 @@ const MyLocations = () => {
             <button className="button-31">Se plats</button>
 
             <div>
-            <button className="bg-red-400 text-white px-2 py-1" onClick={() => userLocationService.deleteLocation("62973c40f8a04881eb0a92c0")}>Radera plats</button>
+            <button className="bg-red-400 text-white px-2 py-1">Radera plats</button>
             </div>
           </div>
         </div>

@@ -63,10 +63,10 @@ exports.addLocation = async (req, res, next) => {
 // Delete location
 
 exports.deleteLocation = async (req, res) => {
-  const location = await Location.findById(req.body.id);
+  const location = await Location.findById(req.params.id);
   // console.log(req.params.id);
   // console.log("location", location);
-  const user = await User.findById(req.body.user_id);
+  const user = await User.findById(location.userId);
   console.log("user", user);
   // console.log(req.body.user_id);
 
@@ -97,24 +97,10 @@ exports.deleteLocation = async (req, res) => {
         data: null,
       });
     }
-    console.log("LocationController", req.body.id )
-
-
-    const filterLocationArray = user.filter((value) => value.locations._id !== req.body.id)
-    // user.splice(user.indexOf(location), (1))
-    console.log(filterLocationArray)
-
-    // find one then filter and then
-    await User.findOneAndUpdate(
-      { _id: req.body.userId },
-      { locations: filterLocationArray },
-      
-      // If `new` isn't true, `findOneAndUpdate()` will return the
-      // document as it was _before_ it was updated.
-      { new: true }
-    );
+    // console.log("LocationController", req.body.id )
+   
     // await location.remove();
-    await Location.deleteOne({ _id: req.body.id });
+    await Location.deleteOne({ _id: req.params.id });
 
     res.status(200).json({
       success: true,
