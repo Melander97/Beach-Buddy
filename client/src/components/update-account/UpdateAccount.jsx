@@ -1,10 +1,15 @@
 import React from "react";
 import "./Update-account.scss";
 import authService from "../../services/authService";
+import { useState } from "react";
+import { useUser } from "../context/UserContext";
 
 const UpdateAccount = (userId) => {
+  const user = useUser();
+
   const handleDelete = () => {
     authService.deleteUser(userId.userId);
+    localStorage.removeItem(user);
   };
 
   return (

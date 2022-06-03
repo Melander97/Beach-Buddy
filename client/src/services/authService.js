@@ -52,8 +52,7 @@ const getUser = async (userId) => {
 };
 
 const deleteUser = async(id) => {
-   await axios.delete(`${API_URL_DELETE}${id}`, config);
-  
+  await axios.delete(`${API_URL_DELETE}${id}`, config);
 };
 
 const authService = {
