@@ -11,7 +11,7 @@ import { userLocations$ } from "../../services/authService";
 const Profile = () => {
   const [userLocations, setUserLocation] = useState([]);
   const user = useUser();
-  console.log(user);
+  console.log("USERRRRR" + JSON.stringify(user));
 
   const userId = user.user.id;
 
@@ -28,14 +28,19 @@ const Profile = () => {
     console.log(userLocations);
   }, [userLocations]);
 
+  /* useEffect(() => {
+    console.log(updatedUserInfo);
+  }, [updatedUserInfo]); */
+
   return (
     <div className="profile">
-      <img
+      {/* <img
         className="inline-block h-10 w-10 rounded-full"
         src={require("../../assets/bb-logo.png")}
         alt=""
-      />
-      <h1>{user.user.name}</h1>
+      /> */}
+      <h1>Name: {user.user.name}</h1>
+      <h1>Email: {user.user.email}</h1>
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
