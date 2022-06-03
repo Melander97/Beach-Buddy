@@ -86,13 +86,12 @@ const MyLocations = () => {
           }}
         >
           <MarkerClusterer
-            // imagePath={
-            //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-            // }
-            /* onLoad={() => {
+          // imagePath={
+          //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+          // }
+          /* onLoad={() => {
               console.log("cluster rendered");
             }} */
-
           >
             {(clusterer) =>
               userLocations?.map((location, index) => (
@@ -137,8 +136,7 @@ const MyLocations = () => {
               // eslint-disable-next-line no-undef
               options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
               position={activeMarker.latLng.toJSON()}
-              onClick={(e) => {
-              }}
+              onClick={(e) => {}}
               onCloseClick={() => {
                 setSelected(null);
               }}

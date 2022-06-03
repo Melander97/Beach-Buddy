@@ -7,7 +7,7 @@ import { BehaviorSubject } from "rxjs";
 const API_URL = "https://beach-buddy.herokuapp.com/api/users";
 const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
 const getUserById = "https://beach-buddy.herokuapp.com/api/users/";
-const API_URL_DELETE = "https://beach-buddy.herokuapp.com/api/users/delete/" 
+const API_URL_DELETE = "https://beach-buddy.herokuapp.com/api/users/delete/";
 
 export const user$ = new BehaviorSubject();
 export const userLocations$ = new BehaviorSubject();
@@ -46,7 +46,6 @@ const loginFunction = async (loginData) => {
 };
 
 const updateAccountFunction = async (updatedUserInfo) => {
-
   try {
     const res = await axios.patch(
       `${API_URL}/update/628ff47d252c91d0eec404ec`,
@@ -73,7 +72,7 @@ const getUser = async (userId) => {
   userLocations$.next(res);
 };
 
-const deleteUser = async(id) => {
+const deleteUser = async (id) => {
   await axios.delete(`${API_URL_DELETE}${id}`, config);
 };
 
@@ -82,6 +81,6 @@ const authService = {
   loginFunction,
   updateAccountFunction,
   getUser,
-  deleteUser
+  deleteUser,
 };
 export default authService;
