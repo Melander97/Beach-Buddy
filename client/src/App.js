@@ -13,7 +13,7 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
-
+import Notfound from "./pages/not-found/NotFound";
 
 function App() {
   // const { user } = useUser();
@@ -24,11 +24,10 @@ function App() {
       <div className="pageWrapper">
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path="/notfound" element={<Notfound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
-
 
           <Route
             path="/profile"
@@ -80,8 +79,7 @@ function App() {
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
       </div>
       {/* <Menu /> */}
-      <UserMenu/>
-
+      <UserMenu />
     </div>
   );
 }
