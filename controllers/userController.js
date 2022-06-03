@@ -138,11 +138,12 @@ const deleteUserById = async (req, res) => {
   try {
     const result = await User.deleteOne({ _id: req.params.id });
     res.status(200).json({
+      success: result.acknowledged,
       data: result,
     });
   } catch (error) {
     res.status(400).json({
-      message: "Could not delete user",
+      message: "Could not delete user" + error,
     });
   }
 };

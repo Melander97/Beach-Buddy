@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import authService from "../../services/authService";
 import "./Update-account.scss";
 
-const UpdateAccount = () => {
+const UpdateAccount = (userId) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,6 @@ const UpdateAccount = () => {
       setUpdatedUserInfo(response);
       console.log("LALAL" + response);
       return response;
-    
     } catch (err) {
       console.log(err);
     }
@@ -110,6 +109,7 @@ const UpdateAccount = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="button-31"> Uppdatera</button>
+
           </form>
         </div>
       </div>

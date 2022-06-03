@@ -13,6 +13,8 @@ const Profile = () => {
   const user = useUser();
   console.log("USERRRRR" + JSON.stringify(user));
 
+  const userId = user.user.id;
+
   useEffect(() => {
     const res = authService.getUser(user.user.id);
     userLocations$.subscribe((data) => {
@@ -41,8 +43,7 @@ const Profile = () => {
       <h1>Email: {user.user.email}</h1>
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
         <div className="shadow-md">
-          <UpdateAccount />
-
+          <UpdateAccount userId={userId} />
           {userLocations?.map((location, index) => (
             <UpdateLocation key={index} location={location} />
           ))}
