@@ -85,7 +85,11 @@ const loginUser = async (req, res) => {
   try {
     const token = generateToken(user._id);
     // res.cookie("jwt", token, { httpOnly: true });
-    res.cookie("jwt", token, { httpOnly: true, sameSite: 'none', secure: true });
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
     res.status(200).json({
       success: true,
       message: "Successfully logged in",
@@ -162,6 +166,8 @@ const logoutUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  const { name, email, password } = req.body;
+
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -171,6 +177,31 @@ const updateUser = async (req, res) => {
       const salt = await bcrypt.genSalt();
       updatedData["password"] = await bcrypt.hash(req.body.password, salt);
     }
+
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all fields",
+        data: null,
+      });
+    }
+
+    if (!email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)) {
+      return res.status(400).json({
+        success: false,
+        message: "Email not valid",
+        data: null,
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must be at least 6 characters",
+        data: null,
+      });
+    }
+
     const result = await User.findByIdAndUpdate(id, updatedData, options);
 
     return res.status(200).json({
@@ -185,7 +216,7 @@ const updateUser = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: "Account not updated " + error.message,
+      message: "Account not updated: " + error.message,
     });
   }
 };

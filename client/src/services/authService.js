@@ -1,10 +1,10 @@
 import axios from "axios";
 import { BehaviorSubject } from "rxjs";
 
-/* const API_URL = "http://localhost:4000/api/users";
+const API_URL = "http://localhost:4000/api/users";
 const API_URL_LOGIN = "http://localhost:4000/api/users/login";
 const getUserById = "http://localhost:4000/api/users/";
-/* const API_URL = "https://beach-buddy.herokuapp.com/api/users";
+/*const API_URL = "https://beach-buddy.herokuapp.com/api/users";
 const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
 const getUserById = "https://beach-buddy.herokuapp.com/api/users/"; */
 
@@ -15,8 +15,6 @@ const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 };
-
-
 
 const registerFunction = async (userData) => {
   try {
@@ -47,22 +45,18 @@ const loginFunction = async (loginData) => {
 };
 
 const updateAccountFunction = async (updatedUserInfo) => {
-  console.log("JDJDJDJADJ")
-  /* await axios
-    .patch(`${API_URL}/update/628ff47d252c91d0eec404ec`, updatedUserInfo)
-    .config.then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log("ERR" + err);
-    }); */
 
   try {
     const res = await axios.patch(
       `${API_URL}/update/628ff47d252c91d0eec404ec`,
-      updatedUserInfo
+      updatedUserInfo,
+      config
     );
-    console.log(`RESPONSE ${res}`);
+    if (res.data.success) {
+      user$.next(res.data);
+      console.log(`SVAR ${res.data}`);
+    }
+    return res.data;
   } catch (error) {
     if (error.response) {
       return error.response.data;

@@ -6,11 +6,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import AddLocation from "./pages/addlocation/AddLocation";
-<<<<<<< HEAD
 import UpdateLocation from "./pages/updateLocation/UpdateLocation";
-=======
-import UpdateLocation from "./pages/updatelocation/UpdateLocation";
->>>>>>> development
 import LocationId from "./pages/locationid/LocationId";
 import Profile from "./pages/profile/Profile";
 import Menu from "./components/menu/Menu";

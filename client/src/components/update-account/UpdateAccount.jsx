@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import authService from "../../services/authService";
 import "./Update-account.scss";
-import { useUser } from "../../components/context/UserContext";
 
 const UpdateAccount = () => {
   const [name, setName] = useState("");
@@ -10,8 +9,6 @@ const UpdateAccount = () => {
   const [updatedUserInfo, setUpdatedUserInfo] = useState({});
 
   const UpdateAccount = async (e) => {
-    // // const user = useUser();
-    // console.log(user);
     e.preventDefault();
 
     const updatedUserInfo = {
@@ -21,15 +18,26 @@ const UpdateAccount = () => {
     };
 
     try {
-      let response = await authService
-        .updateAccountFunction(updatedUserInfo)
-        .then.setUpdatedUserInfo(response);
+      let response = await authService.updateAccountFunction(updatedUserInfo);
+      setUpdatedUserInfo(response);
+      console.log("LALAL" + response);
+      return response;
+    
     } catch (err) {
       console.log(err);
     }
-
-    // console.log("LALA" + data);
   };
+
+  useEffect(() => {
+    console.log("USEEFFECT" + JSON.stringify(updatedUserInfo));
+  }, [updatedUserInfo]);
+
+  /* function messageColor(response) {
+    const success = response.success;
+    if (!success) {
+      return;
+    }
+  } */
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
@@ -65,9 +73,16 @@ const UpdateAccount = () => {
           aria-labelledby="flush-headingOne"
           data-bs-parent="#accordionFlushExample"
         >
+          {/* Message */}
           <form className="accordion-body py-4 px-5" onSubmit={UpdateAccount}>
             {updatedUserInfo && (
-              <p className="text-red-400">{updatedUserInfo.message}</p>
+              <p
+                className={
+                  updatedUserInfo.success ? "text-green-400" : "text-red-400"
+                }
+              >
+                {updatedUserInfo.message}
+              </p>
             )}
 
             <input
