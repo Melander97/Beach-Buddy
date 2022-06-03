@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./My-location.scss";
+import userLocationService from "../../services/userLocationService"
+
 
 const MyLocations = ({ selectedLocation, user }) => {
   return (
