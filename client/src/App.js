@@ -13,8 +13,8 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import { contextUser$ } from "../src/components/context/UserContext";
 
 
 function App() {
@@ -91,7 +91,7 @@ function App() {
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
       </div>
       {/* <Menu /> */}
-      <UserMenu/>
+      {/* <UserMenu/> */}
 
       {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
           
