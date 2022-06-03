@@ -98,7 +98,10 @@ exports.deleteLocation = async (req, res) => {
       });
     }
     console.log("LocationController", req.body.id )
+
+
     const filterLocationArray = user.filter((value) => value.locations._id !== req.body.id)
+    // user.splice(user.indexOf(location), (1))
     console.log(filterLocationArray)
 
     // find one then filter and then
