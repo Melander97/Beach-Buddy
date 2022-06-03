@@ -24,7 +24,6 @@ function App() {
       <div className="pageWrapper">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/notfound" element={<Notfound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
@@ -71,7 +70,14 @@ function App() {
               </Protected>
             }
           />
+          {/* this route need to be at the bottom och page */}
+          <Route path="*" element={<Notfound />} />
         </Routes>
+
+        {/*  <Route path="*">
+          <Notfound />
+        </Route> */}
+
         <Outlet />
         {/* {user !== undefined && 
         <UserMenu/>
