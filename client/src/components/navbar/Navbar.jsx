@@ -10,12 +10,15 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const user = useUser();
 
+  //kopiera detta 
   useEffect(() => {
     contextUser$.subscribe((data) => {
       console.log(data);
       setIsLoggedIn(data);
     });
   }, []);
+
+  //slut på kompiera 
 
   useEffect(() => {
     console.log(isLoggedIn);

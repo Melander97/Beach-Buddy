@@ -13,10 +13,21 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
+import React, { useEffect } from "react";
+
 
 
 function App() {
   // const { user } = useUser();
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    contextUser$.subscribe((data) => {
+      console.log(data);
+      setIsLoggedIn(data);
+    });
+  }, []);
+
   let user = localStorage.getItem("user");
   return (
     <div className="App">
@@ -82,6 +93,14 @@ function App() {
       {/* <Menu /> */}
       <UserMenu/>
 
+      {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
+          
+             <Menu /> 
+              ) :
+
+              (
+            <UserMenu/>
+          )}
     </div>
   );
 }
