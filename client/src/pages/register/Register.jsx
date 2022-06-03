@@ -31,7 +31,15 @@ const Register = () => {
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
             Skapa ett konto
           </h3>
-          {data && <p className="text-red-400">{data.message}</p>}
+          {data && (
+            <p
+              className={
+                data.success ? "text-green-400" : "text-red-400"
+              }
+            >
+              {data.message}
+            </p>
+          )}
 
           <div>
             <label
