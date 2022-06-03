@@ -1,4 +1,4 @@
-import UpdateLocationModal from "../../components/updateLocation-modal/UpdateLocationModal";
+import UpdateLocationModal from "../../components/updatelocation-modal/UpdateLocationModal";
 
 const UpdateLocation = () => {
   return (
