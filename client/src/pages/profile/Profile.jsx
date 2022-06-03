@@ -45,8 +45,10 @@ const Profile = () => {
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
           {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} />
+            <UpdateLocation key={index} location={location} 
+            locationsArray={userLocations} setUserLocation={setUserLocation}/>
           ))}
+
         </div>
       </div>
     </div>

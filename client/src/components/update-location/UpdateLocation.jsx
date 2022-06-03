@@ -1,7 +1,14 @@
 import React from "react";
+import userLocationService from "../../services/userLocationService"
 
-const UpdateLocation = ({ location }) => {
-  console.log(location._id);
+
+const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
+
+
+  //  const filterLocationArray = locationsArray.filter((value) => value._id !== location._id)
+
+
+    console.log(locationsArray);
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
@@ -40,7 +47,13 @@ const UpdateLocation = ({ location }) => {
         >
           <div className="accordion-body py-4 px-5">
             <button className="button-31"> Se plats</button>
-            <button className="button-31"> Ta bort</button>
+            <button className="bg-red-400 text-white px-2 py-1" onClick={() => {
+              userLocationService.deleteLocation(location._id)
+              const filterArray = locationsArray.filter((value) => value._id !== location._id)
+              setUserLocation(filterArray)
+               }}
+               >Radera plats</button>
+                {console.log(location._id)} 
           </div>
         </div>
       </div>
