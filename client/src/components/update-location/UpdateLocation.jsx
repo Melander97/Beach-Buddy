@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import locationService from "../../services/userLocationService";
 
 const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
@@ -43,6 +44,11 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
         >
           <div className="accordion-body py-4 px-5">
             <button className="button-31"> Se plats</button>
+            <Link to="/update-location" className="button-31">
+              {" "}
+              Ändra
+            </Link>
+            {/* <button className="update-btn">Ändra</button> */}
             <button
               className="bg-red-400 text-white px-2 py-1"
               onClick={() => {

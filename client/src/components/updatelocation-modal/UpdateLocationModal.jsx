@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./UpdateLocationModal.scss";
 
 const UpdateLocationModal = () => {
-  const [title, setTitle] = useState("");
-  const [adress, setAdress] = useState("");
-  const [directions, setDirection] = useState("");
+  const [title, setTitle] = useState(null);
+  const [adress, setAdress] = useState(null);
+  const [directions, setDirection] = useState(null);
+
+  const upDateLocation = async(locationId) => {
+    
+  }
 
   return (
     <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3">
