@@ -9,7 +9,6 @@ const UpdateLocationModal = ({ location }) => {
   const [adress, setAdress] = useState(location.adress);
   const [directions, setDirection] = useState(location.description);
   const [updatedLocation, setUpdatedLocation] = useState(null);
-  const [message, setMessage] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
 
   const user = useUser();
@@ -23,10 +22,11 @@ const UpdateLocationModal = ({ location }) => {
       directions: directions,
       coordinates: null,
     };
+
     const res = await locationService.updateLocation(formData).then((data) => {
       return data.data;
     });
-    console.log(res);
+
     if (res.success) {
       setUpdatedLocation(res.data);
       setIsUpdated(true);
