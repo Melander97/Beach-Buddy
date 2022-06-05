@@ -71,7 +71,7 @@ const UpdateLocationModal = ({ location }) => {
             name="adress"
             id="adress"
             onChange={(e) => setAdress(e.target.value)}
-            value={adress}
+            value={updatedLocation !== null ? updatedLocation.adress : adress}
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
             placeholder="T.ex. Klippan vid vattnet"
             required=""
@@ -89,7 +89,11 @@ const UpdateLocationModal = ({ location }) => {
             name="direction"
             id="direction"
             onChange={(e) => setDirection(e.target.value)}
-            value={directions}
+            value={
+              updatedLocation !== null
+                ? updatedLocation.description
+                : directions
+            }
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
             placeholder="Ta höger..."
             required=""
