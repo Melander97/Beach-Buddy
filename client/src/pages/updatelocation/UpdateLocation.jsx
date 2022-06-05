@@ -8,6 +8,6 @@ const UpdateLocation = () => {
       <UpdateLocationModal />
     </div>
   );
-}
+};
 
 export default UpdateLocation;
