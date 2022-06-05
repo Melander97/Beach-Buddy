@@ -4,8 +4,8 @@ import locationService from "../../services/userLocationService";
 
 const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
   //  const filterLocationArray = locationsArray.filter((value) => value._id !== location._id)
-
-  console.log(locationsArray);
+  console.log(location);
+  // console.log(locationsArray);
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
@@ -44,7 +44,11 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
         >
           <div className="accordion-body py-4 px-5">
             <button className="button-31"> Se plats</button>
-            <Link to="/update-location" className="button-31">
+            <Link
+              to="/update-location"
+              state={{ from: location }}
+              className="button-31"
+            >
               {" "}
               Ändra
             </Link>
@@ -61,7 +65,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
             >
               Radera plats
             </button>
-            {console.log(location._id)}
+            {/* {console.log(location._id)} */}
           </div>
         </div>
       </div>

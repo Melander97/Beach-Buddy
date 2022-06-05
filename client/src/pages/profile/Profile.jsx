@@ -11,7 +11,7 @@ import { userLocations$ } from "../../services/authService";
 const Profile = () => {
   const [userLocations, setUserLocation] = useState([]);
   const user = useUser();
-  console.log("USERRRRR" + JSON.stringify(user));
+  // console.log("USERRRRR" + JSON.stringify(user));
 
   const userId = user.user.id;
 
@@ -24,9 +24,9 @@ const Profile = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(userLocations);
-  }, [userLocations]);
+  // useEffect(() => {
+  //   console.log(userLocations);
+  // }, [userLocations]);
 
   /* useEffect(() => {
     console.log(updatedUserInfo);
@@ -45,10 +45,13 @@ const Profile = () => {
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
           {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} 
-            locationsArray={userLocations} setUserLocation={setUserLocation}/>
+            <UpdateLocation
+              key={index}
+              location={location}
+              locationsArray={userLocations}
+              setUserLocation={setUserLocation}
+            />
           ))}
-
         </div>
       </div>
     </div>

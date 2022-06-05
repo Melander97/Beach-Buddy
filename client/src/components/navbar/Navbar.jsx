@@ -12,14 +12,14 @@ const Navbar = () => {
 
   useEffect(() => {
     contextUser$.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       setIsLoggedIn(data);
     });
   }, []);
 
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   console.log(isLoggedIn);
+  // }, [isLoggedIn]);
 
   const handleToggle = () => {
     setIsNavOpen((previsNavOpen) => !previsNavOpen);
