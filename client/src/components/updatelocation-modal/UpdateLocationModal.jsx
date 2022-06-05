@@ -1,14 +1,37 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import locationService from "../../services/userLocationService";
+import { useUser } from "../context/UserContext";
 import "./UpdateLocationModal.scss";
 
-const UpdateLocationModal = () => {
-  const [title, setTitle] = useState(null);
-  const [adress, setAdress] = useState(null);
-  const [directions, setDirection] = useState(null);
+const UpdateLocationModal = ({ location }) => {
+  const [title, setTitle] = useState(location.title);
+  const [adress, setAdress] = useState(location.adress);
+  const [directions, setDirection] = useState(location.description);
+  const [updatedLocation, setUpdatedLocation] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [isUpdated, setIsUpdated] = useState(false);
 
-  const upDateLocation = async(locationId) => {
-    
-  }
+  const user = useUser();
+  const upDateLocation = async (e) => {
+    e.preventDefault();
+    const formData = {
+      id: location._id,
+      userId: user.user.id,
+      title: title,
+      adress: adress,
+      directions: directions,
+      coordinates: null,
+    };
+    const res = await locationService.updateLocation(formData).then((data) => {
+      return data.data;
+    });
+    console.log(res);
+    if (res.success) {
+      setUpdatedLocation(res.data);
+      setIsUpdated(true);
+    }
+  };
 
   return (
     <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3">
@@ -17,6 +40,7 @@ const UpdateLocationModal = () => {
         <h3 className="text-xl font-medium text-gray-900 dark:text-black text-center">
           Ändra plats
         </h3>
+
         <div>
           <label
             htmlFor="title"
@@ -29,7 +53,7 @@ const UpdateLocationModal = () => {
             name="title"
             id="title"
             onChange={(e) => setTitle(e.target.value)}
-            value={title}
+            value={updatedLocation !== null ? updatedLocation.title : title}
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-gray-100 transition mb-2 "
             // placeholder="Namn"
             required=""
@@ -71,9 +95,23 @@ const UpdateLocationModal = () => {
             required=""
           />
         </div>
-        <button className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">
-          Ändra plats
-        </button>
+        {!isUpdated ? (
+          <button
+            className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4"
+            onClick={(e) => {
+              upDateLocation(e);
+            }}
+            disabled={isUpdated}
+          >
+            Ändra plats
+          </button>
+        ) : (
+          <Link to="/profile">
+            <button className="hover:bg-red-dark w-40 h-10 rounded-lg bg-green-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">
+              Till profil
+            </button>
+          </Link>
+        )}
       </form>
       {/* </div> */}
     </div>

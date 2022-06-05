@@ -10,7 +10,7 @@ const Protected = ({ redirectTo, children }) => {
   //Check if user is something
   if (user !== undefined) {
     if (user.isLoggedIn) {
-      console.log("render children");
+      // console.log("render children");
       return children;
     }
   }

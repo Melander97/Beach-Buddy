@@ -2,7 +2,7 @@ import axios from "axios";
 import { BehaviorSubject } from "rxjs";
 
 // const userLocationURL = "http://localhost:4000/api/locations/getLocation";
-// const base_URL = "http://localhost:4000/api/locations/";
+const base_URL = "http://localhost:4000/api/locations/";
 // const URL_API_DELETE_LOC =
 //   "https://beach-buddy.herokuapp.com/api/locations/delete";
 // const base_URL = "https://beach-buddy.herokuapp.com/api/locations/";
@@ -48,13 +48,21 @@ const deleteLocation = async (id) => {
   const res = await axios.delete(`${heroku_url}/delete/${id}`, config);
   console.log(res);
 };
-/* const userLocationService = {
-  deleteLocation,
-}; */
+
+const updateLocation = async (updateData) => {
+  const res = await axios.patch(
+    `${base_URL}/updateLocation`,
+    updateData,
+    config
+  );
+  return res;
+};
+
 const locationService = {
   getAllLocations,
   getLocationById,
   addLocation,
   deleteLocation,
+  updateLocation,
 };
 export default locationService;

@@ -4,12 +4,12 @@ import UpdateLocationModal from "../../components/updatelocation-modal/UpdateLoc
 const UpdateLocation = () => {
   const location = useLocation();
   const { from } = location.state;
-  console.log(from);
+  // console.log(from);
   return (
     <div>
       {/* Component here */}
 
-      <UpdateLocationModal />
+      <UpdateLocationModal location={from} />
     </div>
   );
 };

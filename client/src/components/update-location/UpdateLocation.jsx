@@ -4,7 +4,7 @@ import locationService from "../../services/userLocationService";
 
 const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
   //  const filterLocationArray = locationsArray.filter((value) => value._id !== location._id)
-  console.log(location);
+  // console.log(location);
   // console.log(locationsArray);
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
