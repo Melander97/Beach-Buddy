@@ -1,5 +1,7 @@
 import React from "react";
 import userLocationService from "../../services/userLocationService"
+import { NavLink } from "react-router-dom";
+ 
 
 
 const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
@@ -46,7 +48,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
           data-bs-parent="#accordionFlushExample"
         >
           <div className="accordion-body py-4 px-5">
-            <button className="button-31"> Se plats</button>
+            <NavLink to="/locations" className="button-31"> Se plats</NavLink>
             <button className="bg-red-400 text-white px-2 py-1" onClick={() => {
               userLocationService.deleteLocation(location._id)
               const filterArray = locationsArray.filter((value) => value._id !== location._id)
@@ -57,6 +59,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
           </div>
         </div>
       </div>
+
 
       {/* <div className="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
         <h2 className="accordion-header mb-0" id="flush-headingThree">
