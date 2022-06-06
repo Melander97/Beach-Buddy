@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const user = useUser();
 
+  //kopiera detta 
   useEffect(() => {
     contextUser$.subscribe((data) => {
       // console.log(data);
@@ -17,9 +18,11 @@ const Navbar = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   console.log(isLoggedIn);
-  // }, [isLoggedIn]);
+  //slut på kompiera 
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   const handleToggle = () => {
     setIsNavOpen((previsNavOpen) => !previsNavOpen);
