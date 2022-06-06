@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
 import locationService from "../../services/userLocationService";
 import "./AddLocation-modal.scss";
+import { Link, Navigate } from "react-router-dom";
 
 const AddLocationModal = ({ coords }) => {
   const [title, setTitle] = useState("");
@@ -21,16 +22,21 @@ const AddLocationModal = ({ coords }) => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    let res = locationService.addLocation(locationData);
-    res.then((data) => {
-      if (data.success) {
-        setIsSuccess(true);
-        setMessage("Plats tillagd!");
-      } else {
-        setIsSuccess(false);
-        setMessage("Något gick fel, försök igen.");
-      }
-    });
+
+    if (title === "" || adress === "" || description === "") {
+      setMessage("Fyll i alla fälten");
+    } else {
+      let res = locationService.addLocation(locationData);
+      res.then((data) => {
+        if (data.success) {
+          setIsSuccess(true);
+          setMessage("Plats tillagd!");
+        } else {
+          setIsSuccess(false);
+          setMessage("Något gick fel, försök igen.");
+        }
+      });
+    }
   };
 
   return (
@@ -61,7 +67,7 @@ const AddLocationModal = ({ coords }) => {
             value={title}
             className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-gray-100 transition mb-4 p-2"
             placeholder="Namn"
-            required=""
+            required
           />
         </div>
 
@@ -80,7 +86,7 @@ const AddLocationModal = ({ coords }) => {
             value={adress}
             className="w-full h-10 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-4  p-2"
             placeholder="T.ex. Klippan vid vattnet"
-            required=""
+            required
           />
         </div>
 
@@ -99,18 +105,22 @@ const AddLocationModal = ({ coords }) => {
             value={description}
             className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4 p-2"
             placeholder="Ta höger..."
-            required=""
+            required
           />
         </div>
-        <button
-          type="submit"
-          onClick={(e) => {
-            submitHandle(e);
-          }}
-          className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4 p-2"
-        >
-          Lägg till plats
-        </button>
+        {isSuccess ? (
+          <Navigate to="/locations" />
+        ) : (
+          <button
+            type="submit"
+            onClick={(e) => {
+              submitHandle(e);
+            }}
+            className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4 p-2"
+          >
+            Lägg till plats
+          </button>
+        )}
       </form>
       {/* </div> */}
     </div>
