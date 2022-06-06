@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import authService from "../../services/authService";
-import './register.scss';
+import { Navigate, Link } from "react-router-dom";
+import "./register.scss";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
   const [message, setMessage] = useState("");
   const [data, setData] = useState({});
 
-  const Register = async (e) => {
+  useEffect(() => {
+    if (data.success) {
+      setIsClicked(true);
+    }
+  }, [data]);
+
+  const submit = async (e) => {
     e.preventDefault();
 
     const userData = {
@@ -27,11 +35,15 @@ const Register = () => {
   return (
     <div className="register--bg grid place-items-center h-5/6">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-2 w-60" onSubmit={Register}>
+        <form className="space-y-2 w-60" onSubmit={submit}>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
             Skapa ett konto
           </h3>
-          {data && <p className="text-red-400">{data.message}</p>}
+          {data && (
+            <p className={data.success ? "text-green-400" : "text-red-400"}>
+              {data.message}
+            </p>
+          )}
 
           <div>
             <label
@@ -116,6 +128,7 @@ const Register = () => {
             Skicka in
           </button>
         </form>
+        {isClicked && <Navigate to="/login" />}
       </div>
     </div>
   );

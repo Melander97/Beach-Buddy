@@ -15,6 +15,7 @@ import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
 import React, { useEffect, useState } from "react";
 import { contextUser$ } from "../src/components/context/UserContext";
+import  NotFound  from "./pages/not-found/NotFound"
 
 
 function App() {
@@ -35,11 +36,9 @@ function App() {
       <div className="pageWrapper">
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
-
 
           <Route
             path="/profile"
@@ -83,7 +82,14 @@ function App() {
               </Protected>
             }
           />
+          {/* this route need to be at the bottom och page */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/*  <Route path="*">
+          <Notfound />
+        </Route> */}
+
         <Outlet />
         {/* {user !== undefined && 
         <UserMenu/>
