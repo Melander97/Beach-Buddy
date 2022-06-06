@@ -2,83 +2,86 @@ import React from "react";
 
 const Help = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center p-10 bg-white">
-      <div className="container grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:grid-rows-2">
-        <div className="row-span-2 flex flex-col rounded-md border border-slate-200">
-          <div className="h-1/2 flex-1">
-            <img
-              src="https://d33wubrfki0l68.cloudfront.net/c43307b88fb814366e4f3a181c788796cba83faa/4c05c/new/landing/omnichannel.png"
-              className="w-full object-cover object-right-top"
-              alt="omnichannel"
-            />
-          </div>
-          <div className="p-10">
-            <h3 className="text-xl font-medium text-gray-700">
-              Omnichannel support center
-            </h3>
-            <p className="mt-2 text-slate-500">
-              Chatwoot connects with popular customer communication channels
-              like Email, Website live-chat, Facebook, Twitter, WhatsApp,
-              Instagram, Line, etc., and helps you deliver a consistent customer
-              experience across channels.
-            </p>
-            <a href="" className="mt-2 inline-flex text-sky-500">
-              Read More →
-            </a>
-          </div>
-        </div>
-        <div className="flex rounded-md border border-slate-200">
-          <div className="flex-1 p-10">
-            <h3 className="text-xl font-medium text-gray-700">
-              A live-chat that fits your brand
-            </h3>
-            <p className="mt-2 text-slate-500">
-              Connect with your website visitors, communicate with them in
-              realtime and give them quality support with a live-chat widget
-              that fits your brand.
-            </p>
-            <a href="" className="mt-2 inline-flex text-sky-500">
-              Read More →
-            </a>
-          </div>
-
-          <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
-            <div className="absolute inset-0">
+    <section className="text-gray-600 body-font">
+      <div className="container px-5 py-24 mx-auto">
+        <div className="flex flex-wrap -m-4">
+          <div className="p-4 md:w-1/3">
+            <div className="h-full rounded-xl shadow-cla-blue bg-gradient-to-r from-indigo-50 to-blue-50 overflow-hidden">
               <img
-                src="https://d33wubrfki0l68.cloudfront.net/e5290c26cc1703e54e0afe3d1472046098ecd819/53775/new/landing/live-chat.png"
-                className="h-full w-full object-cover object-left-top"
-                alt=""
+                className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
+                src="https://images.unsplash.com/photo-1618172193622-ae2d025f4032?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
+                alt="blog"
               />
+              <div className="p-6">
+                <h1 className="title-font text-lg font-medium text-gray-600 mb-3">
+                  The Catalyzer
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+                  expedita harum ipsa facere, esse nam modi nisi. Quas, laborum
+                  id pariatur fuga temporibus nulla optio! Animi explicabo
+                  similique veritatis neque.
+                </p>
+                <div className="flex items-center flex-wrap ">
+                  <button className="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">
+                    Learn more
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex rounded-md border border-slate-200">
-          <div className="flex-1 p-10">
-            <h3 className="text-xl font-medium text-gray-700">
-              Respond faster, with automated chatbots
-            </h3>
-            <p className="mt-2 text-slate-500">
-              Integrate with chatbots using Rasa or Dialogflow to automate
-              conversations. Qualify using chatbots and seamlessly handoff to
-              human agents.
-            </p>
-            <a href="" className="mt-2 inline-flex text-sky-500">
-              Read More →
-            </a>
-          </div>
-
-          <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
-            <div className="absolute inset-0">
+          <div className="p-4 md:w-1/3">
+            <div className="h-full rounded-xl shadow-cla-violate bg-gradient-to-r from-pink-50 to-red-50 overflow-hidden">
               <img
-                src="https://d33wubrfki0l68.cloudfront.net/1205a454c4b64452a51930c9b0043f8db9ff8271/d202e/new/landing/chat-bot.png"
-                className="h-full w-full object-cover object-left-top"
-                alt=""
+                className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
+                src="https://images.unsplash.com/photo-1624628639856-100bf817fd35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8M2QlMjBpbWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+                alt="blog"
               />
+              <div className="p-6">
+                <h1 className="title-font text-lg font-medium text-gray-600 mb-3">
+                  The Catalyzer
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  Photo booth fam kinfolk cold-pressed sriracha leggings
+                  jianbing microdosing tousled waistcoat.
+                </p>
+                <div className="flex items-center flex-wrap ">
+                  <button className="bg-gradient-to-r from-orange-300 to-amber-400 hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-1 rounded-lg">
+                    Learn more
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 md:w-1/3">
+            <div className="h-full rounded-xl shadow-cla-pink bg-gradient-to-r from-fuchsia-50 to-pink-50 overflow-hidden">
+              <img
+                className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
+                src="https://images.unsplash.com/photo-1631700611307-37dbcb89ef7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
+                alt="blog"
+              />
+              <div className="p-6">
+                <h1 className="title-font text-lg font-medium text-gray-600 mb-3">
+                  The Catalyzer
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
+                  nam temporibus quisquam sapiente dicta ratione delectus maxime
+                  vitae culpa quo, facilis placeat voluptas maiores incidunt.
+                  Atque illo iusto in quaerat voluptatum fuga blanditiis, quas
+                  repellat. In quaerat dolor ducimus atque.
+                </p>
+                <div className="flex items-center flex-wrap ">
+                  <button className="bg-gradient-to-r from-fuchsia-300 to-orange-400 hover:scale-105  shadow-cla-blue px-4 py-1 rounded-lg">
+                    Learn more
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 export default Help;
