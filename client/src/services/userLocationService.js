@@ -19,9 +19,9 @@ import { BehaviorSubject } from "rxjs";
 
 
 
-const URL_API_DELETE_LOC = "https://beach-buddy.herokuapp.com/api/locations/delete";
+//const URL_API_DELETE_LOC = "https://beach-buddy.herokuapp.com/api/locations/delete";
 
-// const URL_API_DELETE_LOC = "http://localhost:4000/api/locations/delete";
+ const URL_API_DELETE_LOC = "http://localhost:4000/api/locations/delete";
 
 // const locations$ = new BehaviorSubject();
 
