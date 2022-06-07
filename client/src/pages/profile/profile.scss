@@ -9,13 +9,19 @@
     align-items: center;
     color: whitesmoke;
 
-    /* .profile-inner {
+     .profile-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
 
-    } */
-    .profile-info {
-      margin-top: 2em;
+      .shadow-md {
+        margin: 0 !important;
+        padding: 0 !important;
       }
-  
+
+    } 
 }
 
 

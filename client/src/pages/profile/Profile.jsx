@@ -53,11 +53,20 @@ const Profile = () => {
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
-          {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} 
-            locationsArray={userLocations} setUserLocation={setUserLocation}/>
-          ))}
 
+          <div className="wrapper">
+            <div className="accordion">
+              {userLocations?.map((location, index) => (
+                <UpdateLocation
+                  key={index}
+                  location={location}
+                  i={index}
+                  locationsArray={userLocations}
+                  setUserLocation={setUserLocation}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
