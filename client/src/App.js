@@ -13,10 +13,27 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
+<<<<<<< HEAD
 import Notfound from "./pages/not-found/NotFound";
+import Help from "./components/help-modal/Help";
+=======
+import React, { useEffect, useState } from "react";
+import { contextUser$ } from "../src/components/context/UserContext";
+import  NotFound  from "./pages/not-found/NotFound"
+
+>>>>>>> development
 
 function App() {
   // const { user } = useUser();
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    contextUser$.subscribe((data) => {
+      console.log(data);
+      setIsLoggedIn(data);
+    });
+  }, []);
+
   let user = localStorage.getItem("user");
   return (
     <div className="App">
@@ -27,6 +44,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/locationId" element={<LocationId />} />
+          <Route path="/help" element={<Help />} />
 
           <Route
             path="/profile"
@@ -71,7 +89,7 @@ function App() {
             }
           />
           {/* this route need to be at the bottom och page */}
-          <Route path="*" element={<Notfound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {/*  <Route path="*">
@@ -85,7 +103,16 @@ function App() {
         {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
       </div>
       {/* <Menu /> */}
-      <UserMenu />
+      {/* <UserMenu/> */}
+
+      {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
+          
+             <Menu /> 
+              ) :
+
+              (
+            <UserMenu/>
+          )}
     </div>
   );
 }
