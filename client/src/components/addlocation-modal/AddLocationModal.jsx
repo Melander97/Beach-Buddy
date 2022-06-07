@@ -39,10 +39,10 @@ const AddLocationModal = ({ coords }) => {
     }
   };
 
-  return (
-    <div className="addLocation-component w-full h-screen flex items-center justify-center my-3">
+  return ( 
+    <div className="addLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
       {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
-      <form className=" addLocation bg-[#EDC891] w-80 h-auto rounded-lg pt-8 pb-8 px-6 flex flex-col items-center shadow-xl mb-4 md:flex md:flex-wrap md:justify-between">
+      <form className=" addLocation bg-[#2E579E] w-80 h-auto rounded-lg pt-8 pb-8 px-6 flex flex-col items-center shadow-xl mb-4 md:flex md:flex-wrap md:justify-between">
         <div>
           <h3
             htmlFor="title"
