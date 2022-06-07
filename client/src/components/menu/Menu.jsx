@@ -1,15 +1,20 @@
 import React from "react";
 import "./Menu.scss";
 import "../update-account/Update-account.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
     <section className="footer-public">
+
+      <NavLink to="/">
+        <i className=" icon--space fa-solid fa-house fa-2xl"></i>
+      </NavLink>
+
       <Link to="/register">
         <i className=" icon--space fa-solid fa-user-plus fa-2xl"></i>
       </Link>
-      <i className="icon--space fa-solid fa-angle-up fa-2xl"></i>
+
       <Link to="/add-location">
         <i
           className="icon--space fa-solid fa-circle-plus fa-2xl"
@@ -21,3 +26,5 @@ const Menu = () => {
 };
 
 export default Menu;
+
+{/* <i class="fa-solid fa-house"></i> */}
