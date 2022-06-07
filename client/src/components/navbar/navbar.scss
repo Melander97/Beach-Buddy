@@ -66,11 +66,11 @@
           background: transparent;
 
           &::before {
-            transform: rotate(45deg) translate(4px, 8px);
+            transform: rotate(45deg) translate(6px, 8px);
           }
           &::after {
             width: 28px;
-            transform: rotate(-45deg) translate(6px, -5px);
+            transform: rotate(-45deg) translate(3.5px, -5px);
           }
         }
       }
