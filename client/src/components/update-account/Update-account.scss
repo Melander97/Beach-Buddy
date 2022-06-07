@@ -6,13 +6,13 @@
 	display: flex;
 	margin: auto;
 	flex-direction: column;
-	background-color: rgb(37, 185, 62);
+	background-color: $accordion;
 	.accordion-header {
-		background-color: rgb(37, 185, 62);	
+		background-color: $accordion;	
 	}
 
 	.accordion-item .accordion-button {
-		background-color: rgb(80, 170, 95);
+		background-color: $accordion;
 		color: black;
         width: 100%;
 
@@ -29,14 +29,14 @@
 	}
 
 	.accordion-body {
-		background-color: rgb(183, 218, 182);
+		background-color: $IconColor;
 		text-align: center;
 
         .profile__input {
             width: 90% !important;
             margin: auto !important;
             background-color: rgb(238, 238, 238) !important;
-            border: 1px solid #8a8a8a !important;
+            border: 1px solid #000000 !important;
             margin-top: 1em !important;
             text-align: center;
         }
@@ -46,14 +46,15 @@
   display: flex;
   margin: auto;
   margin-top: 1.5em;
-  background-color: #5b7a4f;
+  // background-color: #5b7a4f;
+  background-color: #293755;
   border-radius: 4px;
   border-style: none;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 3vw;
+  font-size: 2vw;
   outline: none;
   padding: 0.5em;
   position: relative;

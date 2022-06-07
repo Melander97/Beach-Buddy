@@ -37,7 +37,6 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div className="navbar">
-        <i className="fas fa-location fa-2xl"></i>
         <Link to="/">
           <img
             src={require("../../assets/bb-logo.png")}

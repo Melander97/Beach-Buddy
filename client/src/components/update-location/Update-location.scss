@@ -1,18 +1,19 @@
 @import "../../assets/scss/variables.scss";
 
 .accordion {
-  width: 100%;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  background-color: rgb(37, 185, 62);
-  .accordion-header {
-    background-color: rgb(37, 185, 62);
-  }
+	width: 100%;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	// background-color: rgb(191, 18, 18);
+	.accordion-header {
+		background-color: rgb(37, 185, 62);
+		
+	}
 
-  .accordion-item .accordion-button {
-    background-color: rgb(80, 170, 95);
-    color: black;
+	.accordion-item .accordion-button {
+		background-color: $IconColor;
+		color: black;
 
     .accordion-button:not(.collapsed) {
       color: black !important;
@@ -22,10 +23,8 @@
     }
   }
 
-  .accordion-body {
-    background-color: rgb(183, 218, 182);
-    text-align: center;
-  }
-
-  
+	.accordion-body {
+		background-color: $IconColor;
+		text-align: center;
+	}
 }
