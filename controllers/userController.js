@@ -166,48 +166,111 @@ const logoutUser = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
-  const { name, email, password } = req.body;
+// User profile
+// @desc     Update/patch user data
+// @route    Patch api/users/:id
+// @access   Private
+/* const updateUser = async (req, res) => {
+  const user = await User.findById(req.body.id);
+  console.log(user);
+
+  // const { name, email, password } = req.body;
+
+  if (req.body.name != null) {
+    user.name = req.body.name;
+  }
+
+  if (
+    req.body.email != null &&
+    req.body.email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)
+  ) {
+    user.email = req.body.email;
+  } else {
+    res.status(400).json({
+      success: false,
+      message: "Email not valid",
+      data: null,
+    });
+  } 
+
+  if (req.body.password != null && req.password.length < 6) {
+    const salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(req.body.password, salt);
+  }  else {
+    res.status(400).json({
+      success: false,
+      message: "Password must be at least 6 characters",
+      data: null,
+    });
+  } 
 
   try {
-    const id = req.params.id;
-    const updatedData = req.body;
-    const options = { new: true };
+    const updatedUser = await user.save();
+    return res.status(200).json({
+      success: true,
+      message: "Updated successfully",
+      data: updatedUser,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: `Server error ${error.message}`,
+      data: null,
+    });
+  }
+}; */
 
-    if (updatedData["password"]) {
-      const salt = await bcrypt.genSalt();
-      updatedData["password"] = await bcrypt.hash(req.body.password, salt);
-    }
+updateUser = async (req, res) => {
+  const { name, email, password } = req.body;
+  const updatedData = req.body;
+  const options = { new: false };
 
-    if (!name || !email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "Please fill all fields",
-        data: null,
-      });
-    }
+  // ----------------------------------------------------------------
+  // const id = req.params.id;
 
-    if (!email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)) {
-      return res.status(400).json({
-        success: false,
-        message: "Email not valid",
-        data: null,
-      });
-    }
+  // or
 
-    if (password.length < 6) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must be at least 6 characters",
-        data: null,
-      });
-    }
+  const id = await User.findById(req.params.id);
+  console.log(id)
+  // ----------------------------------------------------------------
 
+
+  if (
+    req.body.email != null && email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)
+  ) {
+    updatedData["email"] = req.body.email;
+  } else {
+    return res.status(400).json({
+      success: false,
+      message: "Email not valid",
+      data: null,
+    });
+  }
+
+  if (req.body.password != null && req.body.password.length >= 6) {
+    const salt = await bcrypt.genSalt();
+    updatedData["password"] = await bcrypt.hash(req.body.password, salt);
+  } else {
+    return res.status(400).json({
+      success: false,
+      message: "Password must be at least 6 characters",
+      data: null,
+    });
+  }
+
+  try {
+
+    // ----------------------------------------------------------------
     const result = await User.findByIdAndUpdate(id, updatedData, options);
+
+    // or
+
+    // const result = await id.save(id, updatedData, options);
+    // ----------------------------------------------------------------
 
     return res.status(200).json({
       success: true,
-      message: "Sucessfully updated ",
+      message: "Sucessfully updated!",
       data: {
         name: result.name,
         email: result.email,
@@ -215,9 +278,10 @@ const updateUser = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(400).json({
+    return res.status(500).json({
       success: false,
-      message: "Account not updated: " + error.message,
+      message: `Server error ${error.message}`,
+      data: null,
     });
   }
 };
