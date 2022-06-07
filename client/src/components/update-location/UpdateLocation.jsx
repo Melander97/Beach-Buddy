@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import locationService from "../../services/userLocationService";
 
 const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
@@ -43,7 +43,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
           data-bs-parent="#accordionFlushExample"
         >
           <div className="accordion-body py-4 px-5">
-            <button className="button-31"> Se plats</button>
+            {/* <button className="button-31"> Se plats</button> */}
             <Link
               to="/update-location"
               state={{ from: location }}
@@ -53,6 +53,23 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
               Ändra
             </Link>
             {/* <button className="update-btn">Ändra</button> */}
+            {/* <button
+              className="bg-red-400 text-white px-2 py-1"
+              onClick={() => {
+                locationService.deleteLocation(location._id);
+                const filterArray = locationsArray.filter(
+                  (value) => value._id !== location._id
+                );
+                setUserLocation(filterArray);
+              }}
+            >
+              Radera plats
+            </button> */}
+            {/* {console.log(location._id)} */}
+            <NavLink to={`/location/${location._id}`} className="button-31">
+              {" "}
+              Se plats
+            </NavLink>
             <button
               className="bg-red-400 text-white px-2 py-1"
               onClick={() => {
@@ -65,7 +82,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
             >
               Radera plats
             </button>
-            {/* {console.log(location._id)} */}
+            {console.log(location._id)}
           </div>
         </div>
       </div>

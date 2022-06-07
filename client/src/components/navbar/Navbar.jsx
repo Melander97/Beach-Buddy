@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { contextUser$ } from "../context/UserContext";
 
@@ -38,13 +38,13 @@ const Navbar = () => {
     <nav className="nav">
       <div className="navbar">
         <i className="fas fa-location fa-2xl"></i>
-        <NavLink to="/">
+        <Link to="/">
           <img
             src={require("../../assets/bb-logo.png")}
             alt=""
             className="logo"
           />
-        </NavLink>
+        </Link>
 
         <div className="hamburger" onClick={handleToggle}>
           <span
