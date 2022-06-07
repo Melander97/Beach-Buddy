@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { contextUser$ } from "../context/UserContext";
 
@@ -37,14 +37,13 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div className="navbar">
-        <i className="fas fa-location fa-2xl"></i>
-        <NavLink to="/">
+        <Link to="/">
           <img
             src={require("../../assets/bb-logo.png")}
             alt=""
             className="logo"
           />
-        </NavLink>
+        </Link>
 
         <div className="hamburger" onClick={handleToggle}>
           <span
@@ -56,8 +55,10 @@ const Navbar = () => {
       <div className={`dropdown ${isNavOpen ? "open" : ""}`}>
         <div className="link-wrapper">
           <NavLink to="/" className="link-wrapper__link" onClick={handleToggle}>
-            Home
+            Startsida
           </NavLink>
+
+         
 
           {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
             <>
@@ -66,7 +67,7 @@ const Navbar = () => {
                 className="link-wrapper__link"
                 onClick={handleToggle}
               >
-                Become a member
+                Bli medlem
               </NavLink>
 
               <NavLink
@@ -74,8 +75,10 @@ const Navbar = () => {
                 className="link-wrapper__link"
                 onClick={handleToggle}
               >
-                Login
+                Logga in
               </NavLink>
+
+           
             </>
           ) : (
             <>
@@ -84,7 +87,7 @@ const Navbar = () => {
                 className="link-wrapper__link"
                 onClick={handleToggle}
               >
-                Profile
+                Profil
               </NavLink>
 
               {/* log out */}
@@ -93,10 +96,18 @@ const Navbar = () => {
                 className="link-wrapper__link"
                 onClick={logoutToggle}
               >
-                Logout
+                Logga ut
               </NavLink>
             </>
           )}
+
+              <NavLink
+                to="Help"
+                className="link-wrapper__link"
+                onClick={handleToggle}
+              >
+                Om Beach Buddy
+              </NavLink>
         </div>
       </div>
     </nav>
