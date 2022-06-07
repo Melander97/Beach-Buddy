@@ -56,7 +56,7 @@ const UpdateLocationModal = ({ location }) => {
             value={updatedLocation !== null ? updatedLocation.title : title}
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-gray-100 transition mb-2 "
             // placeholder="Namn"
-            required=""
+            required={true}
           />
         </div>
         <div>
@@ -74,7 +74,7 @@ const UpdateLocationModal = ({ location }) => {
             value={updatedLocation !== null ? updatedLocation.adress : adress}
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
             placeholder="T.ex. Klippan vid vattnet"
-            required=""
+            required={true}
           />
         </div>
         <div>
@@ -96,7 +96,7 @@ const UpdateLocationModal = ({ location }) => {
             }
             className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
             placeholder="Ta höger..."
-            required=""
+            required={true}
           />
         </div>
         {!isUpdated ? (
