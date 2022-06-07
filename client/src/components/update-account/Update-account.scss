@@ -1,13 +1,13 @@
 
 @import '../../assets/scss/variables.scss';
 
-.wrapper {
+/* .wrapper {
   display: flex;
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .accordion {
   width: 50vw;
@@ -15,19 +15,22 @@
 }
 
 .item {
-  background-color: rgb(100, 202, 126);
-  margin-bottom: 1em;
+
   padding: 1em;
 }
 
-.title {
+.fa-cog, .fa-person-swimming{
+  margin: 0 0.5em 0 0;
+}
+
+/* .title {
   color: rgb(59, 57, 57);
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 
-}
+} */
 
 .content {
   color: rgb(255, 255, 255);
@@ -55,10 +58,23 @@
 
   */
 
+  .accordion-item:first-of-type .accordion-button {
+  background-color:$Account--body;
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  .accordion-item:last-of-type .accordion-button.collapsed {
+   border: 0 !important;
+   border-radius: 0 !important;
+  }
+}
+
+
 	.accordion-item .accordion-button {
 		background-color: rgb(80, 170, 95);
 		color: black;
-        width: 100%;
+    width: 100%;
+    border-radius: 0;
 
         .accordion-item:first-of-type {
          width: 100%;
@@ -114,7 +130,21 @@
 .button-31:focus {
   opacity: .75;
 }
-	}
+
+}
+
+/* MEDIA QUERIES ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
+
+/* STOP MIN WIDTH*/
+@media only screen and (min-width: 1200px) and (max-width: 2500px) {
+
+  .button-31 {
+    width: 2vw !important;
+    font-size: 1.5vw !important;
+}
+
+
+}
 
 
 

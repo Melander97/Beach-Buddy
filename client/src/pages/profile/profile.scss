@@ -8,9 +8,19 @@
     text-align: center;
     align-items: center;
 
-    /* .profile-inner {
+     .profile-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
 
-    } */
+      .shadow-md {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+    } 
 }
 
 @media screen and (min-width: 1400px) {
