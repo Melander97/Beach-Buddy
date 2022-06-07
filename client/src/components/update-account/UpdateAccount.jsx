@@ -40,8 +40,8 @@ const UpdateAccount = (userId) => {
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
-      <div className="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-gray border border-gray-200">
-        <h2 className="accordion-header mb-0" id="flush-headingOne bg-red">
+      <div className="accordion-item border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingOne">
           <button
             className="accordion-button 
               relative
@@ -62,7 +62,7 @@ const UpdateAccount = (userId) => {
             aria-expanded="false"
             aria-controls="flush-collapseOne"
           >
-            <i className="icon--space2 fa fa-cog" aria-hidden="true"></i>{" "}
+            <i className="fa fa-cog" aria-hidden="true"></i>{" "}
             Uppdatera konto
           </button>
         </h2>

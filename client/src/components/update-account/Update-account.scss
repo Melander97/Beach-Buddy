@@ -1,20 +1,80 @@
 
 @import '../../assets/scss/variables.scss';
 
+/* .wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+} */
+
+.accordion {
+  width: 50vw;
+
+}
+
+.item {
+
+  padding: 1em;
+}
+
+.fa-cog, .fa-person-swimming{
+  margin: 0 0.5em 0 0;
+}
+
+/* .title {
+  color: rgb(59, 57, 57);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+} */
+
+.content {
+  color: rgb(255, 255, 255);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.content.show {
+  height: auto;
+  max-height: 40vh;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+/* 
 .accordion {
 	width: 100%;
 	display: flex;
 	margin: auto;
 	flex-direction: column;
-	background-color: rgb(37, 185, 62);
+	background-color: $accordion;
 	.accordion-header {
-		background-color: rgb(37, 185, 62);	
+		background-color: $accordion;	
 	}
 
+  */
+
+  .accordion-item:first-of-type .accordion-button {
+  background-color:$accordion;
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  .accordion-item:last-of-type .accordion-button.collapsed {
+   border: 0 !important;
+   border-radius: 0 !important;
+  }
+}
+
+
 	.accordion-item .accordion-button {
-		background-color: rgb(80, 170, 95);
+		background-color: $accordion;
 		color: black;
-        width: 100%;
+    width: 100%;
+    border-radius: 0;
 
         .accordion-item:first-of-type {
          width: 100%;
@@ -29,14 +89,14 @@
 	}
 
 	.accordion-body {
-		background-color: rgb(183, 218, 182);
+		background-color: $IconColor;
 		text-align: center;
 
         .profile__input {
             width: 90% !important;
             margin: auto !important;
             background-color: rgb(238, 238, 238) !important;
-            border: 1px solid #8a8a8a !important;
+            border: 1px solid #000000 !important;
             margin-top: 1em !important;
             text-align: center;
         }
@@ -46,14 +106,15 @@
   display: flex;
   margin: auto;
   margin-top: 1.5em;
-  background-color: #5b7a4f;
+  // background-color: #5b7a4f;
+  background-color: #293755;
   border-radius: 4px;
   border-style: none;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 3vw;
+  font-size: 2vw;
   outline: none;
   padding: 0.5em;
   position: relative;
@@ -70,7 +131,20 @@
 .button-31:focus {
   opacity: .75;
 }
-	}
+
+}
+
+/* MEDIA QUERIES ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
+
+/* STOP MIN WIDTH*/
+@media only screen and (min-width: 1200px) and (max-width: 2500px) {
+
+  .button-31 {
+    width: 2vw !important;
+    font-size: 1.5vw !important;
+}
+
+
 }
 
 

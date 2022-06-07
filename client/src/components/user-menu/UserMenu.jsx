@@ -18,13 +18,7 @@ const UserMenu = () => {
         ></i>{" "}
       </Link>
 
-      {/* <Link to="/locations">
-        {" "}
-        <i
-          className="icon--space fa fa-map-marker fa-2xl"
-          aria-hidden="true"
-        ></i>{" "}
-      </Link> */}
+     
 
       <Link to="/locations">
         {" "}

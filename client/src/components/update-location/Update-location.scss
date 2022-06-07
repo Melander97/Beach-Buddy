@@ -1,20 +1,179 @@
 
 @import '../../assets/scss/variables.scss';
 
+.wrapper {
+	display: flex;
+	/* height: 100vh;
+	width: 100vw; */
+	justify-content: center;
+	align-items: center;
+	margin: 0 !important;
+    padding: 0 !important;
+
+
+	.accordion {
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 50vw;
+	
+	
+		.item {
+			background-color: $accordion;
+			padding: 1em;
+
+			.title {
+				width: 100%;
+				color: rgb(59, 57, 57);
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+				justify-content: space-between;
+
+				span {
+					text-align: right;
+					float: right;
+				}
+			  
+			  }
+		
+			.content {
+			color: rgb(255, 255, 255);
+			max-height: 0;
+			overflow: hidden;
+			transition: all 0.5s cubic-bezier(0,1,0,1);
+
+			.content__inner {
+				display: flex;
+				flex-direction: row;
+			
+					.update__btn, .content__btn {
+						display: flex;
+						margin: auto;
+						margin-top: 1.5em;
+						background-color: $Primary;
+						border-radius: 4px;
+						border-style: none;
+						box-sizing: border-box;
+						color: #fff;
+						cursor: pointer;
+						display: inline-block;
+						font-size: 1vw;
+						outline: none;
+						padding: 0.2em 1em 0.3em 1em;
+						position: relative;
+						text-align: center;
+						justify-content: center;
+						align-items: center;
+						align-self: center;
+						align-content: center;
+						touch-action: manipulation;
+						
+
+					}		
+				}
+
+			}
+		
+			.content.show {
+				height: auto;
+				max-height: 40vh;
+				transition: all 0.5s cubic-bezier(0,1,0,1);
+			
+				.content__inner {
+				display: flex;
+				flex-direction: row;
+			
+					.update__btn, .content__btn {
+						display: flex;
+						margin: auto;
+						margin-top: 1.5em;
+						background-color: $Primary;
+						border-radius: 4px;
+						border-style: none;
+						box-sizing: border-box;
+						color: #fff;
+						cursor: pointer;
+						display: inline-block;
+						font-size: 1vw;
+						outline: none;
+						padding: 0.2em 1em 0.3em 1em;
+						position: relative;
+						text-align: center;
+						justify-content: center;
+						align-items: center;
+						align-self: center;
+						align-content: center;
+						touch-action: manipulation;
+						
+
+					}		
+				}
+			}
+		}
+	}
+}
+  
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  
+ /*  .content {
+	color: rgb(255, 255, 255);
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.5s cubic-bezier(0,1,0,1);
+
+	&__inner {
+
+		&__btn {
+	background-color: red;
+}
+
+}
+
+
+  }
+  
+  .content.show {
+	height: auto;
+	max-height: 40vh;
+	transition: all 0.5s cubic-bezier(0,1,0,1);
+
+	&__inner {
+
+			&__btn {
+		background-color: red;
+	}
+
+	}
+
+
+
+  } */
+
+/* old styles
 
 .accordion {
 	width: 100%;
 	display: flex;
 	margin: auto;
 	flex-direction: column;
-	background-color: rgb(37, 185, 62);
+	// background-color: rgb(191, 18, 18);
 	.accordion-header {
 		background-color: rgb(37, 185, 62);
 		
 	}
 
+
 	.accordion-item .accordion-button {
-		background-color: rgb(80, 170, 95);
+		background-color: $IconColor;
 		color: black;
 
 		.accordion-button:not(.collapsed) {
@@ -26,7 +185,7 @@
 	}
 
 	.accordion-body {
-		background-color: rgb(183, 218, 182);
+		background-color: $IconColor;
 		text-align: center;
 	}
-}
+	*/

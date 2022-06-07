@@ -39,16 +39,34 @@ const Profile = () => {
         src={require("../../assets/bb-logo.png")}
         alt=""
       /> */}
+
+      <div className="profile-info">
+      <i className="icon--space fa-solid fa-user fa-2xl mb-5"></i>
+      {/* <i className="fa-light fa-volleyball fa-2xl mb-5"></i>
+      <i className="fa-light fa-island-tropical fa-1xl"></i> */}
+      {/* <i class="fa-light fa-child-reaching fa-2xl"></i> */}
+      <i className="icon--space fa-solid fa-peach fa-2xl"></i>
       <h1>Name: {user.user.name}</h1>
       <h1>Email: {user.user.email}</h1>
+      </div>
+
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
-          {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} 
-            locationsArray={userLocations} setUserLocation={setUserLocation}/>
-          ))}
 
+          <div className="wrapper">
+            <div className="accordion">
+              {userLocations?.map((location, index) => (
+                <UpdateLocation
+                  key={index}
+                  location={location}
+                  i={index}
+                  locationsArray={userLocations}
+                  setUserLocation={setUserLocation}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
