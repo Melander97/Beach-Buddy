@@ -44,11 +44,11 @@ const userSchema = new mongoose.Schema(
   }); */
 
 // fire a function to hash the password before saving to db
-userSchema.pre("save", async function (next) {
+/* userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
-});
+}); */
 
 module.exports = mongoose.model("User", userSchema);
 //register end

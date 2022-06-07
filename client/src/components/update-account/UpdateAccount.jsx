@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import authService from "../../services/authService";
+import { useUser } from "../context/UserContext";
 import "./Update-account.scss";
 
-const UpdateAccount = (userId) => {
+const UpdateAccount = () => {
+  const user = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [updatedUserInfo, setUpdatedUserInfo] = useState({});
+  // const [password, setPassword] = useState("");
+  // const [updatedUserInfo, setUpdatedUserInfo] = useState({});
+  const [message, setMessage] = useState("");
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const UpdateAccount = async (e) => {
     e.preventDefault();
@@ -14,22 +18,37 @@ const UpdateAccount = (userId) => {
     const updatedUserInfo = {
       name: name,
       email: email,
-      password: password,
     };
+    console.log(updatedUserInfo);
 
-    try {
+    const res = await authService
+      .updateAccountFunction(updatedUserInfo, user.user.id)
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          setMessage(data.message);
+          setIsUpdated(true);
+          // console.log(message);
+        }
+      });
+
+    /* if (isUpdated) {
+      setName("");
+      setEmail("");
+    } */
+    /*  try {
       let response = await authService.updateAccountFunction(updatedUserInfo);
       setUpdatedUserInfo(response);
       console.log("LALAL" + response);
       return response;
     } catch (err) {
       console.log(err);
-    }
+    } */
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log("USEEFFECT" + JSON.stringify(updatedUserInfo));
-  }, [updatedUserInfo]);
+  }, [updatedUserInfo]); */
 
   /* function messageColor(response) {
     const success = response.success;
@@ -74,42 +93,43 @@ const UpdateAccount = (userId) => {
         >
           {/* Message */}
           <form className="accordion-body py-4 px-5" onSubmit={UpdateAccount}>
-            {updatedUserInfo && (
-              <p
-                className={
-                  updatedUserInfo.success ? "text-green-400" : "text-red-400"
-                }
-              >
-                {updatedUserInfo.message}
+            {isUpdated && (
+              <p className={isUpdated ? "text-green-400" : "text-red-400"}>
+                {message}
               </p>
             )}
 
             <input
               type="text"
-              className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="profile__input block w-full px-3 py-1.5 transition ease-in-out text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleText0"
               placeholder="Användarnamn"
-              value={name}
+              value={isUpdated ? "" : name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
-              className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="profile__input block w-full px-3 py-1.5 transition ease-in-out text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleText0"
               placeholder="E-mail"
-              value={email}
+              value={isUpdated ? "" : email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
+            {/* <input
               type="text"
               className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleText0"
               placeholder="Lösenord"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="button-31"> Uppdatera</button>
-
+            /> */}
+            <button
+              className="button-31"
+              disabled={name === "" && email === "" ? true : false}
+            >
+              {" "}
+              Uppdatera
+            </button>
           </form>
         </div>
       </div>

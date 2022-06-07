@@ -46,8 +46,17 @@ const loginFunction = async (loginData) => {
   }
 };
 
-const updateAccountFunction = async (updatedUserInfo) => {
-  try {
+const updateAccountFunction = async (updatedUserInfo, userId) => {
+  // console.log(userId);
+  const res = await axios.patch(
+    `${API_URL}/update/${userId}`,
+    updatedUserInfo,
+    config
+  );
+  user$.next(res.data);
+  console.log(res.data);
+  return res.data;
+  /* try {
     const res = await axios.patch(
       `${API_URL}/update/628ff47d252c91d0eec404ec`,
       updatedUserInfo,
@@ -62,7 +71,7 @@ const updateAccountFunction = async (updatedUserInfo) => {
     if (error.response) {
       return error.response.data;
     }
-  }
+  } */
 };
 
 // Skaapa en funktion som skickar uppdaterad data till databasen, samt returnerar den för att den ska finnas tillgänglig för FE
