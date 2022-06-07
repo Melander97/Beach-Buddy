@@ -76,6 +76,14 @@ const Navbar = () => {
               >
                 Login
               </NavLink>
+
+              <NavLink
+                to="Help"
+                className="link-wrapper__link"
+                onClick={handleToggle}
+              >
+                Help
+              </NavLink>
             </>
           ) : (
             <>

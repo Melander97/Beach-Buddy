@@ -13,10 +13,11 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
+import Notfound from "./pages/not-found/NotFound";
+import Help from "./components/help-modal/Help";
 import React, { useEffect, useState } from "react";
 import { contextUser$ } from "../src/components/context/UserContext";
-import  NotFound  from "./pages/not-found/NotFound"
-
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
   // const { user } = useUser();
@@ -39,6 +40,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/location/:id" element={<LocationId />} />
+          {/* <Route path="/locationId" element={<LocationId />} /> */}
+          <Route path="/help" element={<Help />} />
+
           <Route
             path="/profile"
             element={
@@ -90,13 +94,10 @@ function App() {
       {/* <UserMenu/> */}
 
       {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
-          
-             <Menu /> 
-              ) :
-
-              (
-            <UserMenu/>
-          )}
+        <Menu />
+      ) : (
+        <UserMenu />
+      )}
     </div>
   );
 }
