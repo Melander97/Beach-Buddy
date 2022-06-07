@@ -1,31 +1,67 @@
+@import "../../assets/scss/variables.scss";
+
 .modalWrapper {
   width: 100%;
   min-height: 83vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fddcc356;
+  background-color: $dropdown;
+
+  .container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+      width: 90%;
+    }
+  }
+
+  .contentent {
+    flex-direction: row;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: lighter;
+  }
+
+  p {
+    margin: 10px 0;
+    font-weight: 500;
+    line-height: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: black;
+    display: inline-block;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
 
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.left {
+/* .left {
   width: 60%;
   height: 700px;
-  background: url("https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&h=650&w=940");
+  background: url("https://www.mullsjo.se/images/18.737d400e171ac5296c85bb31/1589789558447/hopptornet-sol.jpg?auto=compress&cs=tinysrgb&h=650&w=940");
     // no-repeat (center / cover);
   border-radius: 8px;
-}
+} */
 
-.right {
+/* .right {
   width: 40%;
   min-height: 400px;
   background-color: white;
@@ -62,17 +98,9 @@
       color: white;
     }
   }
-}
+} */
 
-.fa-star {
-  margin-top: 20px;
-}
-
-.checked {
-  color: orange;
-}
-
-@media only screen and (max-width: 928px) {
+/* @media only screen and (max-width: 928px) {
   .container {
     flex-direction: column;
     width: 100%;
@@ -89,23 +117,4 @@
     margin: 0;
     margin-top: -100px;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    width: 100%;
-    margin: 0 20px;
-  }
-
-  .left {
-    width: 100%;
-    height: 400px;
-  }
-
-  .right {
-    width: 90%;
-    margin: 0;
-    margin-top: -100px;
-  }
-}
+} */
