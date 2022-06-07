@@ -36,11 +36,11 @@ const LoginForm = () => {
 
 	}
   return (
-    <div className="login--bg grid place-items-center w-full shadow-lg h-5/6 ">
+    <div className="login--bg grid place-items-center w-full shadow-lg h-5/6 bg-no-repeat bg-cover">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form className="space-y-6 w-80 space-y-1 w-64 pt-6 " action="#"  >
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center box-border">
-            Sign in
+            Logga in
           </h3>
           {data && 
           <p style={data.success ? {color: 'green'} :{color: 'red'}}>{data.message}</p>
@@ -50,7 +50,7 @@ const LoginForm = () => {
               htmlFor="email"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300 py-1"
             >
-              Your email
+              Email
             </label>
             <input
               type="email"
@@ -59,7 +59,7 @@ const LoginForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
+              placeholder="namn@email.com"
               required=""
             />
           </div>
@@ -68,7 +68,7 @@ const LoginForm = () => {
               htmlFor="password"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
             >
-              Your password
+              Lösenord
             </label>
             <input
               type="password"
@@ -98,15 +98,15 @@ const LoginForm = () => {
             onClick={submit}
             className="w-full text-blackS bg-yellow-500 hover:bg-yellow-600 focus:ring-2 focus:ring-black font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Login to your account
+            Logga in på ditt konto
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300 ">
-            Not registered?{" "}
+            Inget konto?{" "}
             <Link
               to="/register"
               className="text-black hover:underline dark:text-gray-700"
             >
-              Create account
+              Skapa konto här
             </Link>
           </div>
         </form>
