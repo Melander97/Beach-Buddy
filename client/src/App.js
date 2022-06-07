@@ -103,13 +103,10 @@ function App() {
       {/* <UserMenu/> */}
 
       {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
-          
-             <Menu /> 
-              ) :
-
-              (
-            <UserMenu/>
-          )}
+        <Menu />
+      ) : (
+        <UserMenu />
+      )}
     </div>
   );
 }
