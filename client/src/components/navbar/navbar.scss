@@ -3,15 +3,15 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: $Secondary;
+  background-color: $Primary;
   z-index: 2;
   .navbar {
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
-    background-color: $Secondary;
+    width: 100%;
+    background-color: $Primary;
     margin: auto;
     text-align: center;
     align-items: center;
@@ -48,7 +48,7 @@
           right: -0px;
           width: 28px;
           height: 3px;
-          background-color: $Primary;
+          background-color: $IconColor;
           transition: 0.2s ease-in-out;
         }
 
@@ -56,8 +56,8 @@
           content: "";
           position: absolute;
           top: 8px;
-          right: 4px;
-          width: 24px;
+          right: -0px;
+          width: 28px;
           height: 3px;
           background-color: #ffffff;
           transition: 0.2s ease-in-out;
@@ -88,7 +88,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $Secondary;
+    background-color: $dropdown;
     width: 100vw;
     height: 100vh;
     z-index: 2;

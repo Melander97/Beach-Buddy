@@ -17,7 +17,8 @@ import Notfound from "./pages/not-found/NotFound";
 import Help from "./components/help-modal/Help";
 import React, { useEffect, useState } from "react";
 import { contextUser$ } from "../src/components/context/UserContext";
-import NotFound from "./pages/not-found/NotFound";
+import  NotFound  from "./pages/not-found/NotFound"
+
 
 function App() {
   // const { user } = useUser();
