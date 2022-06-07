@@ -13,15 +13,11 @@ import Menu from "./components/menu/Menu";
 import MyLocations from "./pages/MyLocation/MyLocations";
 import UserMenu from "./components/user-menu/UserMenu";
 import { useUser } from "./components/context/UserContext";
-<<<<<<< HEAD
 import Notfound from "./pages/not-found/NotFound";
 import Help from "./components/help-modal/Help";
-=======
 import React, { useEffect, useState } from "react";
 import { contextUser$ } from "../src/components/context/UserContext";
-import  NotFound  from "./pages/not-found/NotFound"
-
->>>>>>> development
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
   // const { user } = useUser();
@@ -106,13 +102,10 @@ function App() {
       {/* <UserMenu/> */}
 
       {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
-          
-             <Menu /> 
-              ) :
-
-              (
-            <UserMenu/>
-          )}
+        <Menu />
+      ) : (
+        <UserMenu />
+      )}
     </div>
   );
 }
