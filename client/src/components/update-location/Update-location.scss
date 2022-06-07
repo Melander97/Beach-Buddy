@@ -7,14 +7,14 @@
 	display: flex;
 	margin: auto;
 	flex-direction: column;
-	background-color: rgb(37, 185, 62);
+	// background-color: rgb(191, 18, 18);
 	.accordion-header {
 		background-color: rgb(37, 185, 62);
 		
 	}
 
 	.accordion-item .accordion-button {
-		background-color: rgb(80, 170, 95);
+		background-color: $IconColor;
 		color: black;
 
 		.accordion-button:not(.collapsed) {
@@ -26,7 +26,7 @@
 	}
 
 	.accordion-body {
-		background-color: rgb(183, 218, 182);
+		background-color: $IconColor;
 		text-align: center;
 	}
 }
