@@ -5,6 +5,11 @@ import "./User-menu.scss";
 const UserMenu = () => {
   return (
     <section className="user__menu">
+
+      <Link to="">
+        <i className=" icon--space fa-solid fa-house fa-2xl"></i>
+      </Link>
+
       <Link to="/profile">
         {" "}
         <i
@@ -12,17 +17,19 @@ const UserMenu = () => {
           aria-hidden="true"
         ></i>{" "}
       </Link>
-      <Link to="/locations">
+
+      {/* <Link to="/locations">
         {" "}
         <i
           className="icon--space fa fa-map-marker fa-2xl"
           aria-hidden="true"
         ></i>{" "}
-      </Link>
-      <Link to="/add-location">
+      </Link> */}
+
+      <Link to="/locations">
         {" "}
         <i
-          className="icon--space fa-solid fa-circle-plus fa-2xl"
+          className="icon--space fa-solid fa-map fa-2xl"
           aria-hidden="true"
         ></i>{" "}
       </Link>
