@@ -119,7 +119,7 @@ deleteLocation = async (req, res) => {
 // End of Delete location
 
 // Update location
-exports.updateLocation = async (req, res) => {
+updateLocation = async (req, res) => {
   const location = await Location.findById(req.body.location_id);
 
   const user = await User.findById(req.body.user_id);
@@ -203,5 +203,6 @@ module.exports = {
   getLocation,
   addLocation,
   updateLocation,
-  getLocationByIdv
+  getLocationById,
+  deleteLocation,
 };
