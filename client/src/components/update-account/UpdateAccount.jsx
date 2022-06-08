@@ -20,23 +20,11 @@ const UpdateAccount = (userId) => {
     try {
       let response = await authService.updateAccountFunction(updatedUserInfo);
       setUpdatedUserInfo(response);
-      console.log("LALAL" + response);
       return response;
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
-  useEffect(() => {
-    console.log("USEEFFECT" + JSON.stringify(updatedUserInfo));
-  }, [updatedUserInfo]);
-
-  /* function messageColor(response) {
-    const success = response.success;
-    if (!success) {
-      return;
-    }
-  } */
+  useEffect(() => {}, [updatedUserInfo]);
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
@@ -109,7 +97,6 @@ const UpdateAccount = (userId) => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="button-31"> Uppdatera</button>
-
           </form>
         </div>
       </div>

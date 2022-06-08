@@ -1,4 +1,3 @@
-import React from "react";
 import LocationModal from "../../components/location-modal/LocationModal";
 
 const LocationId = () => {

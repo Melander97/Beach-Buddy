@@ -5,7 +5,6 @@ import "./User-menu.scss";
 const UserMenu = () => {
   return (
     <section className="user__menu">
-
       <Link to="">
         <i className=" icon--space fa-solid fa-house fa-2xl"></i>
       </Link>
@@ -18,8 +17,6 @@ const UserMenu = () => {
         ></i>{" "}
       </Link>
 
-     
-
       <Link to="/locations">
         {" "}
         <i
@@ -27,8 +24,6 @@ const UserMenu = () => {
           aria-hidden="true"
         ></i>{" "}
       </Link>
-
-      {/* <button > Log Out </button> */}
     </section>
   );
 };

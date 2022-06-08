@@ -5,12 +5,6 @@ import { Link } from "react-router-dom";
 const LocationModal = () => {
   return (
     <section className="modalWrapper">
-      {/* <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star"></span>
-        <span className="fa fa-star"></span> */}
-
       <div className="max-w-40 container animate__animated animate__fadeInUp p-4">
         <div className=" rounded-xl shadow-cla-blue bg-white overflow-hidden">
           <img

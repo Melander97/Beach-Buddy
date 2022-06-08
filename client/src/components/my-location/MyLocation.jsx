@@ -1,4 +1,3 @@
-import React from "react";
 import "./My-location.scss";
 import userLocationService from "../../services/userLocationService"
 

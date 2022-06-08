@@ -1,4 +1,3 @@
-import React from "react";
 import AddLocationModal from "../../components/addlocation-modal/AddLocationModal";
 
 const AddLocation = () => {
