@@ -4,11 +4,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./google-maps.scss";
 import {
-  ScriptLoaded,
   GoogleMap,
   useLoadScript,
   Marker,
-  Autocomplete,
   InfoWindow,
   MarkerClusterer,
 } from "@react-google-maps/api";
@@ -32,7 +30,6 @@ const GoogleMaps = () => {
   const [beaches, setBeaches] = useState([]);
   //Search states
   const [city, setCity] = useState("");
-  //Is set but never read?
   const [coords, setCoords] = useState({ lat: null, lng: null });
   //Object containing the details of the selected marker which is populated by the external beach API
   const [locationDetail, setLocationDetail] = useState({});
@@ -47,7 +44,6 @@ const GoogleMaps = () => {
   useEffect(() => {
     getLocation();
     coords$.subscribe((res) => {
-      console.log(res);
       setGeoLocation(res);
     });
     getAllBeaches();
@@ -58,28 +54,11 @@ const GoogleMaps = () => {
   }, []);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
-    // googleMapsApiKey: "AIzaSyC01RQkQ0NYA_8B8eRbDLf8WfLOlubH-GA",
     libraries: libraries,
   });
 
-  /* async function getLocation() {
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(location => {
-                const lat = location.coords.latitude;
-                const long = location.coords.longitude;
-                
-                    setGeoLocation({
-                    lat: lat,
-                    lng: long
-                })
-            })
-        }
-    } */
-
   //Takes in the marker info as an object to pass the NUTSKOD to the getBeachInfo which calls the bad_havs_API to fetch info about clicked position. Stores result in locationDetails.
   const markerClickHandle = (marker) => {
-    console.log(marker);
-
     getBeachInfo(marker.properties.NUTSKOD);
 
     locationDetails$.subscribe((data) => {
@@ -91,9 +70,6 @@ const GoogleMaps = () => {
     const result = await geocodeByAddress(value);
     const latLng = await getLatLng(result[0]);
     setCoords(latLng);
-    // console.log(coords);
-    //Need to click the select dropdown for it to pan to hte location
-    //Currently double action is neccessary to pan to the location, why?
     map.panTo(latLng);
   };
 
@@ -142,8 +118,6 @@ const GoogleMaps = () => {
               </div>
             )}
           </PlacesAutocomplete>
-          {/* Functionality of this button will be found in the the quick access bar */}
-          {/* <button onClick={() => map.panTo(center)}>My position</button> */}
         </div>
         <GoogleMap
           center={center}
@@ -151,7 +125,6 @@ const GoogleMaps = () => {
           mapContainerClassName="home-map-container"
           onLoad={(map) => {
             setMap(map);
-            console.log("map loaded");
           }}
           options={{
             zoomControl: false,
@@ -162,7 +135,6 @@ const GoogleMaps = () => {
         >
           {beaches[0].length > 1 && (
             <MarkerClusterer
-              // imagePath={'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
               onLoad={() => {
                 console.log("Clusterer loaded");
               }}
@@ -175,10 +147,7 @@ const GoogleMaps = () => {
                   <Marker
                     visible={true}
                     key={index}
-                    onLoad={() => {
-                      console.log("marker loaded");
-                    }}
-                    // icon={require("../../assets/images/swim-blue.png")}
+                    onLoad={() => {}}
                     icon={
                       index % 2 === 0
                         ? require("../../assets/images/google-maps/swim-orange.png")
@@ -205,9 +174,6 @@ const GoogleMaps = () => {
               // eslint-disable-next-line no-undef
               options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
               position={activeMarker.latLng.toJSON()}
-              onClick={(e) => {
-                // console.log(e.target);
-              }}
               onCloseClick={() => {
                 setSelected(null);
               }}
@@ -219,7 +185,7 @@ const GoogleMaps = () => {
                   className="info-link"
                   to={`/location/${locationDetail.nutsCode}`}
                 >
-                  More details
+                  Info
                 </Link>
               </>
             </InfoWindow>

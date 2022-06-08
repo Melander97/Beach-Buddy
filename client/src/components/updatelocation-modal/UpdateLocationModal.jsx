@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import locationService from "../../services/userLocationService";
 import { useUser } from "../context/UserContext";
@@ -34,9 +34,8 @@ const UpdateLocationModal = ({ location }) => {
   };
 
   return (
-    <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3">
-      {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
-      <form className="updateForm bg-[#EDC891] w-80 h-auto rounded-lg pt-8 pb-8 px-6 flex flex-col items-center shadow-xl mb-2 md:flex md:flex-wrap md:justify-between">
+    <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
+      <form className="update-location-form bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:border-gray-700">
         <h3 className="text-xl font-medium text-gray-900 dark:text-black text-center">
           Ändra plats
         </h3>
@@ -54,8 +53,7 @@ const UpdateLocationModal = ({ location }) => {
             id="title"
             onChange={(e) => setTitle(e.target.value)}
             value={updatedLocation !== null ? updatedLocation.title : title}
-            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-gray-100 transition mb-2 "
-            // placeholder="Namn"
+            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-gray-100 transition mb-2 border"
             required={true}
           />
         </div>
@@ -72,7 +70,7 @@ const UpdateLocationModal = ({ location }) => {
             id="adress"
             onChange={(e) => setAdress(e.target.value)}
             value={updatedLocation !== null ? updatedLocation.adress : adress}
-            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
+            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2 border"
             placeholder="T.ex. Klippan vid vattnet"
             required={true}
           />
@@ -82,9 +80,9 @@ const UpdateLocationModal = ({ location }) => {
             htmlFor="title"
             className="text-sm font-medium text-black-900 block mb-2 dark:text-black-300 py-1"
           >
-            Vägbeskrivning
+            Beskrivning
           </label>
-          <input
+          <textarea
             type="direction"
             name="direction"
             id="direction"
@@ -94,14 +92,14 @@ const UpdateLocationModal = ({ location }) => {
                 ? updatedLocation.description
                 : directions
             }
-            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2"
+            className="w-full h-10 p-2 rounded-lg bg-white text-gray-600 font-semibold hover:bg-black-100 transition mb-2 border"
             placeholder="Ta höger..."
             required={true}
           />
         </div>
         {!isUpdated ? (
           <button
-            className="hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4"
+            className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10"
             onClick={(e) => {
               upDateLocation(e);
             }}
@@ -110,14 +108,13 @@ const UpdateLocationModal = ({ location }) => {
             Ändra plats
           </button>
         ) : (
-          <Link to="/profile">
-            <button className="hover:bg-red-dark w-40 h-10 rounded-lg bg-green-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">
+          <Link className="back-link" to="/profile">
+            <button className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10">
               Till profil
             </button>
           </Link>
         )}
       </form>
-      {/* </div> */}
     </div>
   );
 };

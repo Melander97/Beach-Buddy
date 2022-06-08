@@ -1,13 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./My-location.scss";
-import locationService from "../../services/userLocationService";
 
-const MyLocations = ({ selectedLocation, user }) => {
-  const removeLocation = async (id) => {
-    console.log(id);
-    // locationService.deleteLocation()
-  };
+const MyLocations = ({ removeLocation, selectedLocation, user }) => {
   return (
     <>
       <div class="info-window w-full md:w-1/3 mx-auto">
@@ -23,13 +18,14 @@ const MyLocations = ({ selectedLocation, user }) => {
               >
                 Se Plats
               </Link>
-              {/* onCLick delete goes here */}
               <button
                 className="btn mx-1 items-center"
                 disabled={selectedLocation.userId !== user.user.id}
-                onClick={removeLocation(selectedLocation._id)}
+                onClick={() => {
+                  removeLocation(selectedLocation._id);
+                }}
               >
-                Remove
+                Ta bort
               </button>
             </div>
           </div>

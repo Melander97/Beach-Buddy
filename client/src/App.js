@@ -17,8 +17,7 @@ import Notfound from "./pages/not-found/NotFound";
 import Help from "./components/help-modal/Help";
 import React, { useEffect, useState } from "react";
 import { contextUser$ } from "../src/components/context/UserContext";
-import  NotFound  from "./pages/not-found/NotFound"
-
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
   // const { user } = useUser();
@@ -26,7 +25,6 @@ function App() {
 
   useEffect(() => {
     contextUser$.subscribe((data) => {
-      console.log(data);
       setIsLoggedIn(data);
     });
   }, []);
@@ -70,29 +68,18 @@ function App() {
             }
           />
           <Route
-            path="update-location"
+            path="/update-location"
             element={
               <Protected redirectTo="/login">
                 <UpdateLocation />
               </Protected>
             }
           />
-          {/* this route need to be at the bottom och page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        {/*  <Route path="*">
-          <Notfound />
-        </Route> */}
-
         <Outlet />
-        {/* {user !== undefined && 
-        <UserMenu/>
-      } */}
-        {/* {user.isLoggedIn === false || user === undefined ? <Menu /> : <UserMenu />} */}
       </div>
-      {/* <Menu /> */}
-      {/* <UserMenu/> */}
 
       {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
         <Menu />

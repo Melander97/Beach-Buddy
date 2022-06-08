@@ -11,7 +11,6 @@ const LocationId = () => {
   const [beach, setBeach] = useState();
 
   let { id } = useParams();
-  // console.log(id);
   useEffect(() => {
     if (id.startsWith("SE")) {
       getBeachInfo(id);
@@ -26,7 +25,6 @@ const LocationId = () => {
     }
   }, []);
 
-  console.log(beach);
   return <LocationModal beach={beach} />;
 };
 

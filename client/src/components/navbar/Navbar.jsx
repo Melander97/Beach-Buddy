@@ -10,18 +10,14 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const user = useUser();
 
-  //kopiera detta 
   useEffect(() => {
     contextUser$.subscribe((data) => {
-      // console.log(data);
       setIsLoggedIn(data);
     });
   }, []);
 
-  //slut på kompiera 
 
   useEffect(() => {
-    console.log(isLoggedIn);
   }, [isLoggedIn]);
 
   const handleToggle = () => {
@@ -58,8 +54,6 @@ const Navbar = () => {
             Startsida
           </NavLink>
 
-         
-
           {isLoggedIn === null || isLoggedIn.isLoggedIn === false ? (
             <>
               <NavLink
@@ -77,8 +71,6 @@ const Navbar = () => {
               >
                 Logga in
               </NavLink>
-
-           
             </>
           ) : (
             <>
@@ -90,7 +82,6 @@ const Navbar = () => {
                 Profil
               </NavLink>
 
-              {/* log out */}
               <NavLink
                 to="login"
                 className="link-wrapper__link"
@@ -101,13 +92,13 @@ const Navbar = () => {
             </>
           )}
 
-              <NavLink
-                to="Help"
-                className="link-wrapper__link"
-                onClick={handleToggle}
-              >
-                Om Beach Buddy
-              </NavLink>
+          <NavLink
+            to="Help"
+            className="link-wrapper__link"
+            onClick={handleToggle}
+          >
+            Om Beach Buddy
+          </NavLink>
         </div>
       </div>
     </nav>
