@@ -6,7 +6,7 @@ const Location = require("../models/locationSchema");
 const User = require("../models/userSchema");
 
 // Get locations
-exports.getLocation = async (req, res, next) => {
+getLocation = async (req, res, next) => {
   try {
     const locations = await Location.find();
     return res.status(200).json({
@@ -24,7 +24,7 @@ exports.getLocation = async (req, res, next) => {
 //end of get locations
 
 // Add location
-exports.addLocation = async (req, res, next) => {
+addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
       userId: req.body.userId,
@@ -62,7 +62,7 @@ exports.addLocation = async (req, res, next) => {
 
 // Delete location
 
-exports.deleteLocation = async (req, res) => {
+deleteLocation = async (req, res) => {
   const location = await Location.findById(req.params.id);
   // console.log(req.params.id);
   // console.log("location", location);
@@ -174,11 +174,9 @@ exports.updateLocation = async (req, res) => {
     });
   }
 };
-// End of Update location
 
-//Get location by id
 
-exports.getLocationById = async (req, res) => {
+getLocationById = async (req, res) => {
   const location = await Location.findById(req.body.location_id);
   console.log(req.location_id);
   try {
@@ -200,4 +198,10 @@ exports.getLocationById = async (req, res) => {
   }
 };
 
-//Get location by id end
+
+module.exports = {
+  getLocation,
+  addLocation,
+  updateLocation,
+  getLocationByIdv
+};
