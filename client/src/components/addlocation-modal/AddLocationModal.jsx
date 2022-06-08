@@ -6,13 +6,12 @@ const AddLocationModal = () => {
   const [adress, setAdress] = useState("");
   const [directions, setDirection] = useState("");
 
-  return ( 
+  return (
     <div className="addLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
       {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
       <form className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:border-gray-700   ">
         <div>
-
-        <h3
+          <h3
             htmlFor="title"
             className="text-lg font-bold text-white-900 block mb-2 text-white-300 py-1 text-center"
           >
@@ -38,8 +37,6 @@ const AddLocationModal = () => {
         </div>
 
         <div>
-
-          
           <label
             htmlFor="title"
             className="text-sm font-medium text-gray-900 block mb-2 dark:text-black-300 py-1"
@@ -77,13 +74,14 @@ const AddLocationModal = () => {
           />
         </div>
         <div>
-              <button 
-              type="submit"
-              className="bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md  shadow-cla-blue py-1 rounded-lg mb-0 mt-4 p-10">Lägg till plats</button>
-      
-      </div>
+          <button
+            type="submit"
+            className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10"
+          >
+            Lägg till plats
+          </button>
+        </div>
       </form>
-      {/* </div> */}
     </div>
   );
 };
