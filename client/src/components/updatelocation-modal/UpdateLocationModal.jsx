@@ -9,7 +9,6 @@ const UpdateLocationModal = () => {
 
   return (
     <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
-      {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
       <form className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:border-gray-700">
    
         <h3 className="text-xl font-medium text-gray-900 dark:text-black text-center">

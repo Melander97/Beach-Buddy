@@ -30,12 +30,9 @@ const registerFunction = async (userData) => {
 
 const loginFunction = async (loginData) => {
   try {
-    // calls the api
     const res = await axios.post(API_URL_LOGIN, loginData, config);
-    //If true, write response to observable user$
     if (res.data.success) {
       user$.next(res.data);
-      // user.updateUser(res.data.data.id, res.data.data.email, res.data.data.name, res.data.success);
     }
     return res.data;
   } catch (error) {
@@ -55,7 +52,6 @@ const updateAccountFunction = async (updatedUserInfo) => {
     );
     if (res.data.success) {
       user$.next(res.data);
-      console.log(`SVAR ${res.data}`);
     }
     return res.data;
   } catch (error) {
@@ -65,11 +61,8 @@ const updateAccountFunction = async (updatedUserInfo) => {
   }
 };
 
-// Skaapa en funktion som skickar uppdaterad data till databasen, samt returnerar den för att den ska finnas tillgänglig för FE
-//
 const getUser = async (userId) => {
   const res = await axios.get(`${getUserById}${userId}`, config);
-  // console.log(res);
   userLocations$.next(res);
 };
 
