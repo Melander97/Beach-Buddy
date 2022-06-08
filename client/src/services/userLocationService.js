@@ -44,7 +44,7 @@ const addLocation = async (locationData) => {
 
 const deleteLocation = async (id) => {
   // console.log("id userlocationService", id);
-  const res = await axios.delete(`${base_URL}delete/${id}`, config);
+  const res = await axios.delete(`${heroku_url}delete/${id}`, config);
   console.log(res);
   return res;
 };
