@@ -15,6 +15,9 @@ const UpdateAccount = () => {
   const UpdateAccount = async (e) => {
     e.preventDefault();
 
+    /*  if (name === "" && email === "") {
+      setMessage("Vänligen fyll i minst ett fält");
+    } */
     const updatedUserInfo = {
       name: name,
       email: email,
@@ -26,7 +29,7 @@ const UpdateAccount = () => {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          setMessage(data.message);
+          setMessage("Namn/email är nu uppdaterat");
           setIsUpdated(true);
           // console.log(message);
         }
