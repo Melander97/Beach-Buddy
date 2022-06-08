@@ -52,6 +52,7 @@ This clones the repo.
 ```bash
  $ npm install. This installs the required dependencies.
 ```
+
 To run this project, you will need to add the following environment variables to your .env file in the root directory.
 
 `PORT=`
@@ -71,9 +72,11 @@ You also need a second .env inside your client folder, this is where you'll stor
 To get a google maps api key you need to visit [Google Developer Console](https://console.cloud.google.com/ "Google's Developer Console") and sign in.
 
 Well signed up you need to enable these services:
+
 - Maps JavaScript API (This is the service which api key you need in your .env inside the client folder)
 - Places API
 - GeoCoding API
+
 #### To run the React project:
 
 ```bash
@@ -105,23 +108,24 @@ A token has to be provided in order to do these tasks.
 
 ## Location routes:
 
-| Method | URI                             | Description              |
-| :----- | :------------------------------ | :----------------------- |
-| `POST` | `api/locations/addLocation`     | protect, addLocation     |
-| `GET`  | `api/locations/getLocation`     | protect, getLocation     |
-| `POST` | `api/locations/delete`          | protect, deleteLocation  |
-| `PUT`  | `api/locations/update`          | protect, updateLocation  |
-| `GET`  | `api/locations/getLocationById` | protect, getLocationById |
+| Method | URI                          | Description              |
+| :----- | :--------------------------- | :----------------------- |
+| `POST` | `/locations/addLocation`     | protect, addLocation     |
+| `GET`  | `/locations/getLocation`     | protect, getLocation     |
+| `POST` | `/locations/delete/:id`      | protect, deleteLocation  |
+| `PUT`  | `/locations/updateLocation`  | protect, updateLocation  |
+| `GET`  | `/locations/getLocation/:id` | protect, getLocationById |
 
 ## User routes
 
-| Method | URI              | Description             |
-| :----- | :--------------- | :---------------------- |
-| `POST` | `api/`           | registerUser            |
-| `GET`  | `api/login`      | loginUser               |
-| `POST` | `api/:id`        | protect, getUserById    |
-| `PUT`  | `api/delete/:id` | protect, deleteUserById |
-| `GET`  | `api/logout`     | protect, logoutUser     |
+| Method  | URI           | Description             |
+| :------ | :------------ | :---------------------- |
+| `POST`  | `/`           | registerUser            |
+| `GET`   | `/login`      | loginUser               |
+| `POST`  | `/:id`        | protect, getUserById    |
+| `PUT`   | `/delete/:id` | protect, deleteUserById |
+| `GET`   | `/logout`     | protect, logoutUser     |
+| `PATCH` | `/update/:id` | protect, logoutUser     |
 
 ## Documentation
 
@@ -134,15 +138,3 @@ https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
 ## License
 
 [NO ONE CAN USE THIS IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`PORT = ''`
-
-`USERNAME = ''`
-
-`PASSWORD = ''`
