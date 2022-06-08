@@ -78,6 +78,9 @@
   background-color:$accordion;
   border: 0 !important;
   border-radius: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .accordion-item:last-of-type {
   width: 100%;

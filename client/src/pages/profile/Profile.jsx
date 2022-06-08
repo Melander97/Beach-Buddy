@@ -48,7 +48,7 @@ const Profile = () => {
       </div>
 
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
-        <div className="shadow-md">
+        <div className="full__width shadow-md">
           <UpdateAccount userId={userId} />
 
           <div className="wrapper">
