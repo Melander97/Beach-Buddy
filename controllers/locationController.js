@@ -71,7 +71,7 @@ exports.deleteLocation = async (req, res) => {
   // console.log(req.params.id);
   // console.log("location", location);
   const user = await User.findById(location.userId);
-  console.log("user", user);
+  // console.log("user", user);
   // console.log(req.body.user_id);
 
   try {
@@ -104,13 +104,25 @@ exports.deleteLocation = async (req, res) => {
     // console.log("LocationController", req.body.id )
 
     // await location.remove();
-    await Location.deleteOne({ _id: req.params.id });
+    await Location.deleteOne({ _id: req.params.id }).then((loc) => {
+      User.updateOne(
+        { _id: user._id },
+        { $pull: { locations: location._id } },
+        () => {
+          return res.json({
+            success: true,
+            message: "location removed",
+            data: location,
+          });
+        }
+      );
+    });
 
-    res.status(200).json({
+    /* res.status(200).json({
       success: true,
       message: "Location deleted",
       data: location,
-    });
+    }); */
   } catch (error) {
     return res.status(500).json({
       success: false,
