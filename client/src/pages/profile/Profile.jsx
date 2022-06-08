@@ -11,7 +11,7 @@ import { userLocations$ } from "../../services/authService";
 const Profile = () => {
   const [userLocations, setUserLocation] = useState([]);
   const user = useUser();
-  console.log("USERRRRR" + JSON.stringify(user));
+  // console.log("USERRRRR" + JSON.stringify(user));
 
   const userId = user.user.id;
 
@@ -24,9 +24,9 @@ const Profile = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(userLocations);
-  }, [userLocations]);
+  // useEffect(() => {
+  //   console.log(userLocations);
+  // }, [userLocations]);
 
   /* useEffect(() => {
     console.log(updatedUserInfo);
@@ -39,16 +39,31 @@ const Profile = () => {
         src={require("../../assets/bb-logo.png")}
         alt=""
       /> */}
+
+      <div className="profile-info">
+      <i className="fa-solid fa-person-drowning fa-2xl mb-5"></i>
+  
       <h1>Name: {user.user.name}</h1>
       <h1>Email: {user.user.email}</h1>
+      </div>
+
       <div className="profile-inner w-full md:w-3/5 mx-auto p-8">
         <div className="shadow-md">
           <UpdateAccount userId={userId} />
-          {userLocations?.map((location, index) => (
-            <UpdateLocation key={index} location={location} 
-            locationsArray={userLocations} setUserLocation={setUserLocation}/>
-          ))}
 
+          <div className="wrapper">
+            <div className="accordion">
+              {userLocations?.map((location, index) => (
+                <UpdateLocation
+                  key={index}
+                  location={location}
+                  i={index}
+                  locationsArray={userLocations}
+                  setUserLocation={setUserLocation}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

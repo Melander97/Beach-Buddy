@@ -14,7 +14,7 @@ html {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: $Secondary;
+  background-color: #2e579e;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 
@@ -26,6 +26,7 @@ html {
 
     #root {
       height: 100%;
+      overflow-x: hidden;
 
       .App {
         position: relative;
@@ -34,7 +35,7 @@ html {
 
         .pageWrapper {
           // height: 100%;
-          overflow-x: hidden;
+          // overflow-x: hidden;
         }
       }
     }

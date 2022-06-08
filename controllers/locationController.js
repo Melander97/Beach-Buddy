@@ -102,7 +102,7 @@ exports.deleteLocation = async (req, res) => {
       });
     }
     // console.log("LocationController", req.body.id )
-   
+
     // await location.remove();
     await Location.deleteOne({ _id: req.params.id });
 
@@ -124,50 +124,23 @@ exports.deleteLocation = async (req, res) => {
 
 // Update location
 exports.updateLocation = async (req, res) => {
-  const location = await Location.findById(req.body.location_id);
+  const location = await Location.findById(req.body.id);
+  console.log(location);
 
-  const user = await User.findById(req.body.user_id);
-  console.log(req.body.user_id);
-
+  if (req.body.title != null) {
+    location.title = req.body.title;
+  }
+  if (req.body.adress != null) {
+    location.adress = req.body.adress;
+  }
+  if (req.body.directions != null) {
+    location.description = req.body.directions;
+  }
   try {
-    if (!location) {
-      return res.status(400).json({
-        success: false,
-        message: "No location found",
-        data: null,
-      });
-    }
-
-    //Check for user (ev mot JWT)
-    if (!user) {
-      res.status(401);
-      return res.status(401).json({
-        success: false,
-        message: "User not found",
-        data: null,
-      });
-    }
-    //Make sure the logged in user matches the user with the set location
-    console.log(`location user ${location.userId} user if ${user._id}`);
-    if (location.userId.toString() !== user._id.toString()) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authorized!",
-        data: null,
-      });
-    }
-    /* const updatedLocation = await Location.updateOne({_id: location._id.toString()}, req.body);
-    JSON.stringify(updatedLocation); */
-    let updatedLocation = await Location.findByIdAndUpdate(
-      req.body.location_id,
-      req.body
-    );
-    updatedLocation = await Location.findById(req.body.location_id);
-    console.log(`data ${updatedLocation}`);
-
-    res.status(200).json({
+    const updatedLocation = await location.save();
+    return res.status(200).json({
       success: true,
-      message: "Location updated successfully",
+      message: "updated successfully",
       data: updatedLocation,
     });
   } catch (error) {

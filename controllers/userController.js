@@ -18,7 +18,7 @@ const generateToken = (id) => {
 // register user
 // @route POST api/users
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  let { name, email, password } = req.body;
 
   if (!name || !email || !password) {
     return res.status(400).json({
@@ -40,6 +40,8 @@ const registerUser = async (req, res) => {
 
   //Create user
   try {
+    const salt = await bcrypt.genSalt();
+    password = await bcrypt.hash(password, salt);
     const user = await User.create({ name, email, password });
     const token = generateToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
@@ -167,7 +169,41 @@ const logoutUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  let user = await User.findById(req.params.id);
+  console.log("USER FETCH" + user);
+  if (req.body.name !== "") {
+    user.name = req.body.name;
+  }
+  if (req.body.email !== "") {
+    user.email = req.body.email;
+  }
+  /* if (req.body.password !== "") {
+    user.password = req.body.password;
+  } */
+
+  try {
+    /* const salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(user.password, salt); */
+    const updatedUser = await user.save();
+    console.log("USER UPDATED" + updatedUser);
+
+    return res.status(200).json({
+      success: true,
+      message: "updated successfully",
+      data: {
+        id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: `Server error ${error}`,
+      data: null,
+    });
+  }
+  /* const { name, email, password } = req.body;
 
   try {
     const id = req.params.id;
@@ -219,7 +255,7 @@ const updateUser = async (req, res) => {
       success: false,
       message: "Account not updated: " + error.message,
     });
-  }
+  } */
 };
 
 module.exports = {
