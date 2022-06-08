@@ -68,7 +68,12 @@ You also need a second .env inside your client folder, this is where you'll stor
 
 `REACT_APP_GMAPS_API_KEY=`
 
-To get a google maps api key you need to visit [I'm an inline-style link with title](https://console.cloud.google.com/ "Google's Developer Console") and sign in.
+To get a google maps api key you need to visit [Google Developer Console](https://console.cloud.google.com/ "Google's Developer Console") and sign in.
+
+Well signed up you need to enable these services:
+- Maps JavaScript API (This is the service which api key you need in your .env inside the client folder)
+- Places API
+- GeoCoding API
 #### To run the React project:
 
 ```bash
