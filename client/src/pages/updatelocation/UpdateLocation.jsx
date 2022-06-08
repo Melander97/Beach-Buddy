@@ -3,8 +3,6 @@ import UpdateLocationModal from "../../components/updatelocation-modal/UpdateLoc
 const UpdateLocation = () => {
   return (
     <div>
-      {/* Component here */}
-
       <UpdateLocationModal />
     </div>
   );

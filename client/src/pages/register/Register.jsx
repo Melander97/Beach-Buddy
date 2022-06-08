@@ -9,7 +9,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-  const [message, setMessage] = useState("");
   const [data, setData] = useState({});
 
   useEffect(() => {
