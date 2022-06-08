@@ -62,7 +62,7 @@ const UpdateAccount = () => {
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
-      <div className="accordion-item border border-gray-200">
+      <div className="accordion-item">
         <h2 className="accordion-header mb-0" id="flush-headingOne">
           <button
             className="accordion-button 
@@ -85,7 +85,7 @@ const UpdateAccount = () => {
             aria-controls="flush-collapseOne"
           >
             <i className="fa fa-cog" aria-hidden="true"></i>{" "}
-            Uppdatera konto
+            <p>Uppdatera konto</p>
           </button>
         </h2>
         <div
