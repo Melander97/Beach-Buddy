@@ -1,11 +1,7 @@
-// CRUD-functions for user locations
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const asyncHandler = require("express-async-handler");
 const Location = require("../models/locationSchema");
 const User = require("../models/userSchema");
 
-// Get locations
 getLocation = async (req, res, next) => {
   try {
     const locations = await Location.find();
@@ -21,9 +17,7 @@ getLocation = async (req, res, next) => {
     });
   }
 };
-//end of get locations
 
-// Add location
 addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
@@ -58,17 +52,12 @@ addLocation = async (req, res, next) => {
   }
 };
 
-//end of add locations
-
-// Delete location
 
 deleteLocation = async (req, res) => {
   const location = await Location.findById(req.params.id);
-  // console.log(req.params.id);
-  // console.log("location", location);
+
   const user = await User.findById(location.userId);
   console.log("user", user);
-  // console.log(req.body.user_id);
 
   try {
     if (!location) {
@@ -79,7 +68,6 @@ deleteLocation = async (req, res) => {
       });
     }
 
-    //Check for user
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -88,8 +76,7 @@ deleteLocation = async (req, res) => {
       });
     }
 
-    // Make sure the logged in user matches the user with the set location
-    /* console.log(`location user${location.userId} user if ${user._id}`); */
+  
     if (location.userId.toString() !== user._id.toString()) {
       return res.status(401).json({
         success: false,
@@ -97,9 +84,7 @@ deleteLocation = async (req, res) => {
         data: null,
       });
     }
-    // console.log("LocationController", req.body.id )
    
-    // await location.remove();
     await Location.deleteOne({ _id: req.params.id });
 
     res.status(200).json({
@@ -116,9 +101,6 @@ deleteLocation = async (req, res) => {
   }
 };
 
-// End of Delete location
-
-// Update location
 updateLocation = async (req, res) => {
   const location = await Location.findById(req.body.location_id);
 
@@ -134,7 +116,6 @@ updateLocation = async (req, res) => {
       });
     }
 
-    //Check for user (ev mot JWT)
     if (!user) {
       res.status(401);
       return res.status(401).json({
@@ -143,7 +124,6 @@ updateLocation = async (req, res) => {
         data: null,
       });
     }
-    //Make sure the logged in user matches the user with the set location
     console.log(`location user ${location.userId} user if ${user._id}`);
     if (location.userId.toString() !== user._id.toString()) {
       return res.status(401).json({
@@ -152,8 +132,7 @@ updateLocation = async (req, res) => {
         data: null,
       });
     }
-    /* const updatedLocation = await Location.updateOne({_id: location._id.toString()}, req.body);
-    JSON.stringify(updatedLocation); */
+
     let updatedLocation = await Location.findByIdAndUpdate(
       req.body.location_id,
       req.body

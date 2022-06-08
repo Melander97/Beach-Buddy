@@ -1,12 +1,9 @@
-// Schema for locations// Schema for users
 const mongoose = require("mongoose");
 
-//register
 const LocationSchema = new mongoose.Schema({
   userId: {
     type: String,
-    /* type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', */
+  
     required: true,
   },
   title: {
