@@ -38,7 +38,7 @@ const LoginForm = () => {
   return (
     <div className="login--bg grid place-items-center w-full shadow-lg h-5/6 bg-no-repeat bg-cover">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6 w-80 space-y-1 w-64 pt-6 " action="#"  >
+        <form className="  space-y-1 w-64 pt-6 " action="#"  >
           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center box-border">
             Logga in
           </h3>
