@@ -63,7 +63,7 @@ const UpdateAccount = (userId) => {
             aria-controls="flush-collapseOne"
           >
             <i className="fa fa-cog" aria-hidden="true"></i>{" "}
-            <p>Uppdatera konto</p>
+            <h2>Uppdatera konto</h2>
           </button>
         </h2>
         <div
