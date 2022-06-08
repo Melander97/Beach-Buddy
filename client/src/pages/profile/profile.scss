@@ -1,13 +1,15 @@
 @import '../../assets/scss/variables.scss';
 
 .profile {
-   min-height: 80vh;
-    margin-top: 2em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    color: whitesmoke;
+  min-height: 83vh;
+  /* margin-top: 2em; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  color: whitesmoke;
+  background: #22447e;
+  padding-top: 2rem;
 
      .profile-inner {
       display: flex;
@@ -19,6 +21,20 @@
       .shadow-md {
         margin: 0 !important;
         padding: 0 !important;
+
+        .accordion {
+          width: 100%;
+
+          h2 {
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: Montserrat;
+          }
+        }
+      }
+
+      .full__width {
+        width: 100%;
       }
 
     } 
@@ -62,3 +78,14 @@
   }
 
 }
+
+@media screen and (min-width: 300px) {
+ 
+  .shadow-md {
+   
+  }
+
+}
+
+
+

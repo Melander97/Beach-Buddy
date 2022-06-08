@@ -6,7 +6,7 @@ const Location = require("../models/locationSchema");
 const User = require("../models/userSchema");
 
 // Get locations
-exports.getLocation = async (req, res, next) => {
+getLocation = async (req, res, next) => {
   try {
     const locations = await Location.find();
     return res.status(200).json({
@@ -24,7 +24,7 @@ exports.getLocation = async (req, res, next) => {
 //end of get locations
 
 // Add location
-exports.addLocation = async (req, res, next) => {
+addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
       userId: req.body.userId,
@@ -66,12 +66,12 @@ exports.addLocation = async (req, res, next) => {
 
 // Delete location
 
-exports.deleteLocation = async (req, res) => {
+deleteLocation = async (req, res) => {
   const location = await Location.findById(req.params.id);
   // console.log(req.params.id);
   // console.log("location", location);
   const user = await User.findById(location.userId);
-  console.log("user", user);
+  // console.log("user", user);
   // console.log(req.body.user_id);
 
   try {
@@ -104,13 +104,25 @@ exports.deleteLocation = async (req, res) => {
     // console.log("LocationController", req.body.id )
 
     // await location.remove();
-    await Location.deleteOne({ _id: req.params.id });
+    await Location.deleteOne({ _id: req.params.id }).then((loc) => {
+      User.updateOne(
+        { _id: user._id },
+        { $pull: { locations: location._id } },
+        () => {
+          return res.json({
+            success: true,
+            message: "location removed",
+            data: location,
+          });
+        }
+      );
+    });
 
-    res.status(200).json({
+    /* res.status(200).json({
       success: true,
       message: "Location deleted",
       data: location,
-    });
+    }); */
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -123,9 +135,11 @@ exports.deleteLocation = async (req, res) => {
 // End of Delete location
 
 // Update location
-exports.updateLocation = async (req, res) => {
+updateLocation = async (req, res) => {
   const location = await Location.findById(req.body.id);
-  console.log(location);
+
+  const user = await User.findById(req.body.userId);
+  console.log(req.body.user_id);
 
   if (req.body.title != null) {
     location.title = req.body.title;
@@ -151,13 +165,11 @@ exports.updateLocation = async (req, res) => {
     });
   }
 };
-// End of Update location
 
-//Get location by id
 
-exports.getLocationById = async (req, res) => {
-  console.log(req.params.id);
+getLocationById = async (req, res) => {
   const location = await Location.findById(req.params.id);
+  console.log(req.location_id);
   try {
     if (location === null) {
       return res.status(400).json({
@@ -177,4 +189,11 @@ exports.getLocationById = async (req, res) => {
   }
 };
 
-//Get location by id end
+
+module.exports = {
+  getLocation,
+  addLocation,
+  updateLocation,
+  getLocationById,
+  deleteLocation,
+};
