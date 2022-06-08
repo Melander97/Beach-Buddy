@@ -1,12 +1,9 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-// const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
-// const Location = require("../models/locationSchema");
-// const { cookie } = require("express/lib/response");
-// const { db } = require("../models/userSchema");
 
-const maxAge = 3 * 24 * 60 * 60; // expires in 3 days
+
+const maxAge = 3 * 24 * 60 * 60; 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: maxAge,
