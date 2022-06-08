@@ -1,13 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import locationService from "../../services/userLocationService";
-
-const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
+import "./Update-location.scss";
+const UpdateLocation = ({ location, locationsArray, setUserLocation, i }) => {
   //  const filterLocationArray = locationsArray.filter((value) => value._id !== location._id)
   // console.log(location);
   // console.log(locationsArray);
+
+  const [selected, setSelected] = useState(null);
+
+  const toggle = (i) => {
+    if (selected === i) {
+      return setSelected(null);
+    }
+
+    setSelected(i);
+  };
+
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <>
+      <div className="item">
+        <div className="title" onClick={() => toggle(i)}>
+          <i class="fa-solid fa-person-swimming fa-1xl" aria-hidden="true"></i>
+          <h2>{location.title}</h2>
+          <span>{selected === i ? "-" : "+"}</span>
+        </div>
+        <div className={selected === i ? "content show" : "content"}>
+          <div className="content__inner">
+            <Link
+              to="/update-location"
+              state={{ from: location }}
+              className="content__btn"
+            >
+              {" "}
+              Ändra
+            </Link>
+
+            <NavLink to={`/location/${location._id}`} className="update__btn">
+              {" "}
+              Se plats
+            </NavLink>
+
+            <button
+              className="update__btn"
+              onClick={() => {
+                locationService.deleteLocation(location._id);
+                const filterArray = locationsArray.filter(
+                  (value) => value._id !== location._id
+                );
+                setUserLocation(filterArray);
+              }}
+            >
+              Radera plats
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
         <h2 className="accordion-header mb-0" id="flush-headingTwo">
           <button
@@ -43,7 +93,7 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
           data-bs-parent="#accordionFlushExample"
         >
           <div className="accordion-body py-4 px-5">
-            {/* <button className="button-31"> Se plats</button> */}
+            {/* <button className="button-31"> Se plats</button> 
             <Link
               to="/update-location"
               state={{ from: location }}
@@ -52,7 +102,6 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
               {" "}
               Ändra
             </Link>
-
             <NavLink to={`/location/${location._id}`} className="button-31">
               {" "}
               Se plats
@@ -73,7 +122,8 @@ const UpdateLocation = ({ location, locationsArray, setUserLocation }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 };
 
