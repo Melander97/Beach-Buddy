@@ -99,7 +99,7 @@ const UpdateLocationModal = ({ location }) => {
         </div>
         {!isUpdated ? (
           <button
-            className="update-btn hover:bg-red-dark w-40 h-10 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4"
+            className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10"
             onClick={(e) => {
               upDateLocation(e);
             }}
@@ -109,7 +109,7 @@ const UpdateLocationModal = ({ location }) => {
           </button>
         ) : (
           <Link className="back-link" to="/profile">
-            <button className="hover:bg-red-dark w-40 h-10 rounded-lg bg-green-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-0 mt-4">
+            <button className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10">
               Till profil
             </button>
           </Link>
