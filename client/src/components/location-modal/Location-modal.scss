@@ -1,3 +1,5 @@
+@import "../../assets/scss/variables.scss";
+
 .modalWrapper {
   box-sizing: border-box;
   width: 100%;
@@ -6,20 +8,59 @@
   align-items: center;
   justify-content: center;
   background-color: #22447e;
+  overflow: hidden;
+
+  .container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+      width: 90%;
+    }
+  }
+
+  .contentent {
+    flex-direction: row;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: lighter;
+  }
+
+  p {
+    margin: 10px 0;
+    font-weight: 500;
+    line-height: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+    display: inline-block;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
 
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.left {
+/* .left {
   width: 60%;
+  height: 700px;
+  background: url("https://www.mullsjo.se/images/18.737d400e171ac5296c85bb31/1589789558447/hopptornet-sol.jpg?auto=compress&cs=tinysrgb&h=650&w=940");
+    // no-repeat (center / cover);
+  border-radius: 8px;
+} 
   height: 600px;
   background: url("https://www.westend61.de/images/0001592240pw/aerial-sunset-view-of-a-small-rocky-bay-with-a-red-cottage-and-anchored-boats-in-hn-gothenburg-archipelago-sweden-AAEF12619.jpg");
   // background: url("https://i.pinimg.com/550x/88/a0/6c/88a06c9003a005af1b2e29901f1a455f.jpg")
@@ -63,17 +104,9 @@
       }
     }
   }
-}
+} */
 
-// .fa-star {
-//   margin-top: 20px;
-// }
-
-// .checked {
-//   color: orange;
-// }
-
-@media only screen and (max-width: 928px) {
+/* @media only screen and (max-width: 928px) {
   .container {
     flex-direction: column;
     width: 100%;
@@ -90,23 +123,4 @@
     margin: 0;
     margin-top: -350px;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    width: 100%;
-    margin: 0 20px;
-  }
-
-  .left {
-    width: 100%;
-    height: 350px;
-  }
-
-  .right {
-    width: 90%;
-    margin: 0;
-    margin-top: -300px;
-  }
-}
+} */
