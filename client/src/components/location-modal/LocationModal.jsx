@@ -23,13 +23,16 @@ const LocationModal = () => {
             <div className="contentent flex">
               <div className="flex-1 md:w-1/3">
                 <p>
-                  <b>Gatu-address:</b> Chasacademy-school
+                  <b>Plats:</b> Chasacademy-school
                 </p>
                 <p>
-                  <b>Toalett:</b> Nej{" "}
+                  <b>Info:</b> Nej
                 </p>
                 <p>
-                  <b>Kiosk:</b> Ja
+                  <b>Kontakt:</b> Nej
+                </p>
+                <p>
+                  <b>Hemsida:</b> Nej
                 </p>
               </div>
               <p div className="flex-1 md:w-1/2">

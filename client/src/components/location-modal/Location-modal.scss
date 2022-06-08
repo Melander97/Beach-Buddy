@@ -6,7 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $dropdown;
+  background-color: $Primary;
+  overflow: hidden;
 
   .container {
     width: 60%;
