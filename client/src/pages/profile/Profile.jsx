@@ -41,11 +41,8 @@ const Profile = () => {
       /> */}
 
       <div className="profile-info">
-      <i className="icon--space fa-solid fa-user fa-2xl mb-5"></i>
-      {/* <i className="fa-light fa-volleyball fa-2xl mb-5"></i>
-      <i className="fa-light fa-island-tropical fa-1xl"></i> */}
-      {/* <i class="fa-light fa-child-reaching fa-2xl"></i> */}
-      <i className="icon--space fa-solid fa-peach fa-2xl"></i>
+      <i className="fa-solid fa-person-drowning fa-2xl mb-5"></i>
+  
       <h1>Name: {user.user.name}</h1>
       <h1>Email: {user.user.email}</h1>
       </div>
