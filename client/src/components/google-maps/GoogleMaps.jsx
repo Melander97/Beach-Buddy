@@ -126,7 +126,7 @@ const GoogleMaps = () => {
                   {loading ? <div>loading...</div> : null}
                   {suggestions.map((suggestion, i) => {
                     const style = {
-                      backgroundColor: suggestion.active ? "#7ddbd7" : "#fff",
+                      backgroundColor: suggestion.active ? "#bed1f3" : "#fff",
                     };
                     //Looks for the suggestions and applies the background style depending on if it's active or not(mouse hover or keyboard select)
                     return (

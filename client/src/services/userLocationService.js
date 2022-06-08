@@ -20,7 +20,7 @@ const config = {
   withCredentials: true,
 };
 const getAllLocations = async () => {
-  const res = await axios.get(`${base_URL}getLocation`, config);
+  const res = await axios.get(`${heroku_url}getLocation`, config);
 
   if (res.data.success) {
     // console.log(res.data);
@@ -30,13 +30,13 @@ const getAllLocations = async () => {
 
 const getLocationById = async (locationId) => {
   console.log(locationId);
-  const res = await axios.get(`${base_URL}getLocation/${locationId}`, config);
+  const res = await axios.get(`${heroku_url}getLocation/${locationId}`, config);
   viewLocation$.next(res.data.data);
 };
 
 const addLocation = async (locationData) => {
   const res = await axios
-    .post(`${base_URL}addLocation`, locationData, config)
+    .post(`${heroku_url}addLocation`, locationData, config)
     .then((data) => {
       return data.data;
     });
@@ -45,13 +45,13 @@ const addLocation = async (locationData) => {
 
 const deleteLocation = async (id) => {
   // console.log("id userlocationService", id);
-  const res = await axios.delete(`${base_URL}/delete/${id}`, config);
+  const res = await axios.delete(`${heroku_url}/delete/${id}`, config);
   console.log(res);
 };
 
 const updateLocation = async (updateData) => {
   const res = await axios.patch(
-    `${base_URL}/updateLocation`,
+    `${heroku_url}/updateLocation`,
     updateData,
     config
   );

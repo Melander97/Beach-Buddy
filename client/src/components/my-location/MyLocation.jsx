@@ -4,8 +4,6 @@ import "./My-location.scss";
 import locationService from "../../services/userLocationService";
 
 const MyLocations = ({ selectedLocation, user }) => {
-
-  
   const removeLocation = async (id) => {
     console.log(id);
     // locationService.deleteLocation()
@@ -16,9 +14,7 @@ const MyLocations = ({ selectedLocation, user }) => {
         {selectedLocation && (
           <div class="flex w-full flex-col p-5 rounded-lg shadow">
             <div class="flex flex-col items-center text-center">
-              <h2 class="mt-2 font-semibold text-gray-800">
-                {selectedLocation.title}
-              </h2>
+              <h2 class="mt-2 font-semibold">{selectedLocation.title}</h2>
             </div>
             <div class="btn-wrapper flex items-center justify-center mt-3">
               <Link
