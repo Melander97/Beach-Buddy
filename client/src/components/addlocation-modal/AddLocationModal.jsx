@@ -60,18 +60,18 @@ const AddLocationModal = () => {
             htmlFor="title"
             className="text-sm font-medium text-black-900 block mb-2 dark:text-black-300 py-1"
           >
-            Vägbeskrivning
+            Beskrivning
           </label>
-          <input
+          <textarea
             type="direction"
             name="direction"
             id="direction"
             onChange={(e) => setDirection(e.target.value)}
             value={directions}
             className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4 p-2 border"
-            placeholder="Ta höger..."
-            required=""
-          />
+            placeholder="Beskriv din plats"
+            required="">
+          </textarea>
         </div>
         <div>
           <button
