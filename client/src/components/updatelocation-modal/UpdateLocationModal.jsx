@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import "./UpdateLocationModal.scss";
 
 const UpdateLocationModal = () => {
@@ -10,6 +11,7 @@ const UpdateLocationModal = () => {
     <div className="updateLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
       {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
       <form className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:border-gray-700">
+   
         <h3 className="text-xl font-medium text-gray-900 dark:text-black text-center">
           Ändra plats
         </h3>
@@ -70,6 +72,7 @@ const UpdateLocationModal = () => {
         <button className="w-max m-5 bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md shadow-cla-blue py-2 rounded-lg mb-0 mt-4 p-10">
           Ändra plats
         </button>
+       
       </form>
       {/* </div> */}
     </div>

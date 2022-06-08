@@ -1,11 +1,9 @@
-// Auth-middleware
 
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userSchema");
+// const User = require("../models/userSchema");
 
 const protect = asyncHandler(async (req, res, next) => {
-  // Read the token from the cookie
   try {
     const token = req.cookies.jwt;
     if (!token)
@@ -17,8 +15,7 @@ const protect = asyncHandler(async (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    // console.log("err", er);
-    //Incase of expired jwt or invalid token kill the token and clear the cookie
+
     res.clearCookie("jwt");
     return res.status(400).json({
       success: false,
