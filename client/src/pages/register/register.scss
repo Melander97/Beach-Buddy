@@ -5,6 +5,21 @@
   top: -10px;
   min-height: 83vh;
 
+  .bg-white {
+    animation: 1s ease-out 0s 1 slideInFromBottom;
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateX(25);
+        opacity: 1;
+      }
+    }
+  }
+
   @media screen and (min-width: 768px) {
     height: 90%;
   }

@@ -1,22 +1,14 @@
-// CRUD-functions for users
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const asyncHandler = require("express-async-handler");
 const User = require("../models/userSchema");
-const Location = require("../models/locationSchema");
-const { cookie } = require("express/lib/response");
-const { db } = require("../models/userSchema");
 
-// Generate JWT token
-const maxAge = 3 * 24 * 60 * 60; // expires in 3 days
+const maxAge = 3 * 24 * 60 * 60;
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: maxAge,
   });
 };
 
-// register user
-// @route POST api/users
 const registerUser = async (req, res) => {
   let { name, email, password } = req.body;
 
@@ -28,7 +20,6 @@ const registerUser = async (req, res) => {
     });
   }
 
-  // check if user exist
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({
@@ -38,7 +29,6 @@ const registerUser = async (req, res) => {
     });
   }
 
-  //Create user
   try {
     const salt = await bcrypt.genSalt();
     password = await bcrypt.hash(password, salt);
@@ -62,12 +52,9 @@ const registerUser = async (req, res) => {
   }
 };
 
-//Login
-//@route POST api/users/login
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  //Check whether user exists with given email
   const user = await User.findOne({ email });
   if (!user)
     return res.status(400).json({
@@ -75,7 +62,6 @@ const loginUser = async (req, res) => {
       message: "The given email is not registered",
     });
 
-  //Check if password entered is correct
   const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword)
     return res.status(400).json({
@@ -83,10 +69,8 @@ const loginUser = async (req, res) => {
       message: "Invalid password",
     });
 
-  //generate the jwt token on successful login
   try {
     const token = generateToken(user._id);
-    // res.cookie("jwt", token, { httpOnly: true });
     res.cookie("jwt", token, {
       httpOnly: true,
       sameSite: "none",
@@ -110,17 +94,11 @@ const loginUser = async (req, res) => {
   }
 };
 
-// User profile
-// @desc     Get user data
-// @route    GET api/users/:id
-// @access   Private
 const getUserById = async (req, res) => {
   try {
-    // console.log(user);
     const user = User.find({ _id: req.params.id })
       .populate("locations")
       .then((location) => {
-        // console.log(location);
         return res.status(200).json({ user: location });
       })
       .catch((error) => console.log(error));
@@ -133,9 +111,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-// delete user
-// @route DELETE /api/users/delete/:id
-// @access   Private
 const deleteUserById = async (req, res) => {
   try {
     const result = await User.deleteOne({ _id: req.params.id });
@@ -150,8 +125,6 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-//logout user
-// @route GET /api/users/logout
 const logoutUser = async (req, res) => {
   try {
     res.clearCookie("jwt");
@@ -170,22 +143,15 @@ const logoutUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   let user = await User.findById(req.params.id);
-  console.log("USER FETCH" + user);
   if (req.body.name !== "") {
     user.name = req.body.name;
   }
   if (req.body.email !== "") {
     user.email = req.body.email;
   }
-  /* if (req.body.password !== "") {
-    user.password = req.body.password;
-  } */
 
   try {
-    /* const salt = await bcrypt.genSalt();
-    user.password = await bcrypt.hash(user.password, salt); */
     const updatedUser = await user.save();
-    console.log("USER UPDATED" + updatedUser);
 
     return res.status(200).json({
       success: true,
@@ -203,101 +169,7 @@ const updateUser = async (req, res) => {
       data: null,
     });
   }
-  /* const { name, email, password } = req.body;
-
-  try {
-
-    // ----------------------------------------------------------------
-    const result = await User.findByIdAndUpdate(id, updatedData, options);
-
-    // or
-
-    // const result = await id.save(id, updatedData, options);
-    // ----------------------------------------------------------------
-
-    return res.status(200).json({
-      success: true,
-      message: "Sucessfully updated!",
-      data: {
-        name: result.name,
-        email: result.email,
-        password: result.password,
-      },
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: `Server error ${error.message}`,
-      data: null,
-    });
-  } */
 };
-
-/* updateUser = async (req, res) => {
-  const { name, email, password } = req.body;
-  const updatedData = req.body;
-  const options = { new: true };
-
-  // ----------------------------------------------------------------
-  // const id = req.params.id;
-
-  // or
-
-  const id = await User.findById(req.params.id);
-  console.log("ID" + id)
-  // ----------------------------------------------------------------
-
-
-  if (
-    req.body.email != null && email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)
-  ) {
-    updatedData["email"] = req.body.email;
-  } else {
-    return res.status(400).json({
-      success: false,
-      message: "Email not valid",
-      data: null,
-    });
-  }
-
-  if (req.body.password != null && req.body.password.length >= 6) {
-    const salt = await bcrypt.genSalt();
-    updatedData["password"] = await bcrypt.hash(req.body.password, salt);
-  } else {
-    return res.status(400).json({
-      success: false,
-      message: "Password must be at least 6 characters",
-      data: null,
-    });
-  }
-
-  try {
-
-    // ----------------------------------------------------------------
-    const result = await User.findByIdAndUpdate(id, updatedData, options);
-
-    // or
-
-    // const result = await id.save(id, updatedData, options);
-    // ----------------------------------------------------------------
-
-    return res.status(200).json({
-      success: true,
-      message: "Sucessfully updated!",
-      data: {
-        name: result.name,
-        email: result.email,
-        password: result.password,
-      },
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: `Server error ${error.message}`,
-      data: null,
-    });
-  }
-}; */
 
 module.exports = {
   registerUser,

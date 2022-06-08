@@ -1,11 +1,7 @@
-// CRUD-functions for user locations
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const asyncHandler = require("express-async-handler");
 const Location = require("../models/locationSchema");
 const User = require("../models/userSchema");
 
-// Get locations
 getLocation = async (req, res, next) => {
   try {
     const locations = await Location.find();
@@ -21,9 +17,7 @@ getLocation = async (req, res, next) => {
     });
   }
 };
-//end of get locations
 
-// Add location
 addLocation = async (req, res, next) => {
   try {
     const location = await new Location({
@@ -33,7 +27,6 @@ addLocation = async (req, res, next) => {
       title: req.body.title,
       coordinates: req.body.coordinates,
     });
-    console.log(location);
     location.save().then((location) => {
       User.updateOne(
         { _id: req.user.id },
@@ -48,7 +41,6 @@ addLocation = async (req, res, next) => {
       );
     });
   } catch (err) {
-    console.error(err);
     if (err.code === 11000) {
       return res.status(400).json({
         success: false,
@@ -62,17 +54,11 @@ addLocation = async (req, res, next) => {
   }
 };
 
-//end of add locations
-
-// Delete location
 
 deleteLocation = async (req, res) => {
   const location = await Location.findById(req.params.id);
-  // console.log(req.params.id);
-  // console.log("location", location);
+
   const user = await User.findById(location.userId);
-  // console.log("user", user);
-  // console.log(req.body.user_id);
 
   try {
     if (!location) {
@@ -83,7 +69,6 @@ deleteLocation = async (req, res) => {
       });
     }
 
-    //Check for user
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -92,8 +77,7 @@ deleteLocation = async (req, res) => {
       });
     }
 
-    // Make sure the logged in user matches the user with the set location
-    /* console.log(`location user${location.userId} user if ${user._id}`); */
+  
     if (location.userId.toString() !== user._id.toString()) {
       return res.status(401).json({
         success: false,
@@ -101,9 +85,9 @@ deleteLocation = async (req, res) => {
         data: null,
       });
     }
-    // console.log("LocationController", req.body.id )
+   
+    // await Location.deleteOne({ _id: req.params.id });
 
-    // await location.remove();
     await Location.deleteOne({ _id: req.params.id }).then((loc) => {
       User.updateOne(
         { _id: user._id },
@@ -117,12 +101,6 @@ deleteLocation = async (req, res) => {
         }
       );
     });
-
-    /* res.status(200).json({
-      success: true,
-      message: "Location deleted",
-      data: location,
-    }); */
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -132,9 +110,6 @@ deleteLocation = async (req, res) => {
   }
 };
 
-// End of Delete location
-
-// Update location
 updateLocation = async (req, res) => {
   const location = await Location.findById(req.body.id);
 
@@ -169,7 +144,6 @@ updateLocation = async (req, res) => {
 
 getLocationById = async (req, res) => {
   const location = await Location.findById(req.params.id);
-  console.log(req.location_id);
   try {
     if (location === null) {
       return res.status(400).json({

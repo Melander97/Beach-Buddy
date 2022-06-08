@@ -5,7 +5,7 @@ const Help = () => {
   return (
     <section className="text-black body-font bg-blue-900">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap -m-4 pr-10">
+        <div className="flex flex-wrap -m-4">
           <div className="p-4 md:w-1/3">
             <div className="h-full rounded-xl shadow-cla-blue bg-white overflow-hidden ">
               <img

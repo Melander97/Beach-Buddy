@@ -4,7 +4,7 @@ Beach-buddy is a website to search and share your favourite beaches.
 
 You are also able to save your favourite beach so you wont forget where to find them.
 
-# Tech used
+# Tech stack
 
 The product is developed using NODE.JS for the backend and
 
@@ -15,7 +15,7 @@ The product is developed using NODE.JS for the backend and
 - TAILWIND
 - Mongo DB
 
-Havs- och vattenmyndighetens API has been used to get location of EU approved beaches and it`s data around Sweden.
+Havs- och vattenmyndighetens (HaV) API has been used to get locations of EU approved beaches and it`s data around Sweden, which are then plotted on a Google Map using the Google Maps API.
 
 # Reason for the app and code
 
@@ -26,6 +26,22 @@ As we also wish to create a safe app for our users we choose to use the API from
 We as people have a lot of things in our heads these days so it is easy to forget things and places, so we also wanted to create a function so that our registered users also could save their favoruite beach spots in their profile page.
 
 To create a sense of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches.
+
+## UX and design
+
+We started off with a simple wireframe to get a grip of the app flow and necessary routes:
+
+![](src\assets\readme\wireframe.png "Wireframe")
+
+And we also made a sitemap to map all the routes:
+
+![](src\assets\readme\sitemap.png "Sitemap")
+
+
+[Link to sitemap](https://www.gloomaps.com/MidpxfRbHf)
+
+
+
 
 ## Installation
 
@@ -137,4 +153,4 @@ https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
 
 ## License
 
-[NO ONE CAN USE THIS IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
+[NO ONE CAN USE THIS, IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)

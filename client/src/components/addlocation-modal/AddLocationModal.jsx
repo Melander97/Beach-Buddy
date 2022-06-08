@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
 import locationService from "../../services/userLocationService";
 import "./AddLocation-modal.scss";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const AddLocationModal = ({ coords }) => {
   const [title, setTitle] = useState("");
@@ -40,8 +40,7 @@ const AddLocationModal = ({ coords }) => {
   };
 
   return (
-    <div className="addLocation-component w-full h-screen flex items-center justify-center bg-no-repeat bg-cover">
-      {/* <div className="w-medium bg-white rounded shadow-lg p-8 m-4"> */}
+    <div className="addLocation-component w-full h-screen flex items-center justify-center my-3 bg-no-repeat bg-cover">
       <form className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:border-gray-700   ">
         <div>
           <h3
@@ -97,16 +96,16 @@ const AddLocationModal = ({ coords }) => {
           >
             Beskrivning
           </label>
-          <input
+          <textarea
             type="direction"
             name="direction"
             id="direction"
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             className="w-full h-10 rounded-lg bg-white text-gray-600  font-semibold hover:bg-black-100 transition mb-4 p-2 border"
-            placeholder="Ta höger..."
-            required
-          />
+            placeholder="Beskriv din plats"
+            required="">
+          </textarea>
         </div>
         {isSuccess ? (
           <Navigate to="/locations" />

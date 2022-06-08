@@ -1,11 +1,22 @@
 .login--bg {
-  // background-image: url("https://images.pexels.com/photos/219998/pexels-photo-219998.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-
-  // background-image: url("https://svenssonmotstrommen.files.wordpress.com/2014/06/mora-idyll-ved-siljan.jpg?w=690");
   background-image: url("https://www.charmcharter.se/assets/images/skargarden-2000px.jpg");
-  // no-repeat (center / cover);
   height: 90%;
   min-height: 84vh;
+
+  .bg-white {
+    animation: 1s ease-out 0s 1 slideInFromBottom;
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateX(25);
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 414px) {

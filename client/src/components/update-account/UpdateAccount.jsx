@@ -7,17 +7,11 @@ const UpdateAccount = () => {
   const user = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [updatedUserInfo, setUpdatedUserInfo] = useState({});
   const [message, setMessage] = useState("");
   const [isUpdated, setIsUpdated] = useState(false);
 
   const UpdateAccount = async (e) => {
     e.preventDefault();
-
-    /*  if (name === "" && email === "") {
-      setMessage("Vänligen fyll i minst ett fält");
-    } */
     const updatedUserInfo = {
       name: name,
       email: email,
@@ -31,34 +25,9 @@ const UpdateAccount = () => {
         if (data.success) {
           setMessage("Namn/email är nu uppdaterat");
           setIsUpdated(true);
-          // console.log(message);
         }
       });
-
-    /* if (isUpdated) {
-      setName("");
-      setEmail("");
-    } */
-    /*  try {
-      let response = await authService.updateAccountFunction(updatedUserInfo);
-      setUpdatedUserInfo(response);
-      console.log("LALAL" + response);
-      return response;
-    } catch (err) {
-      console.log(err);
-    } */
   };
-
-  /* useEffect(() => {
-    console.log("USEEFFECT" + JSON.stringify(updatedUserInfo));
-  }, [updatedUserInfo]); */
-
-  /* function messageColor(response) {
-    const success = response.success;
-    if (!success) {
-      return;
-    }
-  } */
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
@@ -94,10 +63,9 @@ const UpdateAccount = () => {
           aria-labelledby="flush-headingOne"
           data-bs-parent="#accordionFlushExample"
         >
-          {/* Message */}
           <form className="accordion-body py-4 px-5" onSubmit={UpdateAccount}>
             {isUpdated && (
-              <p className={isUpdated ? "text-green-400" : "text-red-400"}>
+              <p className={isUpdated ? "text-blue-400" : "text-red-400"}>
                 {message}
               </p>
             )}
@@ -118,14 +86,6 @@ const UpdateAccount = () => {
               value={isUpdated ? "" : email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {/* <input
-              type="text"
-              className="profile__input block w-full px-3 py-1.5 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleText0"
-              placeholder="Lösenord"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            /> */}
             <button
               className="button-31"
               disabled={name === "" && email === "" ? true : false}
