@@ -33,7 +33,6 @@ const MyLocations = () => {
 
   //Used to center the map
   const center = useMemo(() => myLocation, [myLocation]);
-  // const userMap = useMemo(() => map, [map]);
 
   useEffect(() => {
     locationService.getAllLocations();
@@ -56,6 +55,16 @@ const MyLocations = () => {
     setSelectedLocation(location);
   };
 
+  const removeLocation = async (id) => {
+    locationService.deleteLocation(id).then((data) => {
+      if (data.data.success) {
+        const filterArray = userLocations.filter((value) => value._id !== id);
+        setUserLocations(filterArray);
+        setSelectedLocation(false);
+      }
+    });
+  };
+
   //Creates pinpoint on map
   const setLocation = (e) => {
     const currentMarker = [];
@@ -64,7 +73,11 @@ const MyLocations = () => {
   const renderUserMap = () => {
     return (
       <div class="map-component">
-        <MyLocation selectedLocation={selectedLocation} user={user} />
+        <MyLocation
+          selectedLocation={selectedLocation}
+          user={user}
+          removeLocation={removeLocation}
+        />
 
         <GoogleMap
           center={center}
@@ -85,21 +98,12 @@ const MyLocations = () => {
             setLocation(e);
           }}
         >
-          <MarkerClusterer
-          // imagePath={
-          //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-          // }
-          /* onLoad={() => {
-              console.log("cluster rendered");
-            }} */
-          >
+          <MarkerClusterer>
             {(clusterer) =>
               userLocations?.map((location, index) => (
                 <Marker
                   visible={true}
                   key={index}
-                  /* onLoad={() => {
-                  }} */
                   icon={
                     user.user.id === location.userId
                       ? require("../../assets/images/google-maps/swim-orange.png")
