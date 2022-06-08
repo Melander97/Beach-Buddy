@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./Help.scss";
 
 const Help = () => {
   return (
-    <section className="text-black body-font">
+    <section className="text-black body-font bg-blue-900">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4 pr-10">
           <div className="p-4 md:w-1/3">
@@ -21,9 +20,9 @@ const Help = () => {
                 <p className="leading-relaxed mb-3">
                   Via kartan kommer du kunna navigera runt och hitta de{" "}
                   <b>hetaste</b> badplatserna nära dig. De olika
-                  pin-markeringarna representerar dina egna och andra Beach-buddys
-                  sparade badplatser. <br /> Klicka på länken nedan för att
-                  komma till vår startsida.
+                  pin-markeringarna representerar dina egna och andra
+                  Beach-buddys sparade badplatser. <br /> Klicka på länken nedan
+                  för att komma till vår startsida.
                 </p>
                 <div className="flex items-center flex-wrap ">
                   <Link to="/">
@@ -42,7 +41,7 @@ const Help = () => {
                 src="https://media.istockphoto.com/photos/winding-bath-pier-by-a-sand-beach-picture-id870528474?k=20&m=870528474&s=612x612&w=0&h=1AApfXMBb2qHooukuFc35t-aDxK-3-iq1YeG0rW9Sxo="
                 alt="blog"
               />
-            <div className="p-5">
+              <div className="p-5">
                 <h1 className="title-font text-lg font-medium text-black mb-3">
                   Snabbmeny ikoner
                 </h1>
@@ -52,12 +51,14 @@ const Help = () => {
                 </p>
                 <p className="mb-2 p-2">
                   <i className="fa-solid fa-map fa-2xl pr-3"></i>
-                  Kartan kommer ta dig som är inloggad till en karta där du kan söka och lägga till dina egna favorit stränder.
+                  Kartan kommer ta dig som är inloggad till en karta där du kan
+                  söka och lägga till dina egna favorit stränder.
                 </p>
 
                 <p className="mb-2 p-2">
-                <i className=" icon--space fa-solid fa-user fa-2xl pr-3"></i>                  
-                Användar ikonen kommer att ta dig till din privata profil sida om du är inlggad.
+                  <i className=" icon--space fa-solid fa-user fa-2xl pr-3"></i>
+                  Användar ikonen kommer att ta dig till din privata profil sida
+                  om du är inlggad.
                 </p>
 
                 <p className="mb-2 p-2">
@@ -65,8 +66,9 @@ const Help = () => {
                   Pluset kommer ta dig till <b>Logga in.</b>
                 </p>
                 <p className="mb-2 p-2">
-                <i className=" icon--space fa-solid fa-user-plus fa-2xl pr-3"></i>                  
-                Användarikonen med pluset kommer ta dig till <b>Bli medlem.</b>
+                  <i className=" icon--space fa-solid fa-user-plus fa-2xl pr-3"></i>
+                  Användarikonen med pluset kommer ta dig till{" "}
+                  <b>Bli medlem.</b>
                 </p>
                 <div className="flex items-center flex-wrap "></div>
               </div>
@@ -86,7 +88,8 @@ const Help = () => {
                 <p className="leading-relaxed mb-3">
                   <b>Varför ska jag ha ett konto på Beach Buddy?</b>
                   När det blir 30 grader i sommar och din lokala badplats är
-                  proppfull, så kommer Beach Buddy vara räddaren i nöden, du kan snabbt och enkelt hitta en ny favorit strand.
+                  proppfull, så kommer Beach Buddy vara räddaren i nöden, du kan
+                  snabbt och enkelt hitta en ny favorit strand.
                   <br />
                   <br />
                   <b>Kostar det något att använda sidan?</b>
