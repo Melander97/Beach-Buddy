@@ -151,6 +151,16 @@ https://www.figma.com/file/fGIQVq3HrhiiiwmtkICQgx/BeachBuddy?node-id=0%3A1
 
 https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
 
+
+## Contributing
+
+- Niclas Gustafsson https://github.com/Niclas-Gustafsson
+- Naelia Salas https://github.com/NaeliaSalas
+- Henrik Berglund https://github.com/Hekski
+- Massi Wararoodi https://github.com/MassiWR
+- Jonny Norberg https://github.com/JonnyNorberg
+- Alexander Melander https://github.com/Melander97
+
 ## License
 
-[NO ONE CAN USE THIS, IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
