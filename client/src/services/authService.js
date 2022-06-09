@@ -7,7 +7,8 @@ const getUserById = "http://localhost:4000/api/users/"; */
 const API_URL = "https://beach-buddy.herokuapp.com/api/users";
 const API_URL_LOGIN = "https://beach-buddy.herokuapp.com/api/users/login";
 const getUserById = "https://beach-buddy.herokuapp.com/api/users/";
-const API_URL_DELETE = "https://beach-buddy.herokuapp.com/api/users/delete/" 
+const API_URL_DELETE = "https://beach-buddy.herokuapp.com/api/users/api/users/delete/" 
+
 
 export const user$ = new BehaviorSubject();
 export const userLocations$ = new BehaviorSubject();
