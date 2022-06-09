@@ -126,6 +126,15 @@ const Register = () => {
           >
             Skicka in
           </button>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-300 ">
+            Redan medlem?{" "}
+            <Link
+              to="/login"
+              className="text-black hover:underline dark:text-gray-700"
+            >
+              Logga in här
+            </Link>
+          </div>
         </form>
         {isClicked && <Navigate to="/login" />}
       </div>

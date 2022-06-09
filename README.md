@@ -27,20 +27,20 @@ We as people have a lot of things in our heads these days so it is easy to forge
 
 To create a sense of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches.
 
+
+
 ## UX and design
 
 We started off with a simple wireframe to get a grip of the app flow and necessary routes:
 
-![](src\assets\readme\wireframe.png "Wireframe")
+![](./client/src/assets/readme/wireframe.png "Wireframe")
 
 And we also made a sitemap to map all the routes:
 
-![](src\assets\readme\sitemap.png "Sitemap")
+![](./client/src/assets/readme/sitemap.png "Sitemap")
 
 
 [Link to sitemap](https://www.gloomaps.com/MidpxfRbHf)
-
-
 
 
 ## Installation
@@ -124,22 +124,22 @@ A token has to be provided in order to do these tasks.
 
 ## Location routes:
 
-| Method | URI                          | Description              |
-| :----- | :--------------------------- | :----------------------- |
-| `POST` | `/locations/addLocation`     | protect, addLocation     |
-| `GET`  | `/locations/getLocation`     | protect, getLocation     |
-| `POST` | `/locations/delete/:id`      | protect, deleteLocation  |
-| `PUT`  | `/locations/updateLocation`  | protect, updateLocation  |
-| `GET`  | `/locations/getLocation/:id` | protect, getLocationById |
+| Method | URI                           | Description              |
+| :-----  | :--------------------------- | :----------------------- |
+| `GET`   | `/locations/getLocation`     | protect, addLocation     |
+| `POST`  | `/locations/addLocation`     | protect, getLocation     |
+| `PATCH` | `/locations/updateLocation`  | protect, deleteLocation  |
+| `DELETE`| `/locations/delete/:id`      | protect, updateLocation  |
+| `GET`   | `/locations/getLocationById` | protect, getLocationById |
 
 ## User routes
 
 | Method  | URI           | Description             |
 | :------ | :------------ | :---------------------- |
 | `POST`  | `/`           | registerUser            |
-| `GET`   | `/login`      | loginUser               |
-| `POST`  | `/:id`        | protect, getUserById    |
-| `PUT`   | `/delete/:id` | protect, deleteUserById |
+| `POST`  | `/login`      | loginUser               |
+| `GET`   | `/:id`        | protect, getUserById    |
+| `POST`  | `/delete/:id` | protect, deleteUserById |
 | `GET`   | `/logout`     | protect, logoutUser     |
 | `PATCH` | `/update/:id` | protect, logoutUser     |
 
@@ -151,6 +151,16 @@ https://www.figma.com/file/fGIQVq3HrhiiiwmtkICQgx/BeachBuddy?node-id=0%3A1
 
 https://github.com/chas-academy/u08-business-idea-beach-buddy/projects
 
+
+## Contributing
+
+- Niclas Gustafsson https://github.com/Niclas-Gustafsson
+- Naelia Salas https://github.com/NaeliaSalas
+- Henrik Berglund https://github.com/Hekski
+- Massi Wararoodi https://github.com/MassiWR
+- Jonny Norberg https://github.com/JonnyNorberg
+- Alexander Melander https://github.com/Melander97
+
 ## License
 
-[NO ONE CAN USE THIS, IT IS OUR PRECIOUS FOREVER](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)

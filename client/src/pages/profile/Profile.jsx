@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./profile.scss";
 import { useUser } from "../../components/context/UserContext";
 import UpdateAccount from "../../components/update-account/UpdateAccount";
@@ -20,12 +20,14 @@ const Profile = () => {
     });
   }, []);
 
+  // useEffect(() => {}, [userLocations]);
+
   return (
     <div className="profile">
       <div className="profile-info">
         <i className="fa-solid fa-person-drowning fa-2xl mb-5"></i>
 
-        <h1>Name: {user.user.name}</h1>
+        <h1>Namn: {user.user.name}</h1>
         <h1>Email: {user.user.email}</h1>
       </div>
 

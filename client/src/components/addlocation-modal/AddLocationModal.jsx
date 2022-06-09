@@ -46,6 +46,7 @@ const AddLocationModal = ({ coords }) => {
           <h3
             htmlFor="title"
             className="text-lg font-bold text-white-900 block mb-2 text-white-300 py-1 text-center"
+            data-testid="form-header"
           >
             Lägg till en ny plats
           </h3>

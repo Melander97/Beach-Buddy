@@ -44,30 +44,13 @@ const loginFunction = async (loginData) => {
 };
 
 const updateAccountFunction = async (updatedUserInfo, userId) => {
-  // console.log(userId);
   const res = await axios.patch(
     `${API_URL}/update/${userId}`,
     updatedUserInfo,
     config
   );
   user$.next(res.data);
-  console.log(res.data);
   return res.data;
-  /* try {
-    const res = await axios.patch(
-      `${API_URL}/update/628ff47d252c91d0eec404ec`,
-      updatedUserInfo,
-      config
-    );
-    if (res.data.success) {
-      user$.next(res.data);
-    }
-    return res.data;
-  } catch (error) {
-    if (error.response) {
-      return error.response.data;
-    }
-  } */
 };
 
 const getUser = async (userId) => {

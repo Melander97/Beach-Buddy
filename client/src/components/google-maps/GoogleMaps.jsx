@@ -93,7 +93,7 @@ const GoogleMaps = () => {
                 <input
                   className="search"
                   {...getInputProps({
-                    placeholder: "Search city",
+                    placeholder: "Sök stad",
                     type: "text",
                   })}
                 />
@@ -148,11 +148,7 @@ const GoogleMaps = () => {
                     visible={true}
                     key={index}
                     onLoad={() => {}}
-                    icon={
-                      index % 2 === 0
-                        ? require("../../assets/images/google-maps/swim-orange.png")
-                        : require("../../assets/images/google-maps/swim-blue.png")
-                    }
+                    icon={require("../../assets/images/google-maps/swim-blue.png")}
                     clusterer={clusterer}
                     position={{
                       lat: marker.geometry.coordinates[1],
