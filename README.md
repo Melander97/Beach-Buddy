@@ -33,11 +33,11 @@ To create a sense of community we also wanted to implement a second map for the 
 
 We started off with a simple wireframe to get a grip of the app flow and necessary routes:
 
-![](src\assets\readme\wireframe.png "Wireframe")
+![](./client/src/assets/readme/wireframe.png "Wireframe")
 
 And we also made a sitemap to map all the routes:
 
-![](src\assets\readme\sitemap.png "Sitemap")
+![](./client/src/assets/readme/sitemap.png "Sitemap")
 
 
 [Link to sitemap](https://www.gloomaps.com/MidpxfRbHf)
