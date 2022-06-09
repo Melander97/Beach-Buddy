@@ -100,10 +100,12 @@ const UpdateAccount = ({ userId }) => {
               {" "}
               Uppdatera
             </button>
-            <button onClick={handleDelete} className="button-31">
+          </form>
+          <div className="delete">
+            <button onClick={handleDelete} className="del-btn bg-orange-300">
               Radera konto
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
