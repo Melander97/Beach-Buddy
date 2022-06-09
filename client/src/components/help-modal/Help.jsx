@@ -1,4 +1,5 @@
 import React from "react";
+import "./help.scss";
 import { Link } from "react-router-dom";
 
 const Help = () => {
