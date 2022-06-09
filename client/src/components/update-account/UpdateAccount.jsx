@@ -30,7 +30,7 @@ const UpdateAccount = ({ userId }) => {
   };
 
   const handleDelete = async () => {
-    await authService.deleteUser(userId.userId).then(() => {
+    await authService.deleteUser(userId).then(() => {
       localStorage.removeItem("user");
       window.location.reload();
     });
