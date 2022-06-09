@@ -15,13 +15,11 @@ const getAllLocations = async () => {
   const res = await axios.get(`${heroku_url}getLocation`, config);
 
   if (res.data.success) {
-    // console.log(res.data);
     userLocations$.next(res.data.data);
   }
 };
 
 const getLocationById = async (locationId) => {
-  // console.log(locationId);
   const res = await axios.get(`${heroku_url}getLocation/${locationId}`, config);
   viewLocation$.next(res.data.data);
 };
@@ -36,9 +34,7 @@ const addLocation = async (locationData) => {
 };
 
 const deleteLocation = async (id) => {
-  // console.log("id userlocationService", id);
   const res = await axios.delete(`${heroku_url}delete/${id}`, config);
-  // console.log(res);
   return res;
 };
 

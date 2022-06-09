@@ -26,17 +26,17 @@ const LocationModal = ({ beach }) => {
                   <p>
                     <b>Kontakt:</b> {beach.contactMail}
                   </p>
+                  <p className="link-wrapper">
+                    <b>Hemsida:</b>{" "}
+                    <a
+                      href={`${beach.contactUrl}`}
+                      target="blank_"
+                      className="website"
+                    >
+                      {beach.contactUrl}
+                    </a>
+                  </p>
                 </div>
-                <p className="link-wrapper">
-                  <b>Hemsida:</b>{" "}
-                  <a
-                    href={`${beach.contactUrl}`}
-                    target="blank_"
-                    className="website"
-                  >
-                    {beach.contactUrl}
-                  </a>
-                </p>
               </div>
               <div className="flex items-center flex-wrap">
                 <Link to="/">

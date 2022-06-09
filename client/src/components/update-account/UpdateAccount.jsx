@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import authService from "../../services/authService";
 import { useUser } from "../context/UserContext";
 import "./Update-account.scss";
 
-const UpdateAccount = () => {
+const UpdateAccount = ({ userId }) => {
   const user = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,6 +27,13 @@ const UpdateAccount = () => {
           setIsUpdated(true);
         }
       });
+  };
+
+  const handleDelete = async () => {
+    await authService.deleteUser(userId.userId).then(() => {
+      localStorage.removeItem("user");
+      window.location.reload();
+    });
   };
 
   return (
@@ -92,6 +99,9 @@ const UpdateAccount = () => {
             >
               {" "}
               Uppdatera
+            </button>
+            <button onClick={handleDelete} className="button-31">
+              Radera konto
             </button>
           </form>
         </div>

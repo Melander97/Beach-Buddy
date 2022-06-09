@@ -19,10 +19,11 @@ const Help = () => {
                 </h1>
                 <p className="leading-relaxed mb-3">
                   Via kartan kommer du kunna navigera runt och hitta de{" "}
-                  <b>hetaste</b> badplatserna nära dig. De olika
-                  pin-markeringarna representerar dina egna och andra
-                  Beach-buddys sparade badplatser. <br /> Klicka på länken nedan
-                  för att komma till vår startsida.
+                  <b>hetaste</b> badplatserna nära dig. De oranga
+                  pin-markeringen visar dina egna och de blå visar andra
+                  Beach-Buddys användares platser.
+                  <br /> Klicka på länken nedan för att komma till vår
+                  startsida.
                 </p>
                 <div className="flex items-center flex-wrap ">
                   <Link to="/" data-testid="linkOne">
@@ -60,8 +61,8 @@ const Help = () => {
 
                 <p className="mb-2 p-2">
                   <i className=" icon--space fa-solid fa-user fa-2xl pr-3"></i>
-                  Användar ikonen kommer att ta dig till din privata profil sida
-                  om du är inlggad.
+                  Profil ikonen kommer att ta dig till din privata profil sida
+                  om du är inloggad.
                 </p>
 
                 <p className="mb-2 p-2">
@@ -70,8 +71,7 @@ const Help = () => {
                 </p>
                 <p className="mb-2 p-2">
                   <i className=" icon--space fa-solid fa-user-plus fa-2xl pr-3"></i>
-                  Användarikonen med pluset kommer ta dig till{" "}
-                  <b>Bli medlem.</b>
+                  Profil ikonen med pluset kommer ta dig till <b>Bli medlem.</b>
                 </p>
                 <div className="flex items-center flex-wrap "></div>
               </div>
@@ -96,6 +96,7 @@ const Help = () => {
                   <br />
                   <br />
                   <b>Kostar det något att använda sidan?</b>
+                  <br />
                   Beach Buddy är helt gratis att använda.
                   <br />
                   <br />
