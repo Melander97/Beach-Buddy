@@ -1,8 +1,7 @@
-var expect = require('chai').expect;
-var request = require('request');
-var supertest = require('supertest');
-var app = require('../server');
-
+const expect = require('chai').expect;
+const request = require('request');
+const supertest = require('supertest');
+const app = require('../server');
 
 describe('app rest api testing', () => {
   it('/api/users status code without passing any params', (done) => {
