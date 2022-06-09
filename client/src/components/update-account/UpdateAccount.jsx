@@ -26,6 +26,13 @@ const UpdateAccount = (userId) => {
 
   useEffect(() => {}, [updatedUserInfo]);
 
+  const handleDelete = async () => {
+    await authService.deleteUser(userId.userId).then(() => {
+      localStorage.removeItem("user");
+      window.location.reload();
+    });
+  };
+
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item">
@@ -98,6 +105,13 @@ const UpdateAccount = (userId) => {
             />
             <button className="button-31"> Uppdatera</button>
           </form>
+
+          <button
+            onClick={handleDelete}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          >
+            Radera konto
+          </button>
         </div>
       </div>
     </div>

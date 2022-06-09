@@ -20,8 +20,7 @@ const Profile = () => {
     });
   }, []);
 
-  useEffect(() => {
-  }, [userLocations]);
+  useEffect(() => {}, [userLocations]);
 
   return (
     <div className="profile">
