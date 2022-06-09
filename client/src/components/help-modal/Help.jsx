@@ -25,8 +25,11 @@ const Help = () => {
                   för att komma till vår startsida.
                 </p>
                 <div className="flex items-center flex-wrap ">
-                  <Link to="/">
-                    <button className="bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">
+                  <Link to="/" data-testid="linkOne">
+                    <button
+                      data-testid="back-btn"
+                      className="bg-gradient-to-r from-orange-300 to-amber-400 text-black hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg"
+                    >
                       Startsida
                     </button>
                   </Link>
