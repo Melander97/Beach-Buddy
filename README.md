@@ -27,6 +27,8 @@ We as people have a lot of things in our heads these days so it is easy to forge
 
 To create a sense of community we also wanted to implement a second map for the registerd users where they can see eachothers favourite beaches.
 
+
+
 ## UX and design
 
 We started off with a simple wireframe to get a grip of the app flow and necessary routes:
@@ -39,8 +41,6 @@ And we also made a sitemap to map all the routes:
 
 
 [Link to sitemap](https://www.gloomaps.com/MidpxfRbHf)
-
-
 
 
 ## Installation
@@ -124,22 +124,22 @@ A token has to be provided in order to do these tasks.
 
 ## Location routes:
 
-| Method | URI                          | Description              |
-| :----- | :--------------------------- | :----------------------- |
-| `POST` | `/locations/addLocation`     | protect, addLocation     |
-| `GET`  | `/locations/getLocation`     | protect, getLocation     |
-| `POST` | `/locations/delete/:id`      | protect, deleteLocation  |
-| `PUT`  | `/locations/updateLocation`  | protect, updateLocation  |
-| `GET`  | `/locations/getLocation/:id` | protect, getLocationById |
+| Method | URI                           | Description              |
+| :-----  | :--------------------------- | :----------------------- |
+| `GET`   | `/locations/getLocation`     | protect, addLocation     |
+| `POST`  | `/locations/addLocation`     | protect, getLocation     |
+| `PATCH` | `/locations/updateLocation`  | protect, deleteLocation  |
+| `DELETE`| `/locations/delete/:id`      | protect, updateLocation  |
+| `GET`   | `/locations/getLocationById` | protect, getLocationById |
 
 ## User routes
 
 | Method  | URI           | Description             |
 | :------ | :------------ | :---------------------- |
 | `POST`  | `/`           | registerUser            |
-| `GET`   | `/login`      | loginUser               |
-| `POST`  | `/:id`        | protect, getUserById    |
-| `PUT`   | `/delete/:id` | protect, deleteUserById |
+| `POST`  | `/login`      | loginUser               |
+| `GET`   | `/:id`        | protect, getUserById    |
+| `POST`  | `/delete/:id` | protect, deleteUserById |
 | `GET`   | `/logout`     | protect, logoutUser     |
 | `PATCH` | `/update/:id` | protect, logoutUser     |
 
