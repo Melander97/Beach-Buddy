@@ -9,7 +9,7 @@ import { MemoryRouter } from "react-router-dom";
 import Help from "./Help";
 
 describe("HelpComponent", () => {
-  test("should render", () => {
+  test("should match snapshot", () => {
     const component = renderer
       .create(
         <MemoryRouter>
