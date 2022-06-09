@@ -125,6 +125,16 @@
   }
 }
 
+.delete {
+  background-color: #f5f5f5;
+  padding: 1rem 0;
+
+  .del-btn {
+    padding: 1rem 2.8rem;
+    border-radius: 4px;
+  }
+}
+
 /* MEDIA QUERIES ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
 
 /* STOP MIN WIDTH*/
