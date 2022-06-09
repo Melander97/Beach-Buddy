@@ -11,7 +11,7 @@ describe('app rest api testing', () => {
     done();
   });
  });
-  it('api/users/login to show status code 401', (done) => {
+  it('api/users/login to show status code 401 with no credentials', (done) => {
       request('http://localhost:4000/api/users/login', (err, result, body) => {
     expect(result.statusCode).to.equal(401);
     done();
